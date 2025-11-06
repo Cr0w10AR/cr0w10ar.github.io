@@ -60,13 +60,12 @@
             box-shadow: 0 0 15px rgba(187, 134, 252, 0.6);
         }
 
-        /* CORRECCIÓN CSS: Se eliminó la llave '}' extra */
         .button-container {
             text-align: center;
             margin-top: 30px;
-            display: flex; /* Activa flexbox */
-            justify-content: center; /* Centra los botones horizontalmente */
-            gap: 20px; /* Crea un espacio de 20px ENTRE los botones */
+            display: flex;
+            justify-content: center;
+            gap: 20px;
         } 
 
         .button {
@@ -208,61 +207,81 @@
         </p>
         
         <div class="button-container">
-            <a href="#publicaciones" class="button">WriteUps</a>
-            <a href="#proyectos" class="button">Proyectos Personales</a>
+            <a href="#" class="button" data-target="writeups">WriteUps</a>
+            <a href="#" class="button" data-target="proyectos">Proyectos Personales</a>
         </div>
 
-        <hr> 
-        
-        <h2 id="publicaciones">Últimas Publicaciones</h2>
-
-        <div class="publications-grid">
+        <div id="writeups" class="content-section">
+            <hr> 
+            <h2 id="publicaciones">Últimas Publicaciones</h2>
             
-            <div class="card">
-                <h3>Web Investigation Lab</h3>
-                <p>Este informe documenta los hallazgos de la investigación de seguridad iniciada en respuesta a una alerta crítica.</p>
-                <a href="https://medium.com/@fernandaycesarmauricioymariel/web-investigation-lab-b1bf4b145321" class="card-link">Leer más &rarr;</a>
-            </div>
+            <div class="publications-grid">
+                <div class="card">
+                    <h3>Web Investigation Lab</h3>
+                    <p>Este informe documenta los hallazgos de la investigación de seguridad iniciada en respuesta a una alerta crítica.</p>
+                    <a href="https://medium.com/@fernandaycesarmauricioymariel/web-investigation-lab-b1bf4b145321" class="card-link">Leer más &rarr;</a>
+                </div>
             
-            <div class="card">
-                <h3>Análisis de un Ataque Web</h3>
-                <p>Desglosamos la cadena de ataque que explotó una simple SQL Injection para tomar control total de un servidor</p>
-                <a href="https://medium.com/@fernandaycesarmauricioymariel/evidencias-the-hacker-labs-ff0261dce9f2" class="card-link">Leer más &rarr;</a>
-            </div>
+                <div class="card">
+                    <h3>Análisis de un Ataque Web</h3>
+                    <p>Desglosamos la cadena de ataque que explotó una simple SQL Injection para tomar control total de un servidor</p>
+                    <a href="https://medium.com/@fernandaycesarmauricioymariel/evidencias-the-hacker-labs-ff0261dce9f2" class="card-link">Leer más &rarr;</a>
+                </div>
 
-            <div class="card">
-                <h3>Intento de Intrusion (La Corporacion - The Hackers Lab)</h3>
-                <p>Este reto fue un ejercicio práctico de respuesta a incidentes...</p>
-                <a href="https://medium.com/@fernandaycesarmauricioymariel/la-corporaci%C3%B3n-the-hacker-labs-5a5aaa0e7959" class="card-link">Leer más &rarr;</a>
-            </div>
+                <div class="card">
+                    <h3>Intento de Intrusion (La Corporacion - The Hackers Lab)</h3>
+                    <p>Este reto fue un ejercicio práctico de respuesta a incidentes...</p>
+                    <a href="https://medium.com/@fernandaycesarmauricioymariel/la-corporaci%C3%B3n-the-hacker-labs-5a5aaa0e7959" class="card-link">Leer más &rarr;</a>
+                </div>
 
-            <div class="card">
-                <h3>Desmantelando un Ataque Sofisticado de Exploit Kit</h3>
-                <p>Analisis Forense de un archivo ".pcap" de un ataque orquestado por un Exploit Kit (EK)</p>
-                <a href="https://medium.com/@fernandaycesarmauricioymariel/nukethebrowser-cyberdefenders-9fcd85e1dcf1" class="card-link">Leer más &rarr;</a>
-            </div>
+                <div class="card">
+                    <h3>Desmantelando un Ataque Sofisticado de Exploit Kit</h3>
+                    <p>Analisis Forense de un archivo ".pcap" de un ataque orquestado por un Exploit Kit (EK)</p>
+                    <a href="https://medium.com/@fernandaycesarmauricioymariel/nukethebrowser-cyberdefenders-9fcd85e1dcf1" class="card-link">Leer más &rarr;</a>
+                </div>
+            </div> </div> <div id="proyectos" class="content-section" style="display: none;">
+            <hr>
+            <h2 id="proyectos-titulo">Proyectos Personales</h2> <div class="publications-grid">
+                <div class="card">
+                    <h3>[Nombre del Proyecto 1]</h3>
+                    <p>[Descripción corta de tu proyecto personal, qué tecnologías usaste, etc.]</p>
+                    <a href="[ENLACE A GITHUB O DEMO]" target="_blank" class="card-link">Ver en GitHub &rarr;</a>
+                </div>
 
-        </div>
-        
-        <hr>
-        <h2 id="proyectos">Proyectos Personales</h2>
+                <div class="card">
+                    <h3>[Nombre del Proyecto 2]</h3>
+                    <p>[Descripción corta de tu proyecto personal, qué tecnologías usaste, etc.]</p>
+                    <a href="[ENLACE A GITHUB O DEMO]" target="_blank" class="card-link">Ver en GitHub &rarr;</a>
+                </div>
+            </div> </div> </div> <script>
+    // 1. Encontrar todos los botones del contenedor
+    const buttons = document.querySelectorAll('.button-container .button');
+    
+    // 2. Encontrar todas las secciones de contenido
+    const sections = document.querySelectorAll('.content-section');
 
-        <div class="publications-grid">
+    // 3. Añadir un 'click' listener a CADA botón
+    buttons.forEach(button => {
+        button.addEventListener('click', (event) => {
+            // Prevenir que el 'href="#"' haga saltar la página
+            event.preventDefault(); 
             
-            <div class="card">
-                <h3>[Nombre del Proyecto 1]</h3>
-                <p>[Descripción corta de tu proyecto personal, qué tecnologías usaste, etc.]</p>
-                <a href="[ENLACE A GITHUB O DEMO]" target="_blank" class="card-link">Ver en GitHub &rarr;</a>
-            </div>
+            // Obtener el ID del objetivo (ej. "writeups" o "proyectos")
+            const targetId = button.getAttribute('data-target');
+            
+            // 4. Ocultar TODAS las secciones
+            sections.forEach(section => {
+                section.style.display = 'none';
+            });
+            
+            // 5. Mostrar SOLO la sección objetivo
+            const targetSection = document.getElementById(targetId);
+            if (targetSection) {
+                targetSection.style.display = 'block';
+            }
+        });
+    });
+</script>
 
-            <div class="card">
-                <h3>[Nombre del Proyecto 2]</h3>
-                <p>[Descripción corta de tu proyecto personal, qué tecnologías usaste, etc.]</p>
-                <a href="[ENLACE A GITHUB O DEMO]" target="_blank" class="card-link">Ver en GitHub &rarr;</a>
-            </div>
-
-        </div>
-
-    </div> 
 </body>
 </html>
