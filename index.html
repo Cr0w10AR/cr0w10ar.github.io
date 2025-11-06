@@ -63,6 +63,10 @@
         .button-container {
             text-align: center;
             margin-top: 30px;
+            display: flex; /* Activa flexbox */
+    justify-content: center; /* Centra los botones horizontalmente */
+    gap: 20px; /* Crea un espacio de 20px ENTRE los botones */
+}
         }
 
         .button {
@@ -172,9 +176,25 @@
 </head> 
 <body>
     <div class="container">
-        
-        <img src="Logo Cuervo.png" alt="Logo de Cuervo" class="circular-logo">
 
+        <hr> <h2 id="proyectos">Proyectos Personales</h2>
+
+<div class="publications-grid">
+    
+    <div class="card">
+        <h3>[Nombre del Proyecto 1]</h3>
+        <p>[Descripción corta de tu proyecto personal, qué tecnologías usaste, etc.]</p>
+        <a href="[ENLACE A GITHUB O DEMO]" target="_blank" class="card-link">Ver en GitHub &rarr;</a>
+    </div>
+
+    <div class="card">
+        <h3>[Nombre del Proyecto 2]</h3>
+        <p>[Descripción corta de tu proyecto personal, qué tecnologías usaste, etc.]</p>
+        <a href="[ENLACE A GITHUB O DEMO]" target="_blank" class="card-link">Ver en GitHub &rarr;</a>
+    </div>
+
+    </div>
+        <img src="Logo Cuervo.png" alt="Logo de Cuervo" class="circular-logo">
         <h1>CR0W</h1>
         <div class="social-icons">
     <a href="https://linkedin.com/in/tomas-romero-soc" target="_blank" title="LinkedIn">
@@ -197,8 +217,9 @@
             <script src="https://cyberdefenders.org/p/cr0w_10/badge"></script>
         </div>
         <div class="button-container">
-            <a href="#publicaciones" class="button">WriteUps</a>
-        </div>
+    <a href="#publicaciones" class="button">WriteUps</a>
+    <a href="#proyectos" class="button">Proyectos Personales</a>
+</div>
 
         <hr> 
         
