@@ -157,6 +157,21 @@
         .card-link:hover {
             text-decoration: underline;
         }
+
+        /* --- ESTILOS PARA LA TRANSICIÓN DE SECCIONES --- */
+        .content-section {
+            opacity: 0; /* Oculto por defecto */
+            max-height: 0; /* Totalmente colapsado */
+            overflow: hidden; /* No mostrar contenido mientras está colapsado */
+            
+            /* ¡La transición! */
+            transition: opacity 0.4s ease-out, max-height 0.6s ease-out;
+        }
+
+        .content-section.active {
+            opacity: 1; /* Completamente visible */
+            max-height: 5000px; /* Un valor muy grande para que quepa todo */
+        }
         
         /* Contenedor para el badge */
         .badge-container {
@@ -216,6 +231,7 @@
             <h2 id="publicaciones">Últimas Publicaciones</h2>
             
             <div class="publications-grid">
+                
                 <div class="card">
                     <h3>Web Investigation Lab</h3>
                     <p>Este informe documenta los hallazgos de la investigación de seguridad iniciada en respuesta a una alerta crítica.</p>
@@ -239,9 +255,13 @@
                     <p>Analisis Forense de un archivo ".pcap" de un ataque orquestado por un Exploit Kit (EK)</p>
                     <a href="https://medium.com/@fernandaycesarmauricioymariel/nukethebrowser-cyberdefenders-9fcd85e1dcf1" class="card-link">Leer más &rarr;</a>
                 </div>
-            </div> </div> <div id="proyectos" class="content-section" style="display: none;">
+                
+            </div> </div> <div id="proyectos" class="content-section">
             <hr>
-            <h2 id="proyectos-titulo">Proyectos Personales</h2> <div class="publications-grid">
+            <h2 id="proyectos-titulo">Proyectos Personales</h2> 
+            
+            <div class="publications-grid">
+                
                 <div class="card">
                     <h3>[Nombre del Proyecto 1]</h3>
                     <p>[Descripción corta de tu proyecto personal, qué tecnologías usaste, etc.]</p>
@@ -253,6 +273,7 @@
                     <p>[Descripción corta de tu proyecto personal, qué tecnologías usaste, etc.]</p>
                     <a href="[ENLACE A GITHUB O DEMO]" target="_blank" class="card-link">Ver en GitHub &rarr;</a>
                 </div>
+                
             </div> </div> </div> <script>
     // 1. Encontrar todos los botones del contenedor
     const buttons = document.querySelectorAll('.button-container .button');
@@ -260,27 +281,31 @@
     // 2. Encontrar todas las secciones de contenido
     const sections = document.querySelectorAll('.content-section');
 
-    // 3. Añadir un 'click' listener a CADA botón
+    // 3. Función para manejar qué sección mostrar
+    function showSection(targetId) {
+        // Primero, ocultamos TODAS las secciones (quitando 'active')
+        sections.forEach(section => {
+            section.classList.remove('active');
+        });
+        
+        // Luego, mostramos SOLO la sección objetivo (añadiendo 'active')
+        const targetSection = document.getElementById(targetId);
+        if (targetSection) {
+            targetSection.classList.add('active');
+        }
+    }
+
+    // 4. Añadir un 'click' listener a CADA botón
     buttons.forEach(button => {
         button.addEventListener('click', (event) => {
-            // Prevenir que el 'href="#"' haga saltar la página
-            event.preventDefault(); 
-            
-            // Obtener el ID del objetivo (ej. "writeups" o "proyectos")
+            event.preventDefault(); // Prevenir el salto del href="#"
             const targetId = button.getAttribute('data-target');
-            
-            // 4. Ocultar TODAS las secciones
-            sections.forEach(section => {
-                section.style.display = 'none';
-            });
-            
-            // 5. Mostrar SOLO la sección objetivo
-            const targetSection = document.getElementById(targetId);
-            if (targetSection) {
-                targetSection.style.display = 'block';
-            }
+            showSection(targetId);
         });
     });
+
+    // 5. Mostrar la primera sección (WriteUps) por defecto al cargar la página
+    showSection('writeups');
 </script>
 
 </body>
