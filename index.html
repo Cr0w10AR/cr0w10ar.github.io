@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <title>Portafolio - CROW</title>
     <style>
-        /* --- ESTILO PARA EL SCROLL SUAVE (CAMBIO AQUÍ) --- */
+        /* --- ESTILO PARA EL SCROLL SUAVE --- */
         html {
             scroll-behavior: smooth;
         }
@@ -60,14 +60,14 @@
             box-shadow: 0 0 15px rgba(187, 134, 252, 0.6);
         }
 
+        /* CORRECCIÓN CSS: Se eliminó la llave '}' extra */
         .button-container {
             text-align: center;
             margin-top: 30px;
             display: flex; /* Activa flexbox */
-    justify-content: center; /* Centra los botones horizontalmente */
-    gap: 20px; /* Crea un espacio de 20px ENTRE los botones */
-}
-        }
+            justify-content: center; /* Centra los botones horizontalmente */
+            gap: 20px; /* Crea un espacio de 20px ENTRE los botones */
+        } 
 
         .button {
             display: inline-block;
@@ -82,24 +82,26 @@
         .button:hover {
             background-color: #9030ff;
         }
-    /* --- ESTILOS PARA ICONOS SOCIALES --- */
-.social-icons {
-    text-align: center; /* Centra los iconos */
-    margin: 25px 0; /* Espacio arriba y abajo */
-}
+    
+        /* --- ESTILOS PARA ICONOS SOCIALES --- */
+        .social-icons {
+            text-align: center;
+            margin: 25px 0;
+        }
 
-.social-icons a {
-    color: #e0e0e0; /* Color gris claro (igual que el texto) */
-    font-size: 1.8em; /* Tamaño de los iconos */
-    margin: 0 15px; /* Espacio entre los iconos */
-    text-decoration: none;
-    transition: color 0.3s ease, transform 0.3s ease;
-}
+        .social-icons a {
+            color: #e0e0e0;
+            font-size: 1.8em;
+            margin: 0 15px;
+            text-decoration: none;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
 
-.social-icons a:hover {
-    color: #bb86fc; /* Color morado brillante al pasar el ratón */
-    transform: scale(1.1); /* Efecto de zoom ligero */
-}
+        .social-icons a:hover {
+            color: #bb86fc;
+            transform: scale(1.1);
+        }
+        
         /* --- ESTILOS PARA LA SECCIÓN DE PUBLICACIONES --- */
         hr {
             border: 0;
@@ -156,54 +158,45 @@
         .card-link:hover {
             text-decoration: underline;
         }
+        
         /* Contenedor para el badge */
-.badge-container {
-    position: absolute;
-    top: 40px;
-    left: 40px;
-    /* --- CAMBIO AQUÍ: Escala el badge --- */
-    transform: scale(1.2); /* 1.2 significa un 20% más grande. Prueba con 1.3, 1.5, etc. */
-    transform-origin: top left; /* Asegura que el escalado se haga desde la esquina superior izquierda */
-}
+        .badge-container {
+            position: absolute;
+            top: 40px;
+            left: 40px;
+            transform: scale(1.2); 
+            transform-origin: top left;
+        }
+        
         /* --- Media Query para Responsive --- */
-/* Oculta el badge en pantallas más pequeñas (como móviles) */
-@media (max-width: 1200px) {
-    .badge-container {
-        display: none; /* Oculta el badge */
-    }
-}
+        @media (max-width: 1200px) {
+            .badge-container {
+                display: none;
+            }
+        }
     </style> 
 </head> 
 <body>
+
+    <div class="badge-container">
+        <script src="https://cyberdefenders.org/p/cr0w_10/badge"></script>
+    </div>
+
     <div class="container">
-
-        <hr> <h2 id="proyectos">Proyectos Personales</h2>
-
-<div class="publications-grid">
-    
-    <div class="card">
-        <h3>[Nombre del Proyecto 1]</h3>
-        <p>[Descripción corta de tu proyecto personal, qué tecnologías usaste, etc.]</p>
-        <a href="[ENLACE A GITHUB O DEMO]" target="_blank" class="card-link">Ver en GitHub &rarr;</a>
-    </div>
-
-    <div class="card">
-        <h3>[Nombre del Proyecto 2]</h3>
-        <p>[Descripción corta de tu proyecto personal, qué tecnologías usaste, etc.]</p>
-        <a href="[ENLACE A GITHUB O DEMO]" target="_blank" class="card-link">Ver en GitHub &rarr;</a>
-    </div>
-
-    </div>
+        
         <img src="Logo Cuervo.png" alt="Logo de Cuervo" class="circular-logo">
+
         <h1>CR0W</h1>
+        
         <div class="social-icons">
-    <a href="https://linkedin.com/in/tomas-romero-soc" target="_blank" title="LinkedIn">
-        <i class="fab fa-linkedin"></i>
-    </a>
-    <a href="mailto:tomasmromero0@gmail.com" title="Enviar Email">
-        <i class="fas fa-envelope"></i>
-    </a>
-</div>
+            <a href="https://linkedin.com/in/tomas-romero-soc" target="_blank" title="LinkedIn">
+                <i class="fab fa-linkedin"></i>
+            </a>
+            <a href="mailto:tomasmromero0@gmail.com" title="Enviar Email">
+                <i class="fas fa-envelope"></i>
+            </a>
+        </div>
+        
         <p>
             Soy Técnico Superior en Ciberseguridad, especializado en la intersección de la <strong>Inteligencia Artificial</strong> y la <strong>seguridad digital</strong>. Mi enfoque principal abarca la <strong>informática forense</strong>, el <strong>OSINT</strong> (Inteligencia de Fuentes Abiertas) y el <strong>pentesting</strong>.
         </p>
@@ -213,13 +206,11 @@
         <p>
             En este espacio comparto análisis técnicos, guías y herramientas avanzadas sobre ciberseguridad, <em>forensics</em>, IA aplicada y estrategias de <em>pentesting</em>.
         </p>
-        <div class="badge-container">
-            <script src="https://cyberdefenders.org/p/cr0w_10/badge"></script>
-        </div>
+        
         <div class="button-container">
-    <a href="#publicaciones" class="button">WriteUps</a>
-    <a href="#proyectos" class="button">Proyectos Personales</a>
-</div>
+            <a href="#publicaciones" class="button">WriteUps</a>
+            <a href="#proyectos" class="button">Proyectos Personales</a>
+        </div>
 
         <hr> 
         
@@ -228,10 +219,10 @@
         <div class="publications-grid">
             
             <div class="card">
-    <h3>Web Investigation Lab</h3>
-    <p>Este informe documenta los hallazgos de la investigación de seguridad iniciada en respuesta a una alerta crítica.</p>
-    <a href="https://medium.com/@fernandaycesarmauricioymariel/web-investigation-lab-b1bf4b145321" class="card-link">Leer más &rarr;</a>
-</div>
+                <h3>Web Investigation Lab</h3>
+                <p>Este informe documenta los hallazgos de la investigación de seguridad iniciada en respuesta a una alerta crítica.</p>
+                <a href="https://medium.com/@fernandaycesarmauricioymariel/web-investigation-lab-b1bf4b145321" class="card-link">Leer más &rarr;</a>
+            </div>
             
             <div class="card">
                 <h3>Análisis de un Ataque Web</h3>
@@ -241,7 +232,7 @@
 
             <div class="card">
                 <h3>Intento de Intrusion (La Corporacion - The Hackers Lab)</h3>
-                <p>Este reto fue un ejercicio práctico de respuesta a incidentes, donde analizamos un intento de intrusión en un sistema junto con Mariel Salas y Mauricio C. Duarte.</p>
+                <p>Este reto fue un ejercicio práctico de respuesta a incidentes...</p>
                 <a href="https://medium.com/@fernandaycesarmauricioymariel/la-corporaci%C3%B3n-the-hacker-labs-5a5aaa0e7959" class="card-link">Leer más &rarr;</a>
             </div>
 
@@ -252,6 +243,26 @@
             </div>
 
         </div>
+        
+        <hr>
+        <h2 id="proyectos">Proyectos Personales</h2>
+
+        <div class="publications-grid">
+            
+            <div class="card">
+                <h3>[Nombre del Proyecto 1]</h3>
+                <p>[Descripción corta de tu proyecto personal, qué tecnologías usaste, etc.]</p>
+                <a href="[ENLACE A GITHUB O DEMO]" target="_blank" class="card-link">Ver en GitHub &rarr;</a>
+            </div>
+
+            <div class="card">
+                <h3>[Nombre del Proyecto 2]</h3>
+                <p>[Descripción corta de tu proyecto personal, qué tecnologías usaste, etc.]</p>
+                <a href="[ENLACE A GITHUB O DEMO]" target="_blank" class="card-link">Ver en GitHub &rarr;</a>
+            </div>
+
+        </div>
+
     </div> 
 </body>
 </html>
