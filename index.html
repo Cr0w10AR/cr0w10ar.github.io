@@ -46,8 +46,7 @@
             border-radius: 12px;
             box-shadow: 
                 0 0 30px rgba(187, 134, 252, 0.3),
-                0 0 15px rgba(0, 255, 255, 0.2),
-                inset 0 0 15px rgba(187, 134, 252, 0.1);
+                0 0 15px rgba(0, 255, 255, 0.2); /* <-- CAMBIO: Se eliminó el "inset" box-shadow */
             border: 2px solid #6200ee;
             position: relative;
             z-index: 10;
@@ -55,7 +54,7 @@
             backdrop-filter: blur(5px);
         }
 
-        /* CORRECCIÓN: Resplandor del marco reducido */
+        /* Resplandor del marco exterior (ahora más sutil y visible) */
         .container::before {
             content: '';
             position: absolute;
@@ -67,12 +66,12 @@
             background: 
                 conic-gradient(from 0deg at 50% 50%, #00ffff 0%, #bb86fc 20%, #0f0f1c 50%, #bb86fc 80%, #00ffff 100%);
             z-index: -2;
-            filter: blur(8px); /* <-- CORREGIDO: Reducido de 18px */
-            opacity: 0.5; /* <-- CORREGIDO: Reducido de 0.7 */
+            filter: blur(8px);
+            opacity: 0.5;
             animation: neonGlow 5s ease infinite alternate;
         }
 
-        /* Patrón de circuito (estaba oculto por el resplandor) */
+        /* Patrón de circuito (ahora más visible) */
         .container::after {
             content: '';
             position: absolute;
@@ -298,9 +297,7 @@
             animation: none linear infinite;
         }
 
-        /* --- ANIMACIONES DE VUELO DIAGONAL (CORREGIDAS) --- */
-        /* CORRECCIÓN: Se quitó scaleX() de las animaciones. Se manejará con JS. */
-
+        /* --- ANIMACIONES DE VUELO DIAGONAL --- */
         @keyframes fly-diagonal-up {
             0%   { transform: translate(calc(-100% - 100vw), calc(100% + 100vh)); opacity: 0; }
             10%  { opacity: 1; }
@@ -465,7 +462,7 @@
         function createCrow() {
             const crow = document.createElement('img');
             
-            // CORRECCIÓN: Apunta a 'cuervo_morado.png' (el archivo que subiste)
+            // Se mantiene el nombre de tu archivo
             crow.src = 'cuervo_morado.png'; 
             crow.alt = 'Cuervo volando';
             crow.classList.add('crow');
@@ -500,10 +497,9 @@
             
             crow.style.animationName = animationName;
 
-            // CORRECCIÓN: Lógica para voltear el cuervo
             let transformString = `scale(${randomScale})`;
             if (animationName.includes('reverse')) {
-                transformString += ' scaleX(-1)'; // Voltear horizontalmente
+                transformString += ' scaleX(-1)';
             }
             crow.style.transform = transformString;
 
