@@ -24,7 +24,7 @@
             /* FONDO ESTRELLADO Y RASTROS DE NEÓN */
             background-image: 
                 radial-gradient(ellipse at center, rgba(30,0,50,0.5) 0%, rgba(0,0,0,0.9) 100%), /* Gradiente oscuro */
-                url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 100 100"><filter id="noiseFilter"><feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch" result="noise" /><feColorMatrix in="noise" type="matrix" values="0 0 0 0 0, 0 0 0 0 0, 0 0 0 0 0, 0 0 0 -1 1" /><feComposite operator="in" in2="SourceGraphic" result="comp" /></filter><rect width="100" height="100" fill="transparent"/><circle cx="50" cy="50" r="1" fill="#FFFFFF" filter="url(#noiseFilter)" opacity="0.1"/></svg>'), /* Estrellas sutiles */
+                url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 100 100"><filter id="noiseFilter"><feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch" result="noise" /><feColorMatrix in="noise" type="matrix" values="0 0 0 0 0, 0 0 0 0 0, 0 0 0 -1 1" /><feComposite operator="in" in2="SourceGraphic" result="comp" /></filter><rect width="100" height="100" fill="transparent"/><circle cx="50" cy="50" r="1" fill="#FFFFFF" filter="url(#noiseFilter)" opacity="0.1"/></svg>'), /* Estrellas sutiles */
                 linear-gradient(45deg, #0f0f1c, #2b0a4a, #0f0f1c); /* Base del degradado principal */
             background-size: cover, cover, cover;
             background-repeat: no-repeat, repeat, no-repeat;
@@ -37,15 +37,17 @@
             100% { background-position: 100% 50%, center, center; }
         }
 
-        /* Contenedor principal con efecto de marco digital */
+        /* Contenedor principal con efecto de marco digital y detalles tecnológicos */
         .container {
             max-width: 900px;
             margin: 60px auto; /* Más margen arriba y abajo */
             padding: 25px;
             background-color: rgba(15, 15, 28, 0.75); /* Fondo semitransparente */
             border-radius: 12px;
-            box-shadow: 0 0 30px rgba(187, 134, 252, 0.3), /* Sombra principal morada */
-                        0 0 15px rgba(0, 255, 255, 0.2); /* Sombra turquesa */
+            box-shadow: 
+                0 0 30px rgba(187, 134, 252, 0.3), /* Sombra principal morada */
+                0 0 15px rgba(0, 255, 255, 0.2), /* Sombra turquesa */
+                inset 0 0 15px rgba(187, 134, 252, 0.1); /* Resplandor interior */
             border: 2px solid #6200ee; /* Borde más definido */
             position: relative;
             z-index: 10; /* Mayor z-index para estar por encima de los cuervos y el fondo */
@@ -53,47 +55,49 @@
             backdrop-filter: blur(5px); /* Efecto de cristal esmerilado */
         }
 
-        /* Pseudo-elementos para el marco digital con efecto neón */
-        .container::before,
-        .container::after {
+        /* Pseudo-elementos para el marco digital con efecto neón y detalles tecnológicos */
+        .container::before {
             content: '';
             position: absolute;
-            background: linear-gradient(45deg, #bb86fc, #00ffff, #bb86fc);
-            z-index: -1;
-            filter: blur(15px);
-            opacity: 0.6;
-            animation: neonGlow 5s ease infinite alternate;
-        }
-
-        .container::before {
             top: -5px;
             left: -5px;
             right: -5px;
             bottom: -5px;
             border-radius: 15px; /* Ligeramente más grande que el contenedor */
+            background: 
+                conic-gradient(from 0deg at 50% 50%, #00ffff 0%, #bb86fc 20%, #0f0f1c 50%, #bb86fc 80%, #00ffff 100%); /* Gradiente cónico para el brillo exterior */
+            z-index: -2; /* Detrás del after */
+            filter: blur(18px); /* Mayor blur para el resplandor principal */
+            opacity: 0.7;
+            animation: neonGlow 5s ease infinite alternate;
         }
 
         .container::after {
+            content: '';
+            position: absolute;
             top: 0;
             left: 0;
             right: 0;
             bottom: 0;
             border-radius: 12px;
-            background: #0f0f1c; /* Fondo oscuro sólido para reducir la transparencia interior */
-            filter: none; /* No aplicar blur al after */
-            opacity: 0.9;
+            background: 
+                repeating-linear-gradient(45deg, rgba(0, 255, 255, 0.05), rgba(0, 255, 255, 0.05) 2px, transparent 2px, transparent 10px), /* Líneas turquesas */
+                repeating-linear-gradient(-45deg, rgba(187, 134, 252, 0.05), rgba(187, 134, 252, 0.05) 2px, transparent 2px, transparent 10px), /* Líneas moradas */
+                url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 L 0 10" fill="none" stroke="rgba(0,255,255,0.08)" stroke-width="0.5"/></pattern></defs><rect width="100%" height="100%" fill="url(#grid)" /></svg>') #0f0f1c; /* Patrón de rejilla sutil y fondo oscuro */
+            z-index: -1; /* Detrás del contenido pero encima del before */
+            opacity: 0.95; /* Más opaco para mantener el contenido legible */
         }
 
         @keyframes neonGlow {
-            0% { opacity: 0.6; transform: scale(1); }
-            100% { opacity: 0.8; transform: scale(1.02); }
+            0% { opacity: 0.7; transform: scale(1); }
+            100% { opacity: 0.9; transform: scale(1.02); }
         }
 
 
         h1 {
             color: #bb86fc;
             text-align: center;
-            text-shadow: 0 0 8px rgba(187, 134, 252, 0.8); /* Efecto neón en el título */
+            text-shadow: 0 0 8px rgba(187, 134, 252, 0.8), 0 0 15px rgba(0, 255, 255, 0.4); /* Efecto neón en el título con turquesa */
         }
 
         p {
@@ -148,7 +152,7 @@
 
         .button:hover {
             background-color: #9030ff;
-            box-shadow: 0 0 15px rgba(144, 48, 255, 0.6);
+            box-shadow: 0 0 15px rgba(144, 48, 255, 0.6), 0 0 20px rgba(0, 255, 255, 0.3); /* Efecto neón en hover */
         }
     
         /* Iconos Sociales */
@@ -168,7 +172,7 @@
         .social-icons a:hover {
             color: #bb86fc;
             transform: scale(1.1);
-            text-shadow: 0 0 10px rgba(187, 134, 252, 0.8);
+            text-shadow: 0 0 10px rgba(187, 134, 252, 0.8), 0 0 15px rgba(0, 255, 255, 0.4); /* Efecto neón en hover */
         }
         
         /* --- ESTILOS DE SECCIONES Y TARJETAS --- */
@@ -177,14 +181,14 @@
             height: 1px;
             background-image: linear-gradient(to right, rgba(15,15,28,0), #4a148c, rgba(15,15,28,0));
             margin: 50px 0;
-            box-shadow: 0 0 8px rgba(74, 20, 140, 0.5);
+            box-shadow: 0 0 8px rgba(74, 20, 140, 0.5), 0 0 12px rgba(0, 255, 255, 0.2); /* Efecto neón en HR */
         }
 
         h2 {
             color: #bb86fc;
             text-align: center;
             margin-bottom: 30px;
-            text-shadow: 0 0 8px rgba(187, 134, 252, 0.8); /* Efecto neón en el subtítulo */
+            text-shadow: 0 0 8px rgba(187, 134, 252, 0.8), 0 0 15px rgba(0, 255, 255, 0.4); /* Efecto neón en el subtítulo */
         }
 
         .publications-grid {
@@ -300,15 +304,13 @@
             animation: none linear infinite; /* Se define en JS */
         }
 
-        /* --- ANIMACIONES DE VUELO DIAGONAL --- */
-        /* Estas animaciones mueven el cuervo de un lado a otro en diagonal
-           y controlan la opacidad para que aparezcan y desaparezcan suavemente.
-           El `transform` `scaleX(-1)` se aplicará en JS para voltear la imagen. */
+        /* --- ANIMACIONES DE VUELO DIAGONAL (AJUSTADAS) --- */
+        /* Incluyen la rotación del cuervo para que mire en la dirección del vuelo */
 
         /* Vuelo diagonal de abajo-izquierda a arriba-derecha */
         @keyframes fly-diagonal-up {
             0% {
-                transform: translate(calc(-100% - 100vw), calc(100% + 100vh));
+                transform: translate(calc(-100% - 100vw), calc(100% + 100vh)) scaleX(1); /* Mira a la derecha */
                 opacity: 0;
             }
             10% {
@@ -318,7 +320,7 @@
                 opacity: 1;
             }
             100% {
-                transform: translate(calc(100vw + 100%), calc(-100% - 100vh));
+                transform: translate(calc(100vw + 100%), calc(-100% - 100vh)) scaleX(1); /* Mira a la derecha */
                 opacity: 0;
             }
         }
@@ -326,7 +328,7 @@
         /* Vuelo diagonal de arriba-izquierda a abajo-derecha */
         @keyframes fly-diagonal-down {
             0% {
-                transform: translate(calc(-100% - 100vw), calc(-100% - 100vh));
+                transform: translate(calc(-100% - 100vw), calc(-100% - 100vh)) scaleX(1); /* Mira a la derecha */
                 opacity: 0;
             }
             10% {
@@ -336,7 +338,7 @@
                 opacity: 1;
             }
             100% {
-                transform: translate(calc(100vw + 100%), calc(100% + 100vh));
+                transform: translate(calc(100vw + 100%), calc(100% + 100vh)) scaleX(1); /* Mira a la derecha */
                 opacity: 0;
             }
         }
@@ -344,7 +346,7 @@
         /* Vuelo diagonal de abajo-derecha a arriba-izquierda */
         @keyframes fly-diagonal-up-reverse {
             0% {
-                transform: translate(calc(100vw + 100%), calc(100% + 100vh)) scaleX(-1);
+                transform: translate(calc(100vw + 100%), calc(100% + 100vh)) scaleX(-1); /* Mira a la izquierda */
                 opacity: 0;
             }
             10% {
@@ -354,7 +356,7 @@
                 opacity: 1;
             }
             100% {
-                transform: translate(calc(-100% - 100vw), calc(-100% - 100vh)) scaleX(-1);
+                transform: translate(calc(-100% - 100vw), calc(-100% - 100vh)) scaleX(-1); /* Mira a la izquierda */
                 opacity: 0;
             }
         }
@@ -362,7 +364,7 @@
         /* Vuelo diagonal de arriba-derecha a abajo-izquierda */
         @keyframes fly-diagonal-down-reverse {
             0% {
-                transform: translate(calc(100vw + 100%), calc(-100% - 100vh)) scaleX(-1);
+                transform: translate(calc(100vw + 100%), calc(-100% - 100vh)) scaleX(-1); /* Mira a la izquierda */
                 opacity: 0;
             }
             10% {
@@ -372,7 +374,7 @@
                 opacity: 1;
             }
             100% {
-                transform: translate(calc(-100% - 100vw), calc(100% + 100vh)) scaleX(-1);
+                transform: translate(calc(-100% - 100vw), calc(100% + 100vh)) scaleX(-1); /* Mira a la izquierda */
                 opacity: 0;
             }
         }
@@ -502,7 +504,7 @@
     <script>
         // Lógica para los cuervos animados
         const crowsContainer = document.querySelector('.crows-container');
-        const numberOfCrows = 15; // Aumentamos la cantidad de cuervos
+        const numberOfCrows = 15; // Cantidad de cuervos
 
         const animationNames = [
             'fly-diagonal-up',
@@ -545,15 +547,12 @@
             const randomDuration = 18 + Math.random() * 12; // Rango de duración: 18s a 30s
             crow.style.animationDuration = `${randomDuration}s`;
             
-            // Seleccionar una animación diagonal aleatoria y ajustar la dirección
+            // Seleccionar una animación diagonal aleatoria
             const randomAnimationIndex = Math.floor(Math.random() * animationNames.length);
             let animationName = animationNames[randomAnimationIndex];
             
             // Aplicar la animación
             crow.style.animationName = animationName;
-
-            // Ajustar el punto de origen de la transformación para la escala
-            crow.style.transformOrigin = 'center center'; 
 
             crowsContainer.appendChild(crow);
 
@@ -569,10 +568,9 @@
 
         // Generar cuervos iniciales con un retraso para que aparezcan escalonadamente
         for (let i = 0; i < numberOfCrows; i++) {
-            setTimeout(createCrow, Math.random() * 7000); // Retraso de hasta 7 segundos
+            setTimeout(createCrow, Math.random() * 2000); // Retraso de hasta 7 segundos
         }
     </script>
 
 </body>
 </html>
-```http://googleusercontent.com/image_generation_content/2
