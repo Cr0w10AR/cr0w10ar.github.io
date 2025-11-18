@@ -13,110 +13,55 @@
 
         /* --- ESTILOS CSS GENERALES --- */
         body {
-            font-family: 'Arial', sans-serif;
+            font-family: 'Courier New', Courier, monospace; /* Fuente tecnológica */
             margin: 0;
             padding: 0;
-            background-color: #1a1a2e;
+            background-color: #050505; /* Negro puro de fondo */
             color: #e0e0e0;
             line-height: 1.6;
             overflow-x: hidden;
 
-            /* FONDO ESTRELLADO (Limpio) */
+            /* FONDO ESTRELLADO LIMPIO (Sin manchas de color) */
             background-image: 
-                radial-gradient(ellipse at center, rgba(20,0,30,0.6) 0%, rgba(0,0,0,0.9) 100%),
-                url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 100 100"><filter id="noiseFilter"><feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch" result="noise" /><feColorMatrix in="noise" type="matrix" values="0 0 0 0 0, 0 0 0 0 0, 0 0 0 0 0, 0 0 0 -1 1" /><feComposite operator="in" in2="SourceGraphic" result="comp" /></filter><rect width="100" height="100" fill="transparent"/><circle cx="50" cy="50" r="1" fill="#FFFFFF" filter="url(#noiseFilter)" opacity="0.1"/></svg>'),
-                linear-gradient(45deg, #050508, #1a0526, #050508);
-            background-size: cover, cover, cover;
-            background-repeat: no-repeat, repeat, no-repeat;
-            background-position: center, center, center;
-            animation: backgroundShift 40s ease infinite alternate;
+                radial-gradient(white, rgba(255,255,255,.2) 2px, transparent 3px),
+                radial-gradient(white, rgba(255,255,255,.15) 1px, transparent 2px),
+                radial-gradient(white, rgba(255,255,255,.1) 2px, transparent 3px);
+            background-size: 550px 550px, 350px 350px, 250px 250px;
+            background-position: 0 0, 40px 60px, 130px 270px;
         }
 
-        @keyframes backgroundShift {
-            0% { background-position: 0% 50%, center, center; }
-            100% { background-position: 100% 50%, center, center; }
-        }
-
-        /* --- CONTENEDOR PRINCIPAL --- */
+        /* --- EL MARCO TECNOLÓGICO --- */
         .container {
             max-width: 900px;
             margin: 80px auto;
             padding: 40px;
-            /* Fondo sólido semi-transparente (SIN circuitos adentro) */
-            background-color: rgba(13, 13, 25, 0.9); 
-            border-radius: 8px;
             position: relative;
             z-index: 10;
-            backdrop-filter: blur(10px);
             
-            /* EL MARCO REAL (Borde Morado Neón) */
-            border: 2px solid #bb86fc;
-            box-shadow: 0 0 15px rgba(187, 134, 252, 0.4), inset 0 0 20px rgba(0,0,0,0.8);
-        }
-
-        /* --- DETALLES DEL MARCO DE CIRCUITO (Esquinas y Nodos) --- */
-        /* Usamos ::before para dibujar las líneas y puntos Turquesa sobre el borde Morado */
-        .container::before {
-            content: '';
-            position: absolute;
-            /* Hacemos que este elemento sea un poco más grande que el borde morado */
-            top: -4px; left: -4px; right: -4px; bottom: -4px;
-            z-index: 11; /* Encima del borde del contenedor */
-            pointer-events: none;
-            border-radius: 10px;
-
-            /* DIBUJO DEL CIRCUITO CON GRADIENTES CSS (Turquesa) */
-            background: 
-                /* Esquina Superior Izquierda: Línea + Punto */
-                radial-gradient(circle, #00ffff 4px, transparent 5px) -4px -4px,
-                linear-gradient(to right, #00ffff 2px, transparent 2px) -2px -2px,
-                linear-gradient(to bottom, #00ffff 2px, transparent 2px) -2px -2px,
-
-                /* Esquina Superior Derecha */
-                radial-gradient(circle, #00ffff 4px, transparent 5px) calc(100% + 4px) -4px,
-                linear-gradient(to left, #00ffff 2px, transparent 2px) calc(100% + 2px) -2px,
-                linear-gradient(to bottom, #00ffff 2px, transparent 2px) calc(100% + 2px) -2px,
-
-                /* Esquina Inferior Izquierda */
-                radial-gradient(circle, #00ffff 4px, transparent 5px) -4px calc(100% + 4px),
-                linear-gradient(to right, #00ffff 2px, transparent 2px) -2px calc(100% + 2px),
-                linear-gradient(to top, #00ffff 2px, transparent 2px) -2px calc(100% + 2px),
-
-                /* Esquina Inferior Derecha */
-                radial-gradient(circle, #00ffff 4px, transparent 5px) calc(100% + 4px) calc(100% + 4px),
-                linear-gradient(to left, #00ffff 2px, transparent 2px) calc(100% + 2px) calc(100% + 2px),
-                linear-gradient(to top, #00ffff 2px, transparent 2px) calc(100% + 2px) calc(100% + 2px);
-
-            /* Tamaño de cada "dibujo" de esquina */
-            background-size: 40px 40px; 
-            background-repeat: no-repeat;
-            background-position: top left, top left, top left, 
-                                 top right, top right, top right,
-                                 bottom left, bottom left, bottom left,
-                                 bottom right, bottom right, bottom right;
+            /* 1. Fondo sólido oscuro para que se lea el texto (tapa las estrellas de atrás) */
+            background-color: #0a0a12; 
             
-            /* Brillo Turquesa Sutil en las esquinas */
-            filter: drop-shadow(0 0 5px #00ffff);
-        }
+            /* 2. Definimos el espacio para el borde ancho */
+            border: 25px solid transparent;
 
-        /* --- LÍNEAS CONECTORAS ADICIONALES (Detalle central) --- */
-        .container::after {
-            content: '';
-            position: absolute;
-            top: 50%; left: -6px; right: -6px; height: 2px;
-            background: linear-gradient(90deg, transparent 0%, #bb86fc 20%, transparent 50%, #bb86fc 80%, transparent 100%);
-            z-index: 11;
-            pointer-events: none;
-            opacity: 0.5;
+            /* 3. LA MAGIA: SVG de Circuito aplicado como borde */
+            /* Este SVG dibuja líneas y círculos como tu referencia */
+            border-image-source: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cg fill='none' stroke='%23bb86fc' stroke-width='2'%3E%3Cpath d='M10,10 L30,10 L30,5 M40,5 L40,10 L90,10 M10,10 L10,40 L5,40 M5,60 L10,60 L10,90 M10,90 L40,90 L40,95 M60,95 L60,90 L90,90 M90,90 L90,60 L95,60 M95,40 L90,40 L90,10' /%3E%3Ccircle cx='10' cy='10' r='3' fill='%23050505' stroke='%2300ffff'/%3E%3Ccircle cx='90' cy='10' r='3' fill='%23050505' stroke='%2300ffff'/%3E%3Ccircle cx='90' cy='90' r='3' fill='%23050505' stroke='%2300ffff'/%3E%3Ccircle cx='10' cy='90' r='3' fill='%23050505' stroke='%2300ffff'/%3E%3Ccircle cx='30' cy='5' r='2' fill='%23bb86fc' stroke='none'/%3E%3Ccircle cx='40' cy='95' r='2' fill='%23bb86fc' stroke='none'/%3E%3Ccircle cx='5' cy='60' r='2' fill='%23bb86fc' stroke='none'/%3E%3Ccircle cx='95' cy='40' r='2' fill='%23bb86fc' stroke='none'/%3E%3C/g%3E%3C/svg%3E");
+            
+            /* 4. Configuración para que el borde se estire correctamente */
+            border-image-slice: 30; 
+            border-image-repeat: round;
+            
+            /* Sombra externa sutil (solo brillo, no mancha) */
+            box-shadow: 0 0 20px rgba(0,0,0,0.9); 
         }
-
 
         h1 {
             color: #bb86fc;
             text-align: center;
-            text-shadow: 0 0 10px rgba(187, 134, 252, 0.8), 0 0 20px rgba(187, 134, 252, 0.4);
-            font-size: 2.5em;
-            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            text-shadow: 0 0 5px #bb86fc; /* Brillo suave en texto */
         }
 
         p { color: #d0d0d0; }
@@ -137,8 +82,7 @@
             object-fit: cover;
             border: 3px solid #bb86fc;
             margin-bottom: 20px;
-            /* Brillo morado alrededor del logo */
-            box-shadow: 0 0 15px rgba(187, 134, 252, 0.6);
+            box-shadow: 0 0 10px rgba(187, 134, 252, 0.5);
         }
 
         /* Botones */
@@ -156,18 +100,17 @@
             background-color: transparent;
             color: #bb86fc;
             text-decoration: none;
-            border: 2px solid #bb86fc;
-            border-radius: 5px;
+            border: 1px solid #bb86fc;
+            border-radius: 4px;
             font-weight: bold;
             cursor: pointer;
             transition: all 0.3s ease;
-            box-shadow: 0 0 5px rgba(187, 134, 252, 0.2);
         }
 
         .button:hover {
             background-color: #bb86fc;
-            color: #0f0f1c; 
-            box-shadow: 0 0 20px #bb86fc; 
+            color: #000;
+            box-shadow: 0 0 15px #bb86fc;
         }
     
         /* Iconos Sociales */
@@ -177,7 +120,7 @@
         }
 
         .social-icons a {
-            color: #e0e0e0;
+            color: #888;
             font-size: 2em;
             margin: 0 15px;
             text-decoration: none;
@@ -185,8 +128,8 @@
         }
 
         .social-icons a:hover {
-            color: #bb86fc;
-            text-shadow: 0 0 10px #bb86fc;
+            color: #00ffff; /* Toque turquesa en hover */
+            text-shadow: 0 0 8px #00ffff;
             transform: scale(1.1);
         }
         
@@ -194,18 +137,16 @@
         hr {
             border: 0;
             height: 1px;
-            background: linear-gradient(90deg, transparent, #bb86fc, transparent);
+            background: #bb86fc;
             margin: 50px 0;
-            opacity: 0.5;
+            opacity: 0.3;
         }
 
         h2 {
             color: #bb86fc;
             text-align: center;
             margin-bottom: 30px;
-            text-shadow: 0 0 8px rgba(187, 134, 252, 0.5);
             text-transform: uppercase;
-            letter-spacing: 2px;
         }
 
         .publications-grid {
@@ -215,17 +156,16 @@
         }
 
         .card {
-            background-color: rgba(20, 20, 35, 0.9);
-            border: 1px solid #3a3a5a;
-            border-radius: 8px;
+            background-color: #111;
+            border: 1px solid #333;
+            border-radius: 4px;
             padding: 20px;
             transition: all 0.3s ease;
         }
 
         .card:hover {
-            transform: translateY(-5px);
-            border-color: #bb86fc;
-            box-shadow: 0 0 15px rgba(187, 134, 252, 0.3);
+            border-color: #00ffff; /* Borde turquesa al pasar mouse */
+            box-shadow: 0 0 10px rgba(0, 255, 255, 0.2);
         }
 
         .card h3 {
@@ -236,12 +176,12 @@
 
         .card p {
             font-size: 0.9em;
-            color: #b0b0b0;
+            color: #aaa;
             margin-bottom: 20px;
         }
 
         .card-link {
-            color: #00ffff; /* Enlace en Turquesa para contraste */
+            color: #00ffff;
             text-decoration: none;
             font-weight: bold;
             font-size: 0.9em;
@@ -275,7 +215,6 @@
             transform: scale(1.2); 
             transform-origin: top left;
             z-index: 15;
-            filter: drop-shadow(0 0 5px rgba(187, 134, 252, 0.5));
         }
         
         @media (max-width: 1200px) {
@@ -293,7 +232,7 @@
             height: 100%;
             pointer-events: none;
             overflow: hidden;
-            z-index: 5; /* Detrás del contenido, frente al fondo */
+            z-index: 5; /* Detrás del contenido */
         }
 
         .crow {
@@ -302,10 +241,8 @@
             height: auto;
             opacity: 0;
             transition: opacity 0.5s ease-in-out;
-            
-            /* Estela de neón Morado */
-            filter: drop-shadow(0 0 8px #bb86fc) drop-shadow(0 0 15px rgba(187, 134, 252, 0.5));
-            
+            /* Estela de neón limpia */
+            filter: drop-shadow(0 0 5px #bb86fc);
             animation: none linear infinite;
         }
 
@@ -476,7 +413,6 @@
 
         function createCrow() {
             const crow = document.createElement('img');
-            // Apunta a 'cuervo_morado.png'
             crow.src = 'cuervo_morado.png'; 
             crow.alt = 'Cuervo volando';
             crow.classList.add('crow');
@@ -511,7 +447,6 @@
             
             crow.style.animationName = animationName;
 
-            // Lógica de volteo
             let transformString = `scale(${randomScale})`;
             if (animationName.includes('reverse')) {
                 transformString += ' scaleX(-1)'; 
