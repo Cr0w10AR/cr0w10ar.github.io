@@ -11,7 +11,7 @@
             scroll-behavior: smooth;
         }
 
-        /* --- TUS ESTILOS CSS --- */
+        /* --- ESTILOS CSS GENERALES --- */
         body {
             font-family: 'Arial', sans-serif;
             margin: 0;
@@ -29,6 +29,9 @@
             border-radius: 8px;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
             border: 1px solid #4a148c;
+            /* z-index para estar sobre el fondo pero bajo el badge */
+            position: relative;
+            z-index: 1;
         }
 
         h1 {
@@ -49,7 +52,10 @@
             margin-left: auto;
             margin-right: auto;
         }  
-        /* Estilos para el logo circular */
+        
+        /* --- ESTILOS DE COMPONENTES --- */
+
+        /* Logo Circular */
         .circular-logo {
             width: 150px;
             height: 150px;
@@ -60,6 +66,7 @@
             box-shadow: 0 0 15px rgba(187, 134, 252, 0.6);
         }
 
+        /* Botones de Pestañas */
         .button-container {
             text-align: center;
             margin-top: 30px;
@@ -76,13 +83,14 @@
             text-decoration: none;
             border-radius: 5px;
             font-weight: bold;
+            cursor: pointer; /* Añadido para mejor UX */
         }
 
         .button:hover {
             background-color: #9030ff;
         }
     
-        /* --- ESTILOS PARA ICONOS SOCIALES --- */
+        /* Iconos Sociales */
         .social-icons {
             text-align: center;
             margin: 25px 0;
@@ -101,7 +109,7 @@
             transform: scale(1.1);
         }
         
-        /* --- ESTILOS PARA LA SECCIÓN DE PUBLICACIONES --- */
+        /* --- ESTILOS DE SECCIONES Y TARJETAS --- */
         hr {
             border: 0;
             height: 1px;
@@ -173,13 +181,16 @@
             max-height: 5000px; /* Un valor muy grande para que quepa todo */
         }
         
-        /* Contenedor para el badge */
+        /* --- ESTILOS DE ELEMENTOS EXTERNOS --- */
+
+        /* Contenedor para el badge (en la esquina) */
         .badge-container {
             position: absolute;
             top: 40px;
             left: 40px;
             transform: scale(1.2); 
             transform-origin: top left;
+            z-index: 2; /* Encima del container pero bajo overlays */
         }
         
         /* --- Media Query para Responsive --- */
@@ -188,52 +199,54 @@
                 display: none;
             }
         }
+
         /* --- ESTILOS PARA LOS CUERVOS ANIMADOS --- */
-.crows-container {
-    position: fixed; /* Fijo en la pantalla */
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none; /* Permite hacer clic a través de él */
-    overflow: hidden; /* Asegura que no se desborden */
-    z-index: -1; /* Envía los cuervos al fondo, detrás de todo lo demás */
-}
+        .crows-container {
+            position: fixed; /* Fijo en la pantalla */
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none; /* Permite hacer clic a través de él */
+            overflow: hidden; /* Asegura que no se desborden */
+            z-index: 0; /* Detrás de todo */
+        }
 
-.crow {
-    position: absolute;
-    width: 80px; /* Tamaño del cuervo */
-    height: 60px; /* Ajusta según el aspecto del cuervo */
-    background-color: #bb86fc; /* Color morado para la silueta */
-    mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path d="M545.9 220.3L379.8 19.6C374.3 10 364.6 4 353.7 4C342.8 4 333.1 10 327.6 19.6L161.5 220.3C157.1 228.1 156 237 158.4 245.5L181.7 328.7C184 336.7 189 343.8 195.4 349.3L336 471.2V320H352V471.2L492.6 349.3C499 343.8 504 336.7 506.3 328.7L529.6 245.5C532 237 530.9 228.1 526.5 220.3L545.9 220.3L545.9 220.3zM288 387.8L121.9 220.3C117.5 228.1 116.4 237 118.8 245.5L142.1 328.7C144.4 336.7 149.4 343.8 155.8 349.3L288 471.2V387.8zM240 224C240 181.6 274.6 147 317 147C359.4 147 394 181.6 394 224V256C394 264.8 386.8 272 378 272H256C247.2 272 240 264.8 240 256V224z"/></svg>'); /* Silueta de cuervo con SVG */
-    mask-size: contain;
-    mask-repeat: no-repeat;
-    mask-position: center;
-    -webkit-mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path d="M545.9 220.3L379.8 19.6C374.3 10 364.6 4 353.7 4C342.8 4 333.1 10 327.6 19.6L161.5 220.3C157.1 228.1 156 237 158.4 245.5L181.7 328.7C184 336.7 189 343.8 195.4 349.3L336 471.2V320H352V471.2L492.6 349.3C499 343.8 504 336.7 506.3 328.7L529.6 245.5C532 237 530.9 228.1 526.5 220.3L545.9 220.3L545.9 220.3zM288 387.8L121.9 220.3C117.5 228.1 116.4 237 118.8 245.5L142.1 328.7C144.4 336.7 149.4 343.8 155.8 349.3L288 471.2V387.8zM240 224C240 181.6 274.6 147 317 147C359.4 147 394 181.6 394 224V256C394 264.8 386.8 272 378 272H256C247.2 272 240 264.8 240 256V224z"/></svg>'); /* Para compatibilidad con Safari */
-    -webkit-mask-size: contain;
-    -webkit-mask-repeat: no-repeat;
-    -webkit-mask-position: center;
+        .crow {
+            position: absolute;
+            width: 80px; 
+            height: 60px;
+            background-color: #bb86fc; /* Color morado para la silueta */
+            
+            /* Silueta de cuervo SVG */
+            mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M490.4 174.3c-2.3-3.1-5.3-5.6-8.8-7.1l-14-6.1L458 139.5c-4.3-10-14.1-16.3-25.2-16.3c-11.6 0-21.8 7-25.5 17.5l-4.1 11.5-12.8-5.6c-3.4-1.5-7.1-2.3-10.8-2.3c-14 0-26.3 8.3-31.9 20.4l-20.2 43.4L311 166.1c-1.4-4-4.6-7.1-8.5-8.1l-14.7-3.7c-7.9-2-15.9 .5-21.7 6.4L183.3 243.3c-10.5 10.7-10.4 28 .3 38.6s27.8 10.8 38.6 .3l82.8-81.2c5.8-5.7 6.4-14.8 1.4-21.2l-16.2-20.9c-2-2.6-1.7-6.5 .8-8.8c2.5-2.3 6.3-2.2 8.6 .4l15.1 17.1c3.1 3.5 8.1 4.1 11.9 1.4l14.7-10.5c3.2-2.3 7-2.6 10.5-.8c3.5 1.8 5.7 5.2 5.7 9.1v89.7c0 4.1-2.5 7.8-6.3 9.4l-14.7 6.1c-4.4 1.8-9.4 .9-13-2.5L256 226.5l-2.7 2.6c-4.1 4-9.9 6.2-15.9 6.2c-6 0-11.8-2.2-15.9-6.2l-2.7-2.6L128 351.1c-3.7 3.4-8.7 4.3-13.1 2.5l-14.7-6.1c-3.9-1.6-6.3-5.3-6.3-9.4V224c0-3.9 2.3-7.3 5.7-9.1c3.5-1.8 7.3-1.5 10.5 .8l14.7 10.5c3.8 2.7 8.8 2 11.9-1.4l15.1-17.1c2.3-2.6 6.1-2.7 8.6-.4c2.5 2.3 2.8 6.2 .8 8.8l-16.2 20.9c-5 6.4-4.4 15.5 1.4 21.2l82.8 81.2c10.7 10.5 28 10.1 38.6-.3s10.8-27.8 .3-38.6L184 169.2c-5.8-5.9-13.8-8.4-21.7-6.4l-14.7 3.7c-3.9 1-7.2 4.1-8.5 8.1l-16.7 42.4L21.6 196.4C8.6 189.9 0 175.8 0 160.7C0 142.1 15.6 128 34.6 128H64c4.4 0 8 3.6 8 8s-3.6 8-8 8H34.6C24.3 144 16 151.5 16 160.7c0 8.3 5.1 15.6 12.6 19.1l80 34.3l17-43c5.6-12.1 17.9-20.4 31.9-20.4c3.7 0 7.4 .8 10.8 2.3l12.8 5.6l4.1-11.5c3.7-10.5 13.9-17.5 25.5-17.5c11.1 0 20.9 6.3 25.2 16.3l9.6 21.7l14 6.1c3.5 1.5 6.5 4.1 8.8 7.1l32.2 41.8c8.6 11.2 22.4 17.7 37 17.7s28.4-6.5 37-17.7l32.2-41.8z"/></svg>');
+            mask-size: contain;
+            mask-repeat: no-repeat;
+            mask-position: center;
+            -webkit-mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M490.4 174.3c-2.3-3.1-5.3-5.6-8.8-7.1l-14-6.1L458 139.5c-4.3-10-14.1-16.3-25.2-16.3c-11.6 0-21.8 7-25.5 17.5l-4.1 11.5-12.8-5.6c-3.4-1.5-7.1-2.3-10.8-2.3c-14 0-26.3 8.3-31.9 20.4l-20.2 43.4L311 166.1c-1.4-4-4.6-7.1-8.5-8.1l-14.7-3.7c-7.9-2-15.9 .5-21.7 6.4L183.3 243.3c-10.5 10.7-10.4 28 .3 38.6s27.8 10.8 38.6 .3l82.8-81.2c5.8-5.7 6.4-14.8 1.4-21.2l-16.2-20.9c-2-2.6-1.7-6.5 .8-8.8c2.5-2.3 6.3-2.2 8.6 .4l15.1 17.1c3.1 3.5 8.1 4.1 11.9 1.4l14.7-10.5c3.2-2.3 7-2.6 10.5-.8c3.5 1.8 5.7 5.2 5.7 9.1v89.7c0 4.1-2.5 7.8-6.3 9.4l-14.7 6.1c-4.4 1.8-9.4 .9-13-2.5L256 226.5l-2.7 2.6c-4.1 4-9.9 6.2-15.9 6.2c-6 0-11.8-2.2-15.9-6.2l-2.7-2.6L128 351.1c-3.7 3.4-8.7 4.3-13.1 2.5l-14.7-6.1c-3.9-1.6-6.3-5.3-6.3-9.4V224c0-3.9 2.3-7.3 5.7-9.1c3.5-1.8 7.3-1.5 10.5 .8l14.7 10.5c3.8 2.7 8.8 2 11.9-1.4l15.1-17.1c2.3-2.6 6.1-2.7 8.6-.4c2.5 2.3 2.8 6.2 .8 8.8l-16.2 20.9c-5 6.4-4.4 15.5 1.4 21.2l82.8 81.2c10.7 10.5 28 10.1 38.6-.3s10.8-27.8 .3-38.6L184 169.2c-5.8-5.9-13.8-8.4-21.7-6.4l-14.7 3.7c-3.9 1-7.2 4.1-8.5 8.1l-16.7 42.4L21.6 196.4C8.6 189.9 0 175.8 0 160.7C0 142.1 15.6 128 34.6 128H64c4.4 0 8 3.6 8 8s-3.6 8-8 8H34.6C24.3 144 16 151.5 16 160.7c0 8.3 5.1 15.6 12.6 19.1l80 34.3l17-43c5.6-12.1 17.9-20.4 31.9-20.4c3.7 0 7.4 .8 10.8 2.3l12.8 5.6l4.1-11.5c3.7-10.5 13.9-17.5 25.5-17.5c11.1 0 20.9 6.3 25.2 16.3l9.6 21.7l14 6.1c3.5 1.5 6.5 4.1 8.8 7.1l32.2 41.8c8.6 11.2 22.4 17.7 37 17.7s28.4-6.5 37-17.7l32.2-41.8z"/></svg>');
+            -webkit-mask-size: contain;
+            -webkit-mask-repeat: no-repeat;
+            -webkit-mask-position: center;
 
-    animation: fly-across linear infinite; /* Animación de vuelo principal */
-    transform: scaleX(1); /* Dirección por defecto (hacia la izquierda) */
-}
+            animation: fly-across linear infinite; /* Animación de vuelo principal */
+            transform: scaleX(1); 
+        }
 
-/* Animación de vuelo, cambiando la posición */
-@keyframes fly-across {
-    from {
-        transform: translateX(100vw); /* Empieza fuera de la pantalla a la derecha */
-    }
-    to {
-        transform: translateX(-100vw); /* Termina fuera de la pantalla a la izquierda */
-    }
-}
+        /* Animación de vuelo */
+        @keyframes fly-across {
+            from {
+                transform: translateX(100vw);
+            }
+            to {
+                transform: translateX(-100vw);
+            }
+        }
     </style> 
 </head> 
 <body>
-<div class="crows-container"></div>
-    
-    <div class="badge-container">
-        
+
+    <div class="crows-container"></div>
+
     <div class="badge-container">
         <script src="https://cyberdefenders.org/p/cr0w_10/badge"></script>
     </div>
@@ -277,25 +290,25 @@
                 <div class="card">
                     <h3>Web Investigation Lab</h3>
                     <p>Este informe documenta los hallazgos de la investigación de seguridad iniciada en respuesta a una alerta crítica.</p>
-                    <a href="https://medium.com/@fernandaycesarmauricioymariel/web-investigation-lab-b1bf4b145321" class="card-link">Leer más &rarr;</a>
+                    <a href="https://medium.com/@fernandaycesarmauricioymariel/web-investigation-lab-b1bf4b145321" class="card-link" target="_blank">Leer más &rarr;</a>
                 </div>
             
                 <div class="card">
                     <h3>Análisis de un Ataque Web</h3>
                     <p>Desglosamos la cadena de ataque que explotó una simple SQL Injection para tomar control total de un servidor</p>
-                    <a href="https://medium.com/@fernandaycesarmauricioymariel/evidencias-the-hacker-labs-ff0261dce9f2" class="card-link">Leer más &rarr;</a>
+                    <a href="https://medium.com/@fernandaycesarmauricioymariel/evidencias-the-hacker-labs-ff0261dce9f2" class="card-link" target="_blank">Leer más &rarr;</a>
                 </div>
 
                 <div class="card">
                     <h3>Intento de Intrusion (La Corporacion - The Hackers Lab)</h3>
                     <p>Este reto fue un ejercicio práctico de respuesta a incidentes...</p>
-                    <a href="https://medium.com/@fernandaycesarmauricioymariel/la-corporaci%C3%B3n-the-hacker-labs-5a5aaa0e7959" class="card-link">Leer más &rarr;</a>
+                    <a href="https://medium.com/@fernandaycesarmauricioymariel/la-corporaci%C3%B3n-the-hacker-labs-5a5aaa0e7959" class="card-link" target="_blank">Leer más &rarr;</a>
                 </div>
 
                 <div class="card">
                     <h3>Desmantelando un Ataque Sofisticado de Exploit Kit</h3>
                     <p>Analisis Forense de un archivo ".pcap" de un ataque orquestado por un Exploit Kit (EK)</p>
-                    <a href="https://medium.com/@fernandaycesarmauricioymariel/nukethebrowser-cyberdefenders-9fcd85e1dcf1" class="card-link">Leer más &rarr;</a>
+                    <a href="https://medium.com/@fernandaycesarmauricioymariel/nukethebrowser-cyberdefenders-9fcd85e1dcf1" class="card-link" target="_blank">Leer más &rarr;</a>
                 </div>
                 
             </div> </div> <div id="proyectos" class="content-section">
@@ -349,66 +362,59 @@
     // 5. Mostrar la primera sección (WriteUps) por defecto al cargar la página
     showSection('writeups');
 </script>
-<script>
-    // ... tu script actual para las secciones ...
-    // Asegúrate de que este nuevo script esté DENTRO del mismo <script> o en uno nuevo al final del <body>.
 
+<script>
     const crowsContainer = document.querySelector('.crows-container');
-    const numberOfCrows = 5; // Cantidad de cuervos que quieres en pantalla simultáneamente
+    const numberOfCrows = 5; // Cantidad de cuervos
 
     function createCrow() {
         const crow = document.createElement('div');
         crow.classList.add('crow');
 
-        // Posición inicial aleatoria en el eje Y (vertical)
         const startY = Math.random() * window.innerHeight;
         crow.style.top = `${startY}px`;
 
-        // Tamaño aleatorio para variedad (entre 0.8 y 1.2 de la escala original)
-        const randomScale = 0.8 + Math.random() * 0.4; // entre 0.8 y 1.2
+        const randomScale = 0.8 + Math.random() * 0.4;
         crow.style.transform = `scale(${randomScale})`;
 
-        // Velocidad de animación aleatoria
-        const randomDuration = 15 + Math.random() * 10; // entre 15 y 25 segundos
+        const randomDuration = 15 + Math.random() * 10;
         crow.style.animationDuration = `${randomDuration}s`;
 
-        // Dirección aleatoria (volar de derecha a izquierda o de izquierda a derecha)
-        // Por defecto, vuelan de derecha a izquierda (translateX(100vw) a translateX(-100vw))
-        // Si queremos que vuelen de izquierda a derecha, invertimos la animación y volteamos el cuervo
-        if (Math.random() < 0.5) { // 50% de probabilidad de volar en la otra dirección
-            crow.style.animationName = 'fly-across-reverse'; // Usaremos una animación inversa
+        if (Math.random() < 0.5) {
+            crow.style.animationName = 'fly-across-reverse';
             crow.style.transform += ' scaleX(-1)'; // Voltear horizontalmente
         }
         
         crowsContainer.appendChild(crow);
 
-        // Eliminar el cuervo después de que termine la animación para no sobrecargar el DOM
         crow.addEventListener('animationend', () => {
             crow.remove();
-            // Crear un nuevo cuervo para mantener el ciclo
-            setTimeout(createCrow, Math.random() * 2000); // Pequeño retardo aleatorio
+            setTimeout(createCrow, Math.random() * 2000);
         });
     }
 
-    // Crea la animación inversa para cuando queremos que el cuervo vuele de izquierda a derecha
-    const styleSheet = document.styleSheets[0];
-    styleSheet.insertRule(`
-        @keyframes fly-across-reverse {
-            from {
-                transform: translateX(-100vw); /* Empieza fuera de la pantalla a la izquierda */
+    // Insertar la regla de animación inversa
+    try {
+        const styleSheet = document.styleSheets[0];
+        styleSheet.insertRule(`
+            @keyframes fly-across-reverse {
+                from {
+                    transform: translateX(-100vw);
+                }
+                to {
+                    transform: translateX(100vw);
+                }
             }
-            to {
-                transform: translateX(100vw); /* Termina fuera de la pantalla a la derecha */
-            }
-        }
-    `, styleSheet.cssRules.length);
+        `, styleSheet.cssRules.length);
+    } catch (e) {
+        console.error("No se pudo insertar la regla CSS para la animación inversa:", e);
+    }
 
-
-    // Generar el número inicial de cuervos
+    // Generar cuervos iniciales
     for (let i = 0; i < numberOfCrows; i++) {
-        // Un pequeño retardo inicial para que no aparezcan todos a la vez
         setTimeout(createCrow, Math.random() * 5000); 
     }
 </script>
+
 </body>
 </html>
