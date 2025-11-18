@@ -6,106 +6,111 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <title>Portafolio - CROW</title>
     <style>
-        /* --- ESTILO PARA EL SCROLL SUAVE --- */
+        /* --- CONFIGURACIÓN BÁSICA --- */
         html {
             scroll-behavior: smooth;
         }
 
-        /* --- ESTILOS CSS GENERALES --- */
         body {
-            font-family: 'Arial', sans-serif;
+            font-family: 'Courier New', Courier, monospace; /* Fuente más "hacker/técnica" */
             margin: 0;
             padding: 0;
-            background-color: #1a1a2e;
+            background-color: #050505; /* Negro casi puro */
             color: #e0e0e0;
             line-height: 1.6;
             overflow-x: hidden;
-
-            /* FONDO ESTRELLADO (Sin neón) */
+            
+            /* Fondo de estrellas simple y estático (Sin brillos) */
             background-image: 
-                radial-gradient(ellipse at center, rgba(30,0,50,0.5) 0%, rgba(0,0,0,0.9) 100%),
-                url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 100 100"><filter id="noiseFilter"><feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch" result="noise" /><feColorMatrix in="noise" type="matrix" values="0 0 0 0 0, 0 0 0 0 0, 0 0 0 0 0, 0 0 0 -1 1" /><feComposite operator="in" in2="SourceGraphic" result="comp" /></filter><rect width="100" height="100" fill="transparent"/><circle cx="50" cy="50" r="1" fill="#FFFFFF" filter="url(#noiseFilter)" opacity="0.1"/></svg>'),
-                linear-gradient(45deg, #0f0f1c, #2b0a4a, #0f0f1c);
-            background-size: cover, cover, cover;
-            background-repeat: no-repeat, repeat, no-repeat;
-            background-position: center, center, center;
-            animation: backgroundShift 30s ease infinite alternate;
+                radial-gradient(white, rgba(255,255,255,.2) 2px, transparent 3px),
+                radial-gradient(white, rgba(255,255,255,.15) 1px, transparent 2px),
+                radial-gradient(white, rgba(255,255,255,.1) 2px, transparent 3px);
+            background-size: 550px 550px, 350px 350px, 250px 250px;
+            background-position: 0 0, 40px 60px, 130px 270px;
         }
 
-        @keyframes backgroundShift {
-            0% { background-position: 0% 50%, center, center; }
-            100% { background-position: 100% 50%, center, center; }
-        }
-
-        /* Contenedor principal (Sin neón) */
+        /* --- CONTENEDOR PRINCIPAL (MARCO TECNOLÓGICO PLANO) --- */
         .container {
             max-width: 900px;
-            margin: 60px auto;
-            padding: 25px;
-            background-color: rgba(15, 15, 28, 0.75);
-            border-radius: 12px;
-            /* CAMBIO: Eliminado box-shadow */
-            border: 2px solid #6200ee;
+            margin: 80px auto;
+            padding: 40px;
+            background-color: #0a0a12; /* Fondo oscuro sólido */
             position: relative;
             z-index: 10;
-            overflow: hidden;
-            backdrop-filter: blur(5px);
+            
+            /* Borde fino gris para la estructura base */
+            border: 1px solid #333; 
         }
 
-        /* CAMBIO: Eliminado el ::before (era el resplandor exterior) */
+        /* ESQUINAS TECNOLÓGICAS (Turquesa plano, sin neón) */
         .container::before {
-            display: none;
+            content: '';
+            position: absolute;
+            top: -2px; left: -2px; right: -2px; bottom: -2px;
+            z-index: -1;
+            /* Dibuja solo las esquinas */
+            background: 
+                linear-gradient(to right, #00ffff 2px, transparent 2px) 0 0,
+                linear-gradient(to bottom, #00ffff 2px, transparent 2px) 0 0,
+                linear-gradient(to left, #00ffff 2px, transparent 2px) 100% 0,
+                linear-gradient(to bottom, #00ffff 2px, transparent 2px) 100% 0,
+                linear-gradient(to left, #00ffff 2px, transparent 2px) 100% 100%,
+                linear-gradient(to top, #00ffff 2px, transparent 2px) 100% 100%,
+                linear-gradient(to right, #00ffff 2px, transparent 2px) 0 100%,
+                linear-gradient(to top, #00ffff 2px, transparent 2px) 0 100%;
+            background-repeat: no-repeat;
+            background-size: 40px 40px; /* Tamaño de las esquinas */
         }
 
-        /* Patrón de circuito (Sin neón) */
+        /* DETALLES DE CIRCUITO EN EL BORDE (Líneas decorativas) */
         .container::after {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            border-radius: 12px;
-            background-image: 
-                url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><defs><linearGradient id="g1" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="%23bb86fc"/><stop offset="100%" stop-color="%2300ffff"/></linearGradient><linearGradient id="g2" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="%2300ffff"/><stop offset="100%" stop-color="%23bb86fc"/></linearGradient></defs><rect width="100" height="100" fill="transparent"/><path d="M10 0 L0 0 L0 10 M20 0 L10 10 L10 20 M30 0 L20 10 L20 20 M40 0 L30 10 L30 20 M50 0 L40 10 L40 20 M60 0 L50 10 L50 20 M70 0 L60 10 L60 20 M80 0 L70 10 L70 20 M90 0 L80 10 L80 20 M100 0 L90 10 L90 20" stroke="url(%23g1)" stroke-width="1.5" opacity="0.1"/><path d="M0 10 L10 20 L10 30 M0 20 L10 30 L10 40 M0 30 L10 40 L10 50 M0 40 L10 50 L10 60 M0 50 L10 60 L10 70 M0 60 L10 70 L10 80 M0 70 L10 80 L10 90 M0 80 L10 90 L10 100 M0 90 L10 100 L10 110" stroke="url(%23g2)" stroke-width="1.5" opacity="0.1"/><circle cx="15" cy="15" r="2" fill="url(%23g1)" opacity="0.15"/><circle cx="35" cy="35" r="2" fill="url(%23g2)" opacity="0.15"/><circle cx="55" cy="55" r="2" fill="url(%23g1)" opacity="0.15"/><circle cx="75" cy="75" r="2" fill="url(%23g2)" opacity="0.15"/></svg>'), 
-                #0f0f1c;
-            background-size: 100px 100px, cover;
-            background-repeat: repeat, no-repeat;
-            background-position: center, center;
-            z-index: -1;
-            opacity: 0.95;
+            top: -10px; bottom: -10px; left: 50%; width: 2px;
+            background: #1a1a2e; /* Bloqueador */
+            border-top: 10px solid #00ffff;
+            border-bottom: 10px solid #00ffff;
+            transform: translateX(-50%);
+            z-index: 11;
+            height: calc(100% + 20px);
+            width: 100px;
+            background: transparent;
+            pointer-events: none;
+            border-left: none;
+            border-right: none;
         }
 
         h1 {
-            color: #bb86fc;
+            color: #00ffff; /* Turquesa plano */
             text-align: center;
-            /* CAMBIO: Eliminado text-shadow */
+            font-weight: normal;
+            letter-spacing: 5px;
+            margin-bottom: 10px;
+            text-transform: uppercase;
         }
 
-        p { color: #c7c7c7; }
+        p { color: #bbbbbb; }
         
         img {
             max-width: 100%;
             height: auto;
-            border-radius: 8px;
-            margin-top: 20px;
+            border-radius: 4px;
             display: block;
-            margin-left: auto;
-            margin-right: auto;
+            margin: 20px auto;
         }  
         
-        /* Logo Circular (Sin neón) */
+        /* Logo Circular (Borde sólido) */
         .circular-logo {
             width: 150px;
             height: 150px;
             border-radius: 50%;
             object-fit: cover;
-            border: 4px solid #bb86fc;
-            margin-bottom: 30px;
-            /* CAMBIO: Eliminado box-shadow */
+            border: 3px solid #00ffff; /* Borde turquesa sólido */
+            margin-bottom: 20px;
+            background-color: #000;
         }
 
-        /* Botones de Pestañas (Sin neón) */
+        /* Botones (Estilo plano) */
         .button-container {
             text-align: center;
             margin-top: 30px;
@@ -116,58 +121,59 @@
 
         .button {
             display: inline-block;
-            padding: 12px 25px;
-            background-color: #6200ee;
-            color: white;
+            padding: 10px 30px;
+            background-color: transparent;
+            color: #00ffff;
             text-decoration: none;
-            border-radius: 5px;
+            border: 1px solid #00ffff; /* Borde fino */
             font-weight: bold;
             cursor: pointer;
-            transition: background-color 0.3s ease; /* CAMBIO: Eliminada transición de box-shadow */
-            /* CAMBIO: Eliminado box-shadow */
+            text-transform: uppercase;
+            font-size: 0.9em;
+            transition: all 0.3s ease;
         }
 
         .button:hover {
-            background-color: #9030ff;
-            /* CAMBIO: Eliminado box-shadow de hover */
+            background-color: #00ffff;
+            color: #000; /* Invertir colores al pasar el mouse */
         }
     
-        /* Iconos Sociales (Sin neón) */
+        /* Iconos Sociales */
         .social-icons {
             text-align: center;
             margin: 25px 0;
         }
 
         .social-icons a {
-            color: #e0e0e0;
+            color: #888;
             font-size: 1.8em;
             margin: 0 15px;
             text-decoration: none;
-            transition: color 0.3s ease, transform 0.3s ease; /* CAMBIO: Eliminada transición de text-shadow */
+            transition: color 0.3s ease;
         }
 
         .social-icons a:hover {
-            color: #bb86fc;
-            transform: scale(1.1);
-            /* CAMBIO: Eliminado text-shadow de hover */
+            color: #00ffff;
         }
         
-        /* --- ESTILOS DE SECCIONES Y TARJETAS --- */
+        /* Línea separadora */
         hr {
             border: 0;
             height: 1px;
-            background-image: linear-gradient(to right, rgba(15,15,28,0), #4a148c, rgba(15,15,28,0));
+            background-color: #333;
             margin: 50px 0;
-            /* CAMBIO: Eliminado box-shadow */
         }
 
         h2 {
-            color: #bb86fc;
+            color: #bb86fc; /* Morado plano para subtítulos */
             text-align: center;
             margin-bottom: 30px;
-            /* CAMBIO: Eliminado text-shadow */
+            font-size: 1.2em;
+            text-transform: uppercase;
+            letter-spacing: 2px;
         }
 
+        /* Grid de Publicaciones */
         .publications-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -175,66 +181,56 @@
         }
 
         .card {
-            background-color: rgba(26, 26, 46, 0.8);
-            border: 1px solid #4a148c;
-            border-radius: 8px;
+            background-color: #111; /* Fondo casi negro */
+            border: 1px solid #333; /* Borde sutil */
             padding: 20px;
-            /* CAMBIO: Eliminado box-shadow */
-            transition: transform 0.3s ease, border-color 0.3s ease; /* CAMBIO: Eliminada transición de box-shadow */
+            transition: border-color 0.3s ease;
         }
 
         .card:hover {
-            transform: translateY(-5px);
-            border-color: #bb86fc;
-            /* CAMBIO: Eliminado box-shadow de hover */
+            border-color: #00ffff; /* Borde turquesa al hover */
         }
 
         .card h3 {
-            color: #bb86fc;
+            color: #e0e0e0;
             margin-top: 0;
-            margin-bottom: 15px;
-            /* CAMBIO: Eliminado text-shadow */
+            font-size: 1.1em;
         }
 
         .card p {
-            font-size: 0.9em;
-            color: #c7c7c7;
-            margin-bottom: 20px;
+            font-size: 0.85em;
+            color: #999;
         }
 
         .card-link {
             color: #00ffff;
             text-decoration: none;
             font-weight: bold;
-            font-size: 0.9em;
-            transition: color 0.3s ease;
+            font-size: 0.8em;
+            text-transform: uppercase;
+            display: inline-block;
+            margin-top: 10px;
         }
 
         .card-link:hover {
             text-decoration: underline;
-            color: #bb86fc;
         }
 
-        /* --- ESTILOS PARA LA TRANSICIÓN DE SECCIONES --- */
+        /* Transiciones de Secciones */
         .content-section {
             opacity: 0;
             max-height: 0;
             overflow: hidden;
-            transition: opacity 0.4s ease-out, max-height 0.6s ease-out;
-            padding-top: 0;
-            padding-bottom: 0;
+            transition: opacity 0.3s ease, max-height 0.3s ease;
         }
 
         .content-section.active {
             opacity: 1;
             max-height: 5000px;
             padding-top: 20px;
-            padding-bottom: 20px;
         }
         
-        /* --- ESTILOS DE ELEMENTOS EXTERNOS --- */
-
-        /* Contenedor para el badge (en la esquina) */
+        /* Badge Container */
         .badge-container {
             position: absolute;
             top: 40px;
@@ -242,17 +238,15 @@
             transform: scale(1.2); 
             transform-origin: top left;
             z-index: 15;
-            /* CAMBIO: Eliminado filter: drop-shadow */
         }
         
-        /* --- Media Query para Responsive --- */
         @media (max-width: 1200px) {
             .badge-container {
                 display: none;
             }
         }
 
-        /* --- ESTILOS PARA LOS CUERVOS ANIMADOS --- */
+        /* Cuervos Animados (Sin sombras ni efectos) */
         .crows-container {
             position: fixed;
             top: 0;
@@ -270,11 +264,11 @@
             height: auto;
             opacity: 0;
             transition: opacity 0.5s ease-in-out;
-            /* CAMBIO: Eliminado filter: drop-shadow */
             animation: none linear infinite;
+            /* Sin filtros de sombra/neón */
         }
 
-        /* --- ANIMACIONES DE VUELO DIAGONAL --- */
+        /* Animaciones de vuelo (Simples) */
         @keyframes fly-diagonal-up {
             0%   { transform: translate(calc(-100% - 100vw), calc(100% + 100vh)); opacity: 0; }
             10%  { opacity: 1; }
@@ -348,11 +342,6 @@
             <h2 id="publicaciones">Últimas Publicaciones</h2>
             
             <div class="publications-grid">
-                <div class="card">
-    <h3>Escondido a Plena Vista: El Arte del Stack Strings.</h3>
-    <p>Investigación de malware enfocada en técnicas de evasión avanzadas: ofuscación de datos en memoria e inyección de código en procesos confiables.</p>
-    <a href="https://medium.com/@fernandaycesarmauricioymariel/ransomed-lab-cyberdefenders-6def412b157f" class="card-link" target="_blank">Leer más &rarr;</a>
-</div>
                 
                 <div class="card">
                     <h3>Web Investigation Lab</h3>
@@ -363,7 +352,7 @@
                 <div class="card">
                     <h3>Análisis de un Ataque Web</h3>
                     <p>Desglosamos la cadena de ataque que explotó una simple SQL Injection para tomar control total de un servidor</p>
-                    <a href="https://medium.com/@fernandaycesarmauricioymariel/evIDENCIAS-the-hacker-labs-ff0261dce9f2" class="card-link" target="_blank">Leer más &rarr;</a>
+                    <a href="https://medium.com/@fernandaycesarmauricioymariel/evidencias-the-hacker-labs-ff0261dce9f2" class="card-link" target="_blank">Leer más &rarr;</a>
                 </div>
 
                 <div class="card">
@@ -403,7 +392,6 @@
     </div> 
 
     <script>
-        // Lógica para mostrar/ocultar secciones
         const buttons = document.querySelectorAll('.button-container .button');
         const sections = document.querySelectorAll('.content-section');
 
@@ -426,11 +414,10 @@
             });
         });
 
-        showSection('writeups'); // Mostrar la primera sección por defecto
+        showSection('writeups');
     </script>
 
     <script>
-        // Lógica para los cuervos animados
         const crowsContainer = document.querySelector('.crows-container');
         const numberOfCrows = 15;
 
@@ -443,8 +430,6 @@
 
         function createCrow() {
             const crow = document.createElement('img');
-            
-            // Apunta a 'cuervo_morado.png' (tu archivo)
             crow.src = 'cuervo_morado.png'; 
             crow.alt = 'Cuervo volando';
             crow.classList.add('crow');
@@ -481,7 +466,7 @@
 
             let transformString = `scale(${randomScale})`;
             if (animationName.includes('reverse')) {
-                transformString += ' scaleX(-1)'; // Voltear horizontalmente
+                transformString += ' scaleX(-1)'; 
             }
             crow.style.transform = transformString;
 
