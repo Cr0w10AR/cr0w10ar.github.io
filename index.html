@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <title>Portafolio - CROW</title>
+    <title>Portafolio - CR0W</title>
     <style>
         /* --- ESTILO PARA EL SCROLL SUAVE --- */
         html {
@@ -16,27 +16,84 @@
             font-family: 'Arial', sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #1a1a2e;
+            background-color: #1a1a2e; /* Fondo base oscuro */
             color: #e0e0e0;
             line-height: 1.6;
+            overflow-x: hidden; /* Evita scroll horizontal si los cuervos salen mucho */
+
+            /* FONDO ESTRELLADO Y RASTROS DE NEÓN */
+            background-image: 
+                radial-gradient(ellipse at center, rgba(30,0,50,0.5) 0%, rgba(0,0,0,0.9) 100%), /* Gradiente oscuro */
+                url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 100 100"><filter id="noiseFilter"><feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch" result="noise" /><feColorMatrix in="noise" type="matrix" values="0 0 0 0 0, 0 0 0 0 0, 0 0 0 0 0, 0 0 0 -1 1" /><feComposite operator="in" in2="SourceGraphic" result="comp" /></filter><rect width="100" height="100" fill="transparent"/><circle cx="50" cy="50" r="1" fill="#FFFFFF" filter="url(#noiseFilter)" opacity="0.1"/></svg>'), /* Estrellas sutiles */
+                linear-gradient(45deg, #0f0f1c, #2b0a4a, #0f0f1c); /* Base del degradado principal */
+            background-size: cover, cover, cover;
+            background-repeat: no-repeat, repeat, no-repeat;
+            background-position: center, center, center;
+            animation: backgroundShift 30s ease infinite alternate; /* Animación de fondo sutil */
         }
 
+        @keyframes backgroundShift {
+            0% { background-position: 0% 50%, center, center; }
+            100% { background-position: 100% 50%, center, center; }
+        }
+
+        /* Contenedor principal con efecto de marco digital */
         .container {
             max-width: 900px;
-            margin: 40px auto;
-            padding: 20px;
-            background-color: #0f0f1c;
-            border-radius: 8px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
-            border: 1px solid #4a148c;
-            /* z-index para estar sobre el fondo pero bajo el badge */
+            margin: 60px auto; /* Más margen arriba y abajo */
+            padding: 25px;
+            background-color: rgba(15, 15, 28, 0.75); /* Fondo semitransparente */
+            border-radius: 12px;
+            box-shadow: 0 0 30px rgba(187, 134, 252, 0.3), /* Sombra principal morada */
+                        0 0 15px rgba(0, 255, 255, 0.2); /* Sombra turquesa */
+            border: 2px solid #6200ee; /* Borde más definido */
             position: relative;
-            z-index: 1;
+            z-index: 10; /* Mayor z-index para estar por encima de los cuervos y el fondo */
+            overflow: hidden; /* Para contener los pseudo-elementos del marco */
+            backdrop-filter: blur(5px); /* Efecto de cristal esmerilado */
         }
+
+        /* Pseudo-elementos para el marco digital con efecto neón */
+        .container::before,
+        .container::after {
+            content: '';
+            position: absolute;
+            background: linear-gradient(45deg, #bb86fc, #00ffff, #bb86fc);
+            z-index: -1;
+            filter: blur(15px);
+            opacity: 0.6;
+            animation: neonGlow 5s ease infinite alternate;
+        }
+
+        .container::before {
+            top: -5px;
+            left: -5px;
+            right: -5px;
+            bottom: -5px;
+            border-radius: 15px; /* Ligeramente más grande que el contenedor */
+        }
+
+        .container::after {
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border-radius: 12px;
+            background: #0f0f1c; /* Fondo oscuro sólido para reducir la transparencia interior */
+            filter: none; /* No aplicar blur al after */
+            opacity: 0.9;
+        }
+
+        @keyframes neonGlow {
+            0% { opacity: 0.6; transform: scale(1); }
+            100% { opacity: 0.8; transform: scale(1.02); }
+        }
+
 
         h1 {
             color: #bb86fc;
             text-align: center;
+            text-shadow: 0 0 8px rgba(187, 134, 252, 0.8); /* Efecto neón en el título */
         }
 
         p {
@@ -63,7 +120,8 @@
             object-fit: cover;
             border: 4px solid #bb86fc;
             margin-bottom: 30px;
-            box-shadow: 0 0 15px rgba(187, 134, 252, 0.6);
+            box-shadow: 0 0 15px rgba(187, 134, 252, 0.6), 
+                        0 0 25px rgba(0, 255, 255, 0.3); /* Sombra turquesa adicional */
         }
 
         /* Botones de Pestañas */
@@ -84,10 +142,13 @@
             border-radius: 5px;
             font-weight: bold;
             cursor: pointer;
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 0 10px rgba(98, 0, 238, 0.4);
         }
 
         .button:hover {
             background-color: #9030ff;
+            box-shadow: 0 0 15px rgba(144, 48, 255, 0.6);
         }
     
         /* Iconos Sociales */
@@ -101,26 +162,29 @@
             font-size: 1.8em;
             margin: 0 15px;
             text-decoration: none;
-            transition: color 0.3s ease, transform 0.3s ease;
+            transition: color 0.3s ease, transform 0.3s ease, text-shadow 0.3s ease;
         }
 
         .social-icons a:hover {
             color: #bb86fc;
             transform: scale(1.1);
+            text-shadow: 0 0 10px rgba(187, 134, 252, 0.8);
         }
         
         /* --- ESTILOS DE SECCIONES Y TARJETAS --- */
         hr {
             border: 0;
             height: 1px;
-            background-image: linear-gradient(to right, #0f0f1c, #4a148c, #0f0f1c);
+            background-image: linear-gradient(to right, rgba(15,15,28,0), #4a148c, rgba(15,15,28,0));
             margin: 50px 0;
+            box-shadow: 0 0 8px rgba(74, 20, 140, 0.5);
         }
 
         h2 {
             color: #bb86fc;
             text-align: center;
             margin-bottom: 30px;
+            text-shadow: 0 0 8px rgba(187, 134, 252, 0.8); /* Efecto neón en el subtítulo */
         }
 
         .publications-grid {
@@ -130,23 +194,27 @@
         }
 
         .card {
-            background-color: #1a1a2e;
+            background-color: rgba(26, 26, 46, 0.8); /* Ligeramente más transparente */
             border: 1px solid #4a148c;
             border-radius: 8px;
             padding: 20px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
-            transition: transform 0.3s ease, border-color 0.3s ease;
+            box-shadow: 0 0 15px rgba(0, 255, 255, 0.2), /* Sombra turquesa para las tarjetas */
+                        0 4px 10px rgba(0, 0, 0, 0.4);
+            transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
         }
 
         .card:hover {
             transform: translateY(-5px);
             border-color: #bb86fc;
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.4), /* Sombra turquesa más fuerte al pasar el ratón */
+                        0 4px 15px rgba(187, 134, 252, 0.4); /* Sombra morada al pasar el ratón */
         }
 
         .card h3 {
             color: #bb86fc;
             margin-top: 0;
             margin-bottom: 15px;
+            text-shadow: 0 0 5px rgba(187, 134, 252, 0.6);
         }
 
         .card p {
@@ -156,14 +224,16 @@
         }
 
         .card-link {
-            color: #bb86fc;
+            color: #00ffff; /* Color turquesa para los enlaces de las tarjetas */
             text-decoration: none;
             font-weight: bold;
             font-size: 0.9em;
+            transition: color 0.3s ease;
         }
 
         .card-link:hover {
             text-decoration: underline;
+            color: #bb86fc; /* Color morado al pasar el ratón */
         }
 
         /* --- ESTILOS PARA LA TRANSICIÓN DE SECCIONES --- */
@@ -172,11 +242,15 @@
             max-height: 0;
             overflow: hidden;
             transition: opacity 0.4s ease-out, max-height 0.6s ease-out;
+            padding-top: 0;
+            padding-bottom: 0;
         }
 
         .content-section.active {
             opacity: 1;
             max-height: 5000px; /* Valor suficientemente grande */
+            padding-top: 20px; /* Añade un poco de padding cuando está activo */
+            padding-bottom: 20px;
         }
         
         /* --- ESTILOS DE ELEMENTOS EXTERNOS --- */
@@ -188,7 +262,8 @@
             left: 40px;
             transform: scale(1.2); 
             transform-origin: top left;
-            z-index: 2;
+            z-index: 15; /* Mayor z-index para estar por encima de todo */
+            filter: drop-shadow(0 0 5px rgba(0, 255, 255, 0.5)) drop-shadow(0 0 8px rgba(187, 134, 252, 0.5)); /* Efecto neón para el badge */
         }
         
         /* --- Media Query para Responsive --- */
@@ -207,87 +282,97 @@
             height: 100%;
             pointer-events: none;
             overflow: hidden;
-            z-index: 0; /* Detrás de todo */
+            z-index: 5; /* Entre el fondo y el contenido principal */
         }
 
         .crow {
             position: absolute;
-            width: 80px; /* Tamaño del cuervo */
-            height: 60px;
-            background-color: #bb86fc; /* Color morado para la silueta */
-            
-            /* SILUETA DE CUERVO SVG (Corregido y Simplificado) */
-            mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path d="M549.65 310.24c-12.72-12.26-29.35-21.78-49.33-28.09 11.66-16.71 18.23-36.42 18.23-57.85 0-53.06-43.09-96.15-96.15-96.15-18.04 0-35.03 5-49.52 13.79-11.85-23.73-34.93-41.24-61.76-47.96C289.43 14.86 261.2 0 231.29 0c-44.57 0-82.27 28.32-95.64 67.85-21.64-11.13-46.73-17.7-73.65-17.7-65.05 0-117.82 52.77-117.82 117.82 0 38.01 18.08 71.97 45.49 93.84C18.91 278.49 0 320.19 0 366.95 0 450.45 68.55 512 152.05 512c39.63 0 75.83-15.65 102.87-41.14 17.58 4.41 35.79 6.64 54.34 6.64 22.05 0 43.51-4.04 63.69-11.83 20.36 29.58 53.68 50.32 91.26 50.32 65.05 0 117.82-52.77 117.82-117.82 0-38.01-18.08-71.97-45.49-93.84 29.98-13.06 49.33-35.21 58.74-60.67z"/></svg>');
-            mask-size: contain;
-            mask-repeat: no-repeat;
-            mask-position: center;
-            -webkit-mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path d="M549.65 310.24c-12.72-12.26-29.35-21.78-49.33-28.09 11.66-16.71 18.23-36.42 18.23-57.85 0-53.06-43.09-96.15-96.15-96.15-18.04 0-35.03 5-49.52 13.79-11.85-23.73-34.93-41.24-61.76-47.96C289.43 14.86 261.2 0 231.29 0c-44.57 0-82.27 28.32-95.64 67.85-21.64-11.13-46.73-17.7-73.65-17.7-65.05 0-117.82 52.77-117.82 117.82 0 38.01 18.08 71.97 45.49 93.84C18.91 278.49 0 320.19 0 366.95 0 450.45 68.55 512 152.05 512c39.63 0 75.83-15.65 102.87-41.14 17.58 4.41 35.79 6.64 54.34 6.64 22.05 0 43.51-4.04 63.69-11.83 20.36 29.58 53.68 50.32 91.26 50.32 65.05 0 117.82-52.77 117.82-117.82 0-38.01-18.08-71.97-45.49-93.84 29.98-13.06 49.33-35.21 58.74-60.67z"/></svg>');
-            -webkit-mask-size: contain;
-            -webkit-mask-repeat: no-repeat;
-            -webkit-mask-position: center;
+            width: 80px; 
+            height: auto; /* Mantener proporción de la imagen */
+            opacity: 0; /* Oculto inicialmente */
+            transition: opacity 0.5s ease-in-out; /* Transición para la aparición/desaparición */
 
-            animation: fly-across linear infinite; /* Animación predeterminada */
-            transform: scaleX(1); 
+            /* Estela de neón turquesa-morada */
+            filter: drop-shadow(0 0 3px rgba(0, 255, 255, 0.7)) /* Turquesa */
+                    drop-shadow(0 0 8px rgba(187, 134, 252, 0.6)); /* Morado */
+            
+            /* Animaciones de vuelo diagonal */
+            animation: none linear infinite; /* Se define en JS */
         }
 
-        /* --- ANIMACIONES DE VUELO DIAGONAL (AÑADIDAS Y CORREGIDAS) --- */
-        
-        /* Vuelo diagonal hacia arriba (derecha a izquierda) */
+        /* --- ANIMACIONES DE VUELO DIAGONAL --- */
+        /* Estas animaciones mueven el cuervo de un lado a otro en diagonal
+           y controlan la opacidad para que aparezcan y desaparezcan suavemente.
+           El `transform` `scaleX(-1)` se aplicará en JS para voltear la imagen. */
+
+        /* Vuelo diagonal de abajo-izquierda a arriba-derecha */
         @keyframes fly-diagonal-up {
             0% {
-                transform: translateX(100vw) translateY(100vh) scaleX(1);
+                transform: translate(calc(-100% - 100vw), calc(100% + 100vh));
                 opacity: 0;
             }
             10% {
                 opacity: 1;
             }
+            90% {
+                opacity: 1;
+            }
             100% {
-                transform: translateX(-100vw) translateY(-100vh) scaleX(1);
+                transform: translate(calc(100vw + 100%), calc(-100% - 100vh));
                 opacity: 0;
             }
         }
 
-        /* Vuelo diagonal hacia abajo (derecha a izquierda) */
+        /* Vuelo diagonal de arriba-izquierda a abajo-derecha */
         @keyframes fly-diagonal-down {
             0% {
-                transform: translateX(100vw) translateY(-100vh) scaleX(1);
+                transform: translate(calc(-100% - 100vw), calc(-100% - 100vh));
                 opacity: 0;
             }
             10% {
                 opacity: 1;
             }
+            90% {
+                opacity: 1;
+            }
             100% {
-                transform: translateX(-100vw) translateY(100vh) scaleX(1);
+                transform: translate(calc(100vw + 100%), calc(100% + 100vh));
                 opacity: 0;
             }
         }
 
-        /* Vuelo diagonal hacia arriba (izquierda a derecha) */
+        /* Vuelo diagonal de abajo-derecha a arriba-izquierda */
         @keyframes fly-diagonal-up-reverse {
             0% {
-                transform: translateX(-100vw) translateY(100vh) scaleX(-1);
+                transform: translate(calc(100vw + 100%), calc(100% + 100vh)) scaleX(-1);
                 opacity: 0;
             }
             10% {
                 opacity: 1;
             }
+            90% {
+                opacity: 1;
+            }
             100% {
-                transform: translateX(100vw) translateY(-100vh) scaleX(-1);
+                transform: translate(calc(-100% - 100vw), calc(-100% - 100vh)) scaleX(-1);
                 opacity: 0;
             }
         }
 
-        /* Vuelo diagonal hacia abajo (izquierda a derecha) */
+        /* Vuelo diagonal de arriba-derecha a abajo-izquierda */
         @keyframes fly-diagonal-down-reverse {
             0% {
-                transform: translateX(-100vw) translateY(-100vh) scaleX(-1);
+                transform: translate(calc(100vw + 100%), calc(-100% - 100vh)) scaleX(-1);
                 opacity: 0;
             }
             10% {
                 opacity: 1;
             }
+            90% {
+                opacity: 1;
+            }
             100% {
-                transform: translateX(100vw) translateY(100vh) scaleX(-1);
+                transform: translate(calc(-100% - 100vw), calc(100% + 100vh)) scaleX(-1);
                 opacity: 0;
             }
         }
@@ -362,7 +447,9 @@
                     <a href="https://medium.com/@fernandaycesarmauricioymariel/nukethebrowser-cyberdefenders-9fcd85e1dcf1" class="card-link" target="_blank">Leer más &rarr;</a>
                 </div>
                 
-            </div> </div> <div id="proyectos" class="content-section">
+            </div>
+        </div> 
+        <div id="proyectos" class="content-section">
             <hr>
             <h2 id="proyectos-titulo">Proyectos Personales</h2> 
             
@@ -380,97 +467,112 @@
                     <a href="[ENLACE A GITHUB O DEMO]" target="_blank" class="card-link">Ver en GitHub &rarr;</a>
                 </div>
                 
-            </div> </div> </div> <script>
-    const buttons = document.querySelectorAll('.button-container .button');
-    const sections = document.querySelectorAll('.content-section');
+            </div>
+        </div> 
+    </div> 
 
-    function showSection(targetId) {
-        sections.forEach(section => {
-            section.classList.remove('active');
-        });
-        
-        const targetSection = document.getElementById(targetId);
-        if (targetSection) {
-            targetSection.classList.add('active');
+    <script>
+        // Lógica para mostrar/ocultar secciones
+        const buttons = document.querySelectorAll('.button-container .button');
+        const sections = document.querySelectorAll('.content-section');
+
+        function showSection(targetId) {
+            sections.forEach(section => {
+                section.classList.remove('active');
+            });
+            
+            const targetSection = document.getElementById(targetId);
+            if (targetSection) {
+                targetSection.classList.add('active');
+            }
         }
-    }
 
-    buttons.forEach(button => {
-        button.addEventListener('click', (event) => {
-            event.preventDefault();
-            const targetId = button.getAttribute('data-target');
-            showSection(targetId);
+        buttons.forEach(button => {
+            button.addEventListener('click', (event) => {
+                event.preventDefault();
+                const targetId = button.getAttribute('data-target');
+                showSection(targetId);
+            });
         });
-    });
 
-    showSection('writeups'); // Mostrar la primera sección por defecto
-</script>
+        // Mostrar la primera sección por defecto al cargar
+        showSection('writeups');
+    </script>
 
-<script>
-    const crowsContainer = document.querySelector('.crows-container');
-    const numberOfCrows = 10; // Cantidad de cuervos aumentada
+    <script>
+        // Lógica para los cuervos animados
+        const crowsContainer = document.querySelector('.crows-container');
+        const numberOfCrows = 15; // Aumentamos la cantidad de cuervos
 
-    const animationNames = [
-        'fly-diagonal-up',
-        'fly-diagonal-down',
-        'fly-diagonal-up-reverse',
-        'fly-diagonal-down-reverse'
-    ];
+        const animationNames = [
+            'fly-diagonal-up',
+            'fly-diagonal-down',
+            'fly-diagonal-up-reverse',
+            'fly-diagonal-down-reverse'
+        ];
 
-    function createCrow() {
-        const crow = document.createElement('div');
-        crow.classList.add('crow');
+        function createCrow() {
+            const crow = document.createElement('img'); // Ahora es una imagen
+            crow.src = 'cuervo_morado.png'; // Asegúrate de que este sea el nombre de tu archivo
+            crow.alt = 'Cuervo volando';
+            crow.classList.add('crow');
 
-        // Posición inicial aleatoria en los bordes de la pantalla
-        let startX, startY;
-        const edge = Math.random(); // 0 a 1
+            // Posición inicial aleatoria fuera de la pantalla
+            let startX, startY;
+            const entryEdge = Math.random(); // Decide por qué borde entra
 
-        if (edge < 0.25) { // Arriba
-            startX = Math.random() * window.innerWidth;
-            startY = -100; // Un poco fuera de la pantalla
-        } else if (edge < 0.5) { // Abajo
-            startX = Math.random() * window.innerWidth;
-            startY = window.innerHeight + 100;
-        } else if (edge < 0.75) { // Izquierda
-            startX = -100;
-            startY = Math.random() * window.innerHeight;
-        } else { // Derecha
-            startX = window.innerWidth + 100;
-            startY = Math.random() * window.innerHeight;
+            if (entryEdge < 0.25) { // Entra por arriba
+                startX = Math.random() * window.innerWidth;
+                startY = -150; 
+            } else if (entryEdge < 0.5) { // Entra por abajo
+                startX = Math.random() * window.innerWidth;
+                startY = window.innerHeight + 150;
+            } else if (entryEdge < 0.75) { // Entra por izquierda
+                startX = -150;
+                startY = Math.random() * window.innerHeight;
+            } else { // Entra por derecha
+                startX = window.innerWidth + 150;
+                startY = Math.random() * window.innerHeight;
+            }
+            
+            crow.style.left = `${startX}px`;
+            crow.style.top = `${startY}px`;
+
+            const randomScale = 0.5 + Math.random() * 0.7; // Rango de tamaño: 0.5x a 1.2x
+            crow.style.width = `${80 * randomScale}px`; // Ajustar el tamaño base
+            crow.style.height = 'auto'; // Mantener la proporción
+
+            const randomDuration = 18 + Math.random() * 12; // Rango de duración: 18s a 30s
+            crow.style.animationDuration = `${randomDuration}s`;
+            
+            // Seleccionar una animación diagonal aleatoria y ajustar la dirección
+            const randomAnimationIndex = Math.floor(Math.random() * animationNames.length);
+            let animationName = animationNames[randomAnimationIndex];
+            
+            // Aplicar la animación
+            crow.style.animationName = animationName;
+
+            // Ajustar el punto de origen de la transformación para la escala
+            crow.style.transformOrigin = 'center center'; 
+
+            crowsContainer.appendChild(crow);
+
+            // Hacer que aparezca suavemente
+            setTimeout(() => crow.style.opacity = 1, 50);
+
+            // Remover el cuervo después de su animación y crear uno nuevo
+            crow.addEventListener('animationend', () => {
+                crow.remove();
+                setTimeout(createCrow, Math.random() * 2000); // Pequeña pausa aleatoria antes de crear el siguiente
+            });
         }
-        
-        crow.style.left = `${startX}px`;
-        crow.style.top = `${startY}px`;
 
-        const randomScale = 0.6 + Math.random() * 0.6; // Rango de tamaño
-        crow.style.transform = `scale(${randomScale})`;
-
-        const randomDuration = 15 + Math.random() * 15; // Rango de duración
-        crow.style.animationDuration = `${randomDuration}s`;
-        
-        // Seleccionar una animación diagonal aleatoria
-        const randomAnimation = animationNames[Math.floor(Math.random() * animationNames.length)];
-        crow.style.animationName = randomAnimation;
-
-        // Voltear el cuervo si la animación es "reverse"
-        if (randomAnimation.includes('reverse')) {
-            crow.style.transform += ' scaleX(-1)';
+        // Generar cuervos iniciales con un retraso para que aparezcan escalonadamente
+        for (let i = 0; i < numberOfCrows; i++) {
+            setTimeout(createCrow, Math.random() * 7000); // Retraso de hasta 7 segundos
         }
-        
-        crowsContainer.appendChild(crow);
-
-        // Remover el cuervo después de su animación y crear uno nuevo
-        crow.addEventListener('animationend', () => {
-            crow.remove();
-            setTimeout(createCrow, Math.random() * 2000); // Pequeña pausa aleatoria antes de crear el siguiente
-        });
-    }
-
-    // Generar cuervos iniciales
-    for (let i = 0; i < numberOfCrows; i++) {
-        setTimeout(createCrow, Math.random() * 5000); 
-    }
-</script>
+    </script>
 
 </body>
 </html>
+```http://googleusercontent.com/image_generation_content/2
