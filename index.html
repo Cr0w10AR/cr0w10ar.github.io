@@ -24,7 +24,7 @@
             /* FONDO ESTRELLADO Y RASTROS DE NEÓN */
             background-image: 
                 radial-gradient(ellipse at center, rgba(30,0,50,0.5) 0%, rgba(0,0,0,0.9) 100%), /* Gradiente oscuro */
-                url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 100 100"><filter id="noiseFilter"><feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch" result="noise" /><feColorMatrix in="noise" type="matrix" values="0 0 0 0 0, 0 0 0 0 0, 0 0 0 -1 1" /><feComposite operator="in" in2="SourceGraphic" result="comp" /></filter><rect width="100" height="100" fill="transparent"/><circle cx="50" cy="50" r="1" fill="#FFFFFF" filter="url(#noiseFilter)" opacity="0.1"/></svg>'), /* Estrellas sutiles */
+                url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 100 100"><filter id="noiseFilter"><feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch" result="noise" /><feColorMatrix in="noise" type="matrix" values="0 0 0 0 0, 0 0 0 0 0, 0 0 0 0 0, 0 0 0 -1 1" /><feComposite operator="in" in2="SourceGraphic" result="comp" /></filter><rect width="100" height="100" fill="transparent"/><circle cx="50" cy="50" r="1" fill="#FFFFFF" filter="url(#noiseFilter)" opacity="0.1"/></svg>'), /* Estrellas sutiles */
                 linear-gradient(45deg, #0f0f1c, #2b0a4a, #0f0f1c); /* Base del degradado principal */
             background-size: cover, cover, cover;
             background-repeat: no-repeat, repeat, no-repeat;
@@ -80,10 +80,13 @@
             right: 0;
             bottom: 0;
             border-radius: 12px;
-            background: 
-                repeating-linear-gradient(45deg, rgba(0, 255, 255, 0.05), rgba(0, 255, 255, 0.05) 2px, transparent 2px, transparent 10px), /* Líneas turquesas */
-                repeating-linear-gradient(-45deg, rgba(187, 134, 252, 0.05), rgba(187, 134, 252, 0.05) 2px, transparent 2px, transparent 10px), /* Líneas moradas */
-                url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 L 0 10" fill="none" stroke="rgba(0,255,255,0.08)" stroke-width="0.5"/></pattern></defs><rect width="100%" height="100%" fill="url(#grid)" /></svg>') #0f0f1c; /* Patrón de rejilla sutil y fondo oscuro */
+            /* Nuevo fondo de circuito */
+            background-image: 
+                url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><defs><linearGradient id="g1" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="%23bb86fc"/><stop offset="100%" stop-color="%2300ffff"/></linearGradient><linearGradient id="g2" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="%2300ffff"/><stop offset="100%" stop-color="%23bb86fc"/></linearGradient></defs><rect width="100" height="100" fill="transparent"/><path d="M10 0 L0 0 L0 10 M20 0 L10 10 L10 20 M30 0 L20 10 L20 20 M40 0 L30 10 L30 20 M50 0 L40 10 L40 20 M60 0 L50 10 L50 20 M70 0 L60 10 L60 20 M80 0 L70 10 L70 20 M90 0 L80 10 L80 20 M100 0 L90 10 L90 20" stroke="url(%23g1)" stroke-width="1.5" opacity="0.1"/><path d="M0 10 L10 20 L10 30 M0 20 L10 30 L10 40 M0 30 L10 40 L10 50 M0 40 L10 50 L10 60 M0 50 L10 60 L10 70 M0 60 L10 70 L10 80 M0 70 L10 80 L10 90 M0 80 L10 90 L10 100 M0 90 L10 100 L10 110" stroke="url(%23g2)" stroke-width="1.5" opacity="0.1"/><circle cx="15" cy="15" r="2" fill="url(%23g1)" opacity="0.15"/><circle cx="35" cy="35" r="2" fill="url(%23g2)" opacity="0.15"/><circle cx="55" cy="55" r="2" fill="url(%23g1)" opacity="0.15"/><circle cx="75" cy="75" r="2" fill="url(%23g2)" opacity="0.15"/></svg>'), 
+                #0f0f1c; /* Fondo oscuro sólido para el contenedor */
+            background-size: 100px 100px, cover; /* Tamaño del patrón y del fondo */
+            background-repeat: repeat, no-repeat;
+            background-position: center, center;
             z-index: -1; /* Detrás del contenido pero encima del before */
             opacity: 0.95; /* Más opaco para mantener el contenido legible */
         }
@@ -568,7 +571,7 @@
 
         // Generar cuervos iniciales con un retraso para que aparezcan escalonadamente
         for (let i = 0; i < numberOfCrows; i++) {
-            setTimeout(createCrow, Math.random() * 2000); // Retraso de hasta 7 segundos
+            setTimeout(createCrow, Math.random() * 7000); // Retraso de hasta 7 segundos
         }
     </script>
 
