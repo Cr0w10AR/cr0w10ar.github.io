@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <title>Portafolio - CR0W</title>
+    <title>Portafolio - CROW</title>
     <style>
         /* --- ESTILO PARA EL SCROLL SUAVE --- */
         html {
@@ -16,20 +16,20 @@
             font-family: 'Arial', sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #1a1a2e; /* Fondo base oscuro */
+            background-color: #1a1a2e;
             color: #e0e0e0;
             line-height: 1.6;
-            overflow-x: hidden; /* Evita scroll horizontal si los cuervos salen mucho */
+            overflow-x: hidden;
 
-            /* FONDO ESTRELLADO Y RASTROS DE NEÓN */
+            /* FONDO ESTRELLADO */
             background-image: 
-                radial-gradient(ellipse at center, rgba(30,0,50,0.5) 0%, rgba(0,0,0,0.9) 100%), /* Gradiente oscuro */
-                url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 100 100"><filter id="noiseFilter"><feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch" result="noise" /><feColorMatrix in="noise" type="matrix" values="0 0 0 0 0, 0 0 0 0 0, 0 0 0 0 0, 0 0 0 -1 1" /><feComposite operator="in" in2="SourceGraphic" result="comp" /></filter><rect width="100" height="100" fill="transparent"/><circle cx="50" cy="50" r="1" fill="#FFFFFF" filter="url(#noiseFilter)" opacity="0.1"/></svg>'), /* Estrellas sutiles */
-                linear-gradient(45deg, #0f0f1c, #2b0a4a, #0f0f1c); /* Base del degradado principal */
+                radial-gradient(ellipse at center, rgba(30,0,50,0.5) 0%, rgba(0,0,0,0.9) 100%),
+                url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 100 100"><filter id="noiseFilter"><feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch" result="noise" /><feColorMatrix in="noise" type="matrix" values="0 0 0 0 0, 0 0 0 0 0, 0 0 0 0 0, 0 0 0 -1 1" /><feComposite operator="in" in2="SourceGraphic" result="comp" /></filter><rect width="100" height="100" fill="transparent"/><circle cx="50" cy="50" r="1" fill="#FFFFFF" filter="url(#noiseFilter)" opacity="0.1"/></svg>'),
+                linear-gradient(45deg, #0f0f1c, #2b0a4a, #0f0f1c);
             background-size: cover, cover, cover;
             background-repeat: no-repeat, repeat, no-repeat;
             background-position: center, center, center;
-            animation: backgroundShift 30s ease infinite alternate; /* Animación de fondo sutil */
+            animation: backgroundShift 30s ease infinite alternate;
         }
 
         @keyframes backgroundShift {
@@ -37,25 +37,25 @@
             100% { background-position: 100% 50%, center, center; }
         }
 
-        /* Contenedor principal con efecto de marco digital y detalles tecnológicos */
+        /* Contenedor principal con efecto de marco digital */
         .container {
             max-width: 900px;
-            margin: 60px auto; /* Más margen arriba y abajo */
+            margin: 60px auto;
             padding: 25px;
-            background-color: rgba(15, 15, 28, 0.75); /* Fondo semitransparente */
+            background-color: rgba(15, 15, 28, 0.75);
             border-radius: 12px;
             box-shadow: 
-                0 0 30px rgba(187, 134, 252, 0.3), /* Sombra principal morada */
-                0 0 15px rgba(0, 255, 255, 0.2), /* Sombra turquesa */
-                inset 0 0 15px rgba(187, 134, 252, 0.1); /* Resplandor interior */
-            border: 2px solid #6200ee; /* Borde más definido */
+                0 0 30px rgba(187, 134, 252, 0.3),
+                0 0 15px rgba(0, 255, 255, 0.2),
+                inset 0 0 15px rgba(187, 134, 252, 0.1);
+            border: 2px solid #6200ee;
             position: relative;
-            z-index: 10; /* Mayor z-index para estar por encima de los cuervos y el fondo */
-            overflow: hidden; /* Para contener los pseudo-elementos del marco */
-            backdrop-filter: blur(5px); /* Efecto de cristal esmerilado */
+            z-index: 10;
+            overflow: hidden;
+            backdrop-filter: blur(5px);
         }
 
-        /* Pseudo-elementos para el marco digital con efecto neón y detalles tecnológicos */
+        /* CORRECCIÓN: Resplandor del marco reducido */
         .container::before {
             content: '';
             position: absolute;
@@ -63,15 +63,16 @@
             left: -5px;
             right: -5px;
             bottom: -5px;
-            border-radius: 15px; /* Ligeramente más grande que el contenedor */
+            border-radius: 15px;
             background: 
-                conic-gradient(from 0deg at 50% 50%, #00ffff 0%, #bb86fc 20%, #0f0f1c 50%, #bb86fc 80%, #00ffff 100%); /* Gradiente cónico para el brillo exterior */
-            z-index: -2; /* Detrás del after */
-            filter: blur(18px); /* Mayor blur para el resplandor principal */
-            opacity: 0.7;
+                conic-gradient(from 0deg at 50% 50%, #00ffff 0%, #bb86fc 20%, #0f0f1c 50%, #bb86fc 80%, #00ffff 100%);
+            z-index: -2;
+            filter: blur(8px); /* <-- CORREGIDO: Reducido de 18px */
+            opacity: 0.5; /* <-- CORREGIDO: Reducido de 0.7 */
             animation: neonGlow 5s ease infinite alternate;
         }
 
+        /* Patrón de circuito (estaba oculto por el resplandor) */
         .container::after {
             content: '';
             position: absolute;
@@ -80,32 +81,28 @@
             right: 0;
             bottom: 0;
             border-radius: 12px;
-            /* Nuevo fondo de circuito */
             background-image: 
                 url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><defs><linearGradient id="g1" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="%23bb86fc"/><stop offset="100%" stop-color="%2300ffff"/></linearGradient><linearGradient id="g2" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="%2300ffff"/><stop offset="100%" stop-color="%23bb86fc"/></linearGradient></defs><rect width="100" height="100" fill="transparent"/><path d="M10 0 L0 0 L0 10 M20 0 L10 10 L10 20 M30 0 L20 10 L20 20 M40 0 L30 10 L30 20 M50 0 L40 10 L40 20 M60 0 L50 10 L50 20 M70 0 L60 10 L60 20 M80 0 L70 10 L70 20 M90 0 L80 10 L80 20 M100 0 L90 10 L90 20" stroke="url(%23g1)" stroke-width="1.5" opacity="0.1"/><path d="M0 10 L10 20 L10 30 M0 20 L10 30 L10 40 M0 30 L10 40 L10 50 M0 40 L10 50 L10 60 M0 50 L10 60 L10 70 M0 60 L10 70 L10 80 M0 70 L10 80 L10 90 M0 80 L10 90 L10 100 M0 90 L10 100 L10 110" stroke="url(%23g2)" stroke-width="1.5" opacity="0.1"/><circle cx="15" cy="15" r="2" fill="url(%23g1)" opacity="0.15"/><circle cx="35" cy="35" r="2" fill="url(%23g2)" opacity="0.15"/><circle cx="55" cy="55" r="2" fill="url(%23g1)" opacity="0.15"/><circle cx="75" cy="75" r="2" fill="url(%23g2)" opacity="0.15"/></svg>'), 
-                #0f0f1c; /* Fondo oscuro sólido para el contenedor */
-            background-size: 100px 100px, cover; /* Tamaño del patrón y del fondo */
+                #0f0f1c;
+            background-size: 100px 100px, cover;
             background-repeat: repeat, no-repeat;
             background-position: center, center;
-            z-index: -1; /* Detrás del contenido pero encima del before */
-            opacity: 0.95; /* Más opaco para mantener el contenido legible */
+            z-index: -1;
+            opacity: 0.95;
         }
 
         @keyframes neonGlow {
-            0% { opacity: 0.7; transform: scale(1); }
-            100% { opacity: 0.9; transform: scale(1.02); }
+            0% { opacity: 0.5; transform: scale(1); }
+            100% { opacity: 0.7; transform: scale(1.02); }
         }
-
 
         h1 {
             color: #bb86fc;
             text-align: center;
-            text-shadow: 0 0 8px rgba(187, 134, 252, 0.8), 0 0 15px rgba(0, 255, 255, 0.4); /* Efecto neón en el título con turquesa */
+            text-shadow: 0 0 8px rgba(187, 134, 252, 0.8), 0 0 15px rgba(0, 255, 255, 0.4);
         }
 
-        p {
-            color: #c7c7c7;
-        }
+        p { color: #c7c7c7; }
         
         img {
             max-width: 100%;
@@ -117,8 +114,6 @@
             margin-right: auto;
         }  
         
-        /* --- ESTILOS DE COMPONENTES --- */
-
         /* Logo Circular */
         .circular-logo {
             width: 150px;
@@ -128,7 +123,7 @@
             border: 4px solid #bb86fc;
             margin-bottom: 30px;
             box-shadow: 0 0 15px rgba(187, 134, 252, 0.6), 
-                        0 0 25px rgba(0, 255, 255, 0.3); /* Sombra turquesa adicional */
+                        0 0 25px rgba(0, 255, 255, 0.3);
         }
 
         /* Botones de Pestañas */
@@ -155,7 +150,7 @@
 
         .button:hover {
             background-color: #9030ff;
-            box-shadow: 0 0 15px rgba(144, 48, 255, 0.6), 0 0 20px rgba(0, 255, 255, 0.3); /* Efecto neón en hover */
+            box-shadow: 0 0 15px rgba(144, 48, 255, 0.6), 0 0 20px rgba(0, 255, 255, 0.3);
         }
     
         /* Iconos Sociales */
@@ -175,7 +170,7 @@
         .social-icons a:hover {
             color: #bb86fc;
             transform: scale(1.1);
-            text-shadow: 0 0 10px rgba(187, 134, 252, 0.8), 0 0 15px rgba(0, 255, 255, 0.4); /* Efecto neón en hover */
+            text-shadow: 0 0 10px rgba(187, 134, 252, 0.8), 0 0 15px rgba(0, 255, 255, 0.4);
         }
         
         /* --- ESTILOS DE SECCIONES Y TARJETAS --- */
@@ -184,14 +179,14 @@
             height: 1px;
             background-image: linear-gradient(to right, rgba(15,15,28,0), #4a148c, rgba(15,15,28,0));
             margin: 50px 0;
-            box-shadow: 0 0 8px rgba(74, 20, 140, 0.5), 0 0 12px rgba(0, 255, 255, 0.2); /* Efecto neón en HR */
+            box-shadow: 0 0 8px rgba(74, 20, 140, 0.5), 0 0 12px rgba(0, 255, 255, 0.2);
         }
 
         h2 {
             color: #bb86fc;
             text-align: center;
             margin-bottom: 30px;
-            text-shadow: 0 0 8px rgba(187, 134, 252, 0.8), 0 0 15px rgba(0, 255, 255, 0.4); /* Efecto neón en el subtítulo */
+            text-shadow: 0 0 8px rgba(187, 134, 252, 0.8), 0 0 15px rgba(0, 255, 255, 0.4);
         }
 
         .publications-grid {
@@ -201,11 +196,11 @@
         }
 
         .card {
-            background-color: rgba(26, 26, 46, 0.8); /* Ligeramente más transparente */
+            background-color: rgba(26, 26, 46, 0.8);
             border: 1px solid #4a148c;
             border-radius: 8px;
             padding: 20px;
-            box-shadow: 0 0 15px rgba(0, 255, 255, 0.2), /* Sombra turquesa para las tarjetas */
+            box-shadow: 0 0 15px rgba(0, 255, 255, 0.2),
                         0 4px 10px rgba(0, 0, 0, 0.4);
             transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
         }
@@ -213,8 +208,8 @@
         .card:hover {
             transform: translateY(-5px);
             border-color: #bb86fc;
-            box-shadow: 0 0 20px rgba(0, 255, 255, 0.4), /* Sombra turquesa más fuerte al pasar el ratón */
-                        0 4px 15px rgba(187, 134, 252, 0.4); /* Sombra morada al pasar el ratón */
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.4),
+                        0 4px 15px rgba(187, 134, 252, 0.4);
         }
 
         .card h3 {
@@ -231,7 +226,7 @@
         }
 
         .card-link {
-            color: #00ffff; /* Color turquesa para los enlaces de las tarjetas */
+            color: #00ffff;
             text-decoration: none;
             font-weight: bold;
             font-size: 0.9em;
@@ -240,7 +235,7 @@
 
         .card-link:hover {
             text-decoration: underline;
-            color: #bb86fc; /* Color morado al pasar el ratón */
+            color: #bb86fc;
         }
 
         /* --- ESTILOS PARA LA TRANSICIÓN DE SECCIONES --- */
@@ -255,8 +250,8 @@
 
         .content-section.active {
             opacity: 1;
-            max-height: 5000px; /* Valor suficientemente grande */
-            padding-top: 20px; /* Añade un poco de padding cuando está activo */
+            max-height: 5000px;
+            padding-top: 20px;
             padding-bottom: 20px;
         }
         
@@ -269,8 +264,8 @@
             left: 40px;
             transform: scale(1.2); 
             transform-origin: top left;
-            z-index: 15; /* Mayor z-index para estar por encima de todo */
-            filter: drop-shadow(0 0 5px rgba(0, 255, 255, 0.5)) drop-shadow(0 0 8px rgba(187, 134, 252, 0.5)); /* Efecto neón para el badge */
+            z-index: 15;
+            filter: drop-shadow(0 0 5px rgba(0, 255, 255, 0.5)) drop-shadow(0 0 8px rgba(187, 134, 252, 0.5));
         }
         
         /* --- Media Query para Responsive --- */
@@ -289,97 +284,49 @@
             height: 100%;
             pointer-events: none;
             overflow: hidden;
-            z-index: 5; /* Entre el fondo y el contenido principal */
+            z-index: 5;
         }
 
         .crow {
             position: absolute;
             width: 80px; 
-            height: auto; /* Mantener proporción de la imagen */
-            opacity: 0; /* Oculto inicialmente */
-            transition: opacity 0.5s ease-in-out; /* Transición para la aparición/desaparición */
-
-            /* Estela de neón turquesa-morada */
-            filter: drop-shadow(0 0 3px rgba(0, 255, 255, 0.7)) /* Turquesa */
-                    drop-shadow(0 0 8px rgba(187, 134, 252, 0.6)); /* Morado */
-            
-            /* Animaciones de vuelo diagonal */
-            animation: none linear infinite; /* Se define en JS */
+            height: auto;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+            filter: drop-shadow(0 0 3px rgba(0, 255, 255, 0.7))
+                    drop-shadow(0 0 8px rgba(187, 134, 252, 0.6));
+            animation: none linear infinite;
         }
 
-        /* --- ANIMACIONES DE VUELO DIAGONAL (AJUSTADAS) --- */
-        /* Incluyen la rotación del cuervo para que mire en la dirección del vuelo */
+        /* --- ANIMACIONES DE VUELO DIAGONAL (CORREGIDAS) --- */
+        /* CORRECCIÓN: Se quitó scaleX() de las animaciones. Se manejará con JS. */
 
-        /* Vuelo diagonal de abajo-izquierda a arriba-derecha */
         @keyframes fly-diagonal-up {
-            0% {
-                transform: translate(calc(-100% - 100vw), calc(100% + 100vh)) scaleX(1); /* Mira a la derecha */
-                opacity: 0;
-            }
-            10% {
-                opacity: 1;
-            }
-            90% {
-                opacity: 1;
-            }
-            100% {
-                transform: translate(calc(100vw + 100%), calc(-100% - 100vh)) scaleX(1); /* Mira a la derecha */
-                opacity: 0;
-            }
+            0%   { transform: translate(calc(-100% - 100vw), calc(100% + 100vh)); opacity: 0; }
+            10%  { opacity: 1; }
+            90%  { opacity: 1; }
+            100% { transform: translate(calc(100vw + 100%), calc(-100% - 100vh)); opacity: 0; }
         }
 
-        /* Vuelo diagonal de arriba-izquierda a abajo-derecha */
         @keyframes fly-diagonal-down {
-            0% {
-                transform: translate(calc(-100% - 100vw), calc(-100% - 100vh)) scaleX(1); /* Mira a la derecha */
-                opacity: 0;
-            }
-            10% {
-                opacity: 1;
-            }
-            90% {
-                opacity: 1;
-            }
-            100% {
-                transform: translate(calc(100vw + 100%), calc(100% + 100vh)) scaleX(1); /* Mira a la derecha */
-                opacity: 0;
-            }
+            0%   { transform: translate(calc(-100% - 100vw), calc(-100% - 100vh)); opacity: 0; }
+            10%  { opacity: 1; }
+            90%  { opacity: 1; }
+            100% { transform: translate(calc(100vw + 100%), calc(100% + 100vh)); opacity: 0; }
         }
 
-        /* Vuelo diagonal de abajo-derecha a arriba-izquierda */
         @keyframes fly-diagonal-up-reverse {
-            0% {
-                transform: translate(calc(100vw + 100%), calc(100% + 100vh)) scaleX(-1); /* Mira a la izquierda */
-                opacity: 0;
-            }
-            10% {
-                opacity: 1;
-            }
-            90% {
-                opacity: 1;
-            }
-            100% {
-                transform: translate(calc(-100% - 100vw), calc(-100% - 100vh)) scaleX(-1); /* Mira a la izquierda */
-                opacity: 0;
-            }
+            0%   { transform: translate(calc(100vw + 100%), calc(100% + 100vh)); opacity: 0; }
+            10%  { opacity: 1; }
+            90%  { opacity: 1; }
+            100% { transform: translate(calc(-100% - 100vw), calc(-100% - 100vh)); opacity: 0; }
         }
 
-        /* Vuelo diagonal de arriba-derecha a abajo-izquierda */
         @keyframes fly-diagonal-down-reverse {
-            0% {
-                transform: translate(calc(100vw + 100%), calc(-100% - 100vh)) scaleX(-1); /* Mira a la izquierda */
-                opacity: 0;
-            }
-            10% {
-                opacity: 1;
-            }
-            90% {
-                opacity: 1;
-            }
-            100% {
-                transform: translate(calc(-100% - 100vw), calc(100% + 100vh)) scaleX(-1); /* Mira a la izquierda */
-                opacity: 0;
-            }
+            0%   { transform: translate(calc(100vw + 100%), calc(-100% - 100vh)); opacity: 0; }
+            10%  { opacity: 1; }
+            90%  { opacity: 1; }
+            100% { transform: translate(calc(-100% - 100vw), calc(100% + 100vh)); opacity: 0; }
         }
 
     </style> 
@@ -437,7 +384,7 @@
                 <div class="card">
                     <h3>Análisis de un Ataque Web</h3>
                     <p>Desglosamos la cadena de ataque que explotó una simple SQL Injection para tomar control total de un servidor</p>
-                    <a href="https://medium.com/@fernandaycesarmauricioymariel/evidencias-the-hacker-labs-ff0261dce9f2" class="card-link" target="_blank">Leer más &rarr;</a>
+                    <a href="https://medium.com/@fernandaycesarmauricioymariel/evIDENCIAS-the-hacker-labs-ff0261dce9f2" class="card-link" target="_blank">Leer más &rarr;</a>
                 </div>
 
                 <div class="card">
@@ -500,14 +447,13 @@
             });
         });
 
-        // Mostrar la primera sección por defecto al cargar
-        showSection('writeups');
+        showSection('writeups'); // Mostrar la primera sección por defecto
     </script>
 
     <script>
         // Lógica para los cuervos animados
         const crowsContainer = document.querySelector('.crows-container');
-        const numberOfCrows = 15; // Cantidad de cuervos
+        const numberOfCrows = 15;
 
         const animationNames = [
             'fly-diagonal-up',
@@ -517,25 +463,26 @@
         ];
 
         function createCrow() {
-            const crow = document.createElement('img'); // Ahora es una imagen
-            crow.src = 'cuervo_morado.png'; // Asegúrate de que este sea el nombre de tu archivo
+            const crow = document.createElement('img');
+            
+            // CORRECCIÓN: Apunta a 'cuervo_morado.png' (el archivo que subiste)
+            crow.src = 'cuervo_morado.png'; 
             crow.alt = 'Cuervo volando';
             crow.classList.add('crow');
 
-            // Posición inicial aleatoria fuera de la pantalla
             let startX, startY;
-            const entryEdge = Math.random(); // Decide por qué borde entra
+            const entryEdge = Math.random();
 
-            if (entryEdge < 0.25) { // Entra por arriba
+            if (entryEdge < 0.25) {
                 startX = Math.random() * window.innerWidth;
                 startY = -150; 
-            } else if (entryEdge < 0.5) { // Entra por abajo
+            } else if (entryEdge < 0.5) {
                 startX = Math.random() * window.innerWidth;
                 startY = window.innerHeight + 150;
-            } else if (entryEdge < 0.75) { // Entra por izquierda
+            } else if (entryEdge < 0.75) {
                 startX = -150;
                 startY = Math.random() * window.innerHeight;
-            } else { // Entra por derecha
+            } else {
                 startX = window.innerWidth + 150;
                 startY = Math.random() * window.innerHeight;
             }
@@ -543,35 +490,35 @@
             crow.style.left = `${startX}px`;
             crow.style.top = `${startY}px`;
 
-            const randomScale = 0.5 + Math.random() * 0.7; // Rango de tamaño: 0.5x a 1.2x
-            crow.style.width = `${80 * randomScale}px`; // Ajustar el tamaño base
-            crow.style.height = 'auto'; // Mantener la proporción
-
-            const randomDuration = 18 + Math.random() * 12; // Rango de duración: 18s a 30s
+            const randomScale = 0.5 + Math.random() * 0.7;
+            const randomDuration = 18 + Math.random() * 12;
+            
             crow.style.animationDuration = `${randomDuration}s`;
             
-            // Seleccionar una animación diagonal aleatoria
             const randomAnimationIndex = Math.floor(Math.random() * animationNames.length);
             let animationName = animationNames[randomAnimationIndex];
             
-            // Aplicar la animación
             crow.style.animationName = animationName;
+
+            // CORRECCIÓN: Lógica para voltear el cuervo
+            let transformString = `scale(${randomScale})`;
+            if (animationName.includes('reverse')) {
+                transformString += ' scaleX(-1)'; // Voltear horizontalmente
+            }
+            crow.style.transform = transformString;
 
             crowsContainer.appendChild(crow);
 
-            // Hacer que aparezca suavemente
             setTimeout(() => crow.style.opacity = 1, 50);
 
-            // Remover el cuervo después de su animación y crear uno nuevo
             crow.addEventListener('animationend', () => {
                 crow.remove();
-                setTimeout(createCrow, Math.random() * 2000); // Pequeña pausa aleatoria antes de crear el siguiente
+                setTimeout(createCrow, Math.random() * 2000);
             });
         }
 
-        // Generar cuervos iniciales con un retraso para que aparezcan escalonadamente
         for (let i = 0; i < numberOfCrows; i++) {
-            setTimeout(createCrow, Math.random() * 7000); // Retraso de hasta 7 segundos
+            setTimeout(createCrow, Math.random() * 7000);
         }
     </script>
 
