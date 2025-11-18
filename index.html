@@ -21,7 +21,7 @@
             line-height: 1.6;
             overflow-x: hidden;
 
-            /* FONDO ESTRELLADO (Limpio y oscuro) */
+            /* FONDO ESTRELLADO (Limpio) */
             background-image: 
                 radial-gradient(ellipse at center, rgba(20,0,30,0.6) 0%, rgba(0,0,0,0.9) 100%),
                 url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 100 100"><filter id="noiseFilter"><feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch" result="noise" /><feColorMatrix in="noise" type="matrix" values="0 0 0 0 0, 0 0 0 0 0, 0 0 0 0 0, 0 0 0 -1 1" /><feComposite operator="in" in2="SourceGraphic" result="comp" /></filter><rect width="100" height="100" fill="transparent"/><circle cx="50" cy="50" r="1" fill="#FFFFFF" filter="url(#noiseFilter)" opacity="0.1"/></svg>'),
@@ -42,44 +42,78 @@
             max-width: 900px;
             margin: 80px auto;
             padding: 40px;
-            /* Fondo oscuro semitransparente para que se lea el texto */
-            background-color: rgba(10, 10, 18, 0.85); 
-            border-radius: 15px;
+            /* Fondo sólido semi-transparente (SIN circuitos adentro) */
+            background-color: rgba(13, 13, 25, 0.9); 
+            border-radius: 8px;
             position: relative;
             z-index: 10;
             backdrop-filter: blur(10px);
-            /* SIN sombras internas, solo limpieza */
+            
+            /* EL MARCO REAL (Borde Morado Neón) */
+            border: 2px solid #bb86fc;
+            box-shadow: 0 0 15px rgba(187, 134, 252, 0.4), inset 0 0 20px rgba(0,0,0,0.8);
         }
 
-        /* --- MARCO DE CIRCUITO TECNOLÓGICO (Extendido hacia afuera) --- */
+        /* --- DETALLES DEL MARCO DE CIRCUITO (Esquinas y Nodos) --- */
+        /* Usamos ::before para dibujar las líneas y puntos Turquesa sobre el borde Morado */
         .container::before {
             content: '';
             position: absolute;
-            /* Hacemos el marco un poco más grande que el contenedor */
-            top: -15px; 
-            left: -15px; 
-            right: -15px; 
-            bottom: -15px;
-            border-radius: 20px;
-            z-index: -1; /* Se dibuja DETRÁS del contenedor */
-            
-            /* Borde Morado Neón */
-            border: 2px solid #bb86fc;
-            
-            /* Sombra de Neón Externa (Morada dominante + toque Turquesa) */
-            box-shadow: 0 0 15px #bb86fc, 0 0 30px rgba(187, 134, 252, 0.4), 0 0 5px #00ffff;
+            /* Hacemos que este elemento sea un poco más grande que el borde morado */
+            top: -4px; left: -4px; right: -4px; bottom: -4px;
+            z-index: 11; /* Encima del borde del contenedor */
+            pointer-events: none;
+            border-radius: 10px;
 
-            /* PATRÓN DE CIRCUITO SVG */
-            /* Dibuja líneas moradas y puntos turquesas */
-            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M10 0 V20 L30 40 V100 M70 0 V30 L50 50 V100' stroke='%23bb86fc' stroke-width='2' fill='none' opacity='0.6'/%3E%3Ccircle cx='10' cy='20' r='3' fill='%2300ffff' /%3E%3Ccircle cx='30' cy='40' r='3' fill='%231a1a2e' stroke='%23bb86fc' stroke-width='2' /%3E%3Ccircle cx='70' cy='30' r='3' fill='%2300ffff' /%3E%3Cpath d='M0 10 H20 L40 30 H100 M0 70 H30 L50 50 H100' stroke='%23bb86fc' stroke-width='2' fill='none' opacity='0.6'/%3E%3Ccircle cx='20' cy='10' r='3' fill='%231a1a2e' stroke='%23bb86fc' stroke-width='2' /%3E%3Ccircle cx='40' cy='30' r='3' fill='%2300ffff' /%3E%3C/svg%3E");
+            /* DIBUJO DEL CIRCUITO CON GRADIENTES CSS (Turquesa) */
+            background: 
+                /* Esquina Superior Izquierda: Línea + Punto */
+                radial-gradient(circle, #00ffff 4px, transparent 5px) -4px -4px,
+                linear-gradient(to right, #00ffff 2px, transparent 2px) -2px -2px,
+                linear-gradient(to bottom, #00ffff 2px, transparent 2px) -2px -2px,
+
+                /* Esquina Superior Derecha */
+                radial-gradient(circle, #00ffff 4px, transparent 5px) calc(100% + 4px) -4px,
+                linear-gradient(to left, #00ffff 2px, transparent 2px) calc(100% + 2px) -2px,
+                linear-gradient(to bottom, #00ffff 2px, transparent 2px) calc(100% + 2px) -2px,
+
+                /* Esquina Inferior Izquierda */
+                radial-gradient(circle, #00ffff 4px, transparent 5px) -4px calc(100% + 4px),
+                linear-gradient(to right, #00ffff 2px, transparent 2px) -2px calc(100% + 2px),
+                linear-gradient(to top, #00ffff 2px, transparent 2px) -2px calc(100% + 2px),
+
+                /* Esquina Inferior Derecha */
+                radial-gradient(circle, #00ffff 4px, transparent 5px) calc(100% + 4px) calc(100% + 4px),
+                linear-gradient(to left, #00ffff 2px, transparent 2px) calc(100% + 2px) calc(100% + 2px),
+                linear-gradient(to top, #00ffff 2px, transparent 2px) calc(100% + 2px) calc(100% + 2px);
+
+            /* Tamaño de cada "dibujo" de esquina */
+            background-size: 40px 40px; 
+            background-repeat: no-repeat;
+            background-position: top left, top left, top left, 
+                                 top right, top right, top right,
+                                 bottom left, bottom left, bottom left,
+                                 bottom right, bottom right, bottom right;
             
-            background-size: 150px 150px; /* Tamaño del patrón */
+            /* Brillo Turquesa Sutil en las esquinas */
+            filter: drop-shadow(0 0 5px #00ffff);
         }
+
+        /* --- LÍNEAS CONECTORAS ADICIONALES (Detalle central) --- */
+        .container::after {
+            content: '';
+            position: absolute;
+            top: 50%; left: -6px; right: -6px; height: 2px;
+            background: linear-gradient(90deg, transparent 0%, #bb86fc 20%, transparent 50%, #bb86fc 80%, transparent 100%);
+            z-index: 11;
+            pointer-events: none;
+            opacity: 0.5;
+        }
+
 
         h1 {
             color: #bb86fc;
             text-align: center;
-            /* Neón Morado Intenso en el texto */
             text-shadow: 0 0 10px rgba(187, 134, 252, 0.8), 0 0 20px rgba(187, 134, 252, 0.4);
             font-size: 2.5em;
             margin-bottom: 10px;
@@ -132,8 +166,8 @@
 
         .button:hover {
             background-color: #bb86fc;
-            color: #0f0f1c; /* Texto oscuro sobre fondo morado */
-            box-shadow: 0 0 20px #bb86fc; /* Brillo intenso al pasar el mouse */
+            color: #0f0f1c; 
+            box-shadow: 0 0 20px #bb86fc; 
         }
     
         /* Iconos Sociales */
@@ -191,7 +225,7 @@
         .card:hover {
             transform: translateY(-5px);
             border-color: #bb86fc;
-            box-shadow: 0 0 15px rgba(187, 134, 252, 0.3); /* Sombra morada suave */
+            box-shadow: 0 0 15px rgba(187, 134, 252, 0.3);
         }
 
         .card h3 {
@@ -241,7 +275,6 @@
             transform: scale(1.2); 
             transform-origin: top left;
             z-index: 15;
-            /* Brillo sutil morado para integrarlo */
             filter: drop-shadow(0 0 5px rgba(187, 134, 252, 0.5));
         }
         
@@ -349,12 +382,11 @@
             <h2 id="publicaciones">Últimas Publicaciones</h2>
             
             <div class="publications-grid">
-                  
                 <div class="card">
                     <h3>Ciberamenaza Silenciosa: Desmantelando el Malware Evasivo que Usa Process Hollowing</h3>
                     <p>Análisis de malware avanzado que utiliza Stack Strings y Process Hollowing para la evasión. El informe concluye con la necesidad de implementar EDR/XDR y reforzar las protecciones de memoria (DEP/ASLR) para una defensa efectiva.</p>
                     <a href="https://medium.com/@fernandaycesarmauricioymariel/ransomed-lab-cyberdefenders-6def412b157f" class="card-link" target="_blank">Leer más &rarr;</a>
-                </div>
+                </div>
                 
                 <div class="card">
                     <h3>Web Investigation Lab</h3>
