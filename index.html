@@ -188,10 +188,52 @@
                 display: none;
             }
         }
+        /* --- ESTILOS PARA LOS CUERVOS ANIMADOS --- */
+.crows-container {
+    position: fixed; /* Fijo en la pantalla */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; /* Permite hacer clic a través de él */
+    overflow: hidden; /* Asegura que no se desborden */
+    z-index: -1; /* Envía los cuervos al fondo, detrás de todo lo demás */
+}
+
+.crow {
+    position: absolute;
+    width: 80px; /* Tamaño del cuervo */
+    height: 60px; /* Ajusta según el aspecto del cuervo */
+    background-color: #bb86fc; /* Color morado para la silueta */
+    mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path d="M545.9 220.3L379.8 19.6C374.3 10 364.6 4 353.7 4C342.8 4 333.1 10 327.6 19.6L161.5 220.3C157.1 228.1 156 237 158.4 245.5L181.7 328.7C184 336.7 189 343.8 195.4 349.3L336 471.2V320H352V471.2L492.6 349.3C499 343.8 504 336.7 506.3 328.7L529.6 245.5C532 237 530.9 228.1 526.5 220.3L545.9 220.3L545.9 220.3zM288 387.8L121.9 220.3C117.5 228.1 116.4 237 118.8 245.5L142.1 328.7C144.4 336.7 149.4 343.8 155.8 349.3L288 471.2V387.8zM240 224C240 181.6 274.6 147 317 147C359.4 147 394 181.6 394 224V256C394 264.8 386.8 272 378 272H256C247.2 272 240 264.8 240 256V224z"/></svg>'); /* Silueta de cuervo con SVG */
+    mask-size: contain;
+    mask-repeat: no-repeat;
+    mask-position: center;
+    -webkit-mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path d="M545.9 220.3L379.8 19.6C374.3 10 364.6 4 353.7 4C342.8 4 333.1 10 327.6 19.6L161.5 220.3C157.1 228.1 156 237 158.4 245.5L181.7 328.7C184 336.7 189 343.8 195.4 349.3L336 471.2V320H352V471.2L492.6 349.3C499 343.8 504 336.7 506.3 328.7L529.6 245.5C532 237 530.9 228.1 526.5 220.3L545.9 220.3L545.9 220.3zM288 387.8L121.9 220.3C117.5 228.1 116.4 237 118.8 245.5L142.1 328.7C144.4 336.7 149.4 343.8 155.8 349.3L288 471.2V387.8zM240 224C240 181.6 274.6 147 317 147C359.4 147 394 181.6 394 224V256C394 264.8 386.8 272 378 272H256C247.2 272 240 264.8 240 256V224z"/></svg>'); /* Para compatibilidad con Safari */
+    -webkit-mask-size: contain;
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-position: center;
+
+    animation: fly-across linear infinite; /* Animación de vuelo principal */
+    transform: scaleX(1); /* Dirección por defecto (hacia la izquierda) */
+}
+
+/* Animación de vuelo, cambiando la posición */
+@keyframes fly-across {
+    from {
+        transform: translateX(100vw); /* Empieza fuera de la pantalla a la derecha */
+    }
+    to {
+        transform: translateX(-100vw); /* Termina fuera de la pantalla a la izquierda */
+    }
+}
     </style> 
 </head> 
 <body>
-
+<div class="crows-container"></div>
+    
+    <div class="badge-container">
+        
     <div class="badge-container">
         <script src="https://cyberdefenders.org/p/cr0w_10/badge"></script>
     </div>
@@ -307,6 +349,66 @@
     // 5. Mostrar la primera sección (WriteUps) por defecto al cargar la página
     showSection('writeups');
 </script>
+<script>
+    // ... tu script actual para las secciones ...
+    // Asegúrate de que este nuevo script esté DENTRO del mismo <script> o en uno nuevo al final del <body>.
 
+    const crowsContainer = document.querySelector('.crows-container');
+    const numberOfCrows = 5; // Cantidad de cuervos que quieres en pantalla simultáneamente
+
+    function createCrow() {
+        const crow = document.createElement('div');
+        crow.classList.add('crow');
+
+        // Posición inicial aleatoria en el eje Y (vertical)
+        const startY = Math.random() * window.innerHeight;
+        crow.style.top = `${startY}px`;
+
+        // Tamaño aleatorio para variedad (entre 0.8 y 1.2 de la escala original)
+        const randomScale = 0.8 + Math.random() * 0.4; // entre 0.8 y 1.2
+        crow.style.transform = `scale(${randomScale})`;
+
+        // Velocidad de animación aleatoria
+        const randomDuration = 15 + Math.random() * 10; // entre 15 y 25 segundos
+        crow.style.animationDuration = `${randomDuration}s`;
+
+        // Dirección aleatoria (volar de derecha a izquierda o de izquierda a derecha)
+        // Por defecto, vuelan de derecha a izquierda (translateX(100vw) a translateX(-100vw))
+        // Si queremos que vuelen de izquierda a derecha, invertimos la animación y volteamos el cuervo
+        if (Math.random() < 0.5) { // 50% de probabilidad de volar en la otra dirección
+            crow.style.animationName = 'fly-across-reverse'; // Usaremos una animación inversa
+            crow.style.transform += ' scaleX(-1)'; // Voltear horizontalmente
+        }
+        
+        crowsContainer.appendChild(crow);
+
+        // Eliminar el cuervo después de que termine la animación para no sobrecargar el DOM
+        crow.addEventListener('animationend', () => {
+            crow.remove();
+            // Crear un nuevo cuervo para mantener el ciclo
+            setTimeout(createCrow, Math.random() * 2000); // Pequeño retardo aleatorio
+        });
+    }
+
+    // Crea la animación inversa para cuando queremos que el cuervo vuele de izquierda a derecha
+    const styleSheet = document.styleSheets[0];
+    styleSheet.insertRule(`
+        @keyframes fly-across-reverse {
+            from {
+                transform: translateX(-100vw); /* Empieza fuera de la pantalla a la izquierda */
+            }
+            to {
+                transform: translateX(100vw); /* Termina fuera de la pantalla a la derecha */
+            }
+        }
+    `, styleSheet.cssRules.length);
+
+
+    // Generar el número inicial de cuervos
+    for (let i = 0; i < numberOfCrows; i++) {
+        // Un pequeño retardo inicial para que no aparezcan todos a la vez
+        setTimeout(createCrow, Math.random() * 5000); 
+    }
+</script>
 </body>
 </html>
