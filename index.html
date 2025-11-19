@@ -13,24 +13,25 @@
 
         /* --- ESTILOS CSS GENERALES --- */
         body {
-            font-family: 'Courier New', Courier, monospace; /* Fuente tecnológica */
+            font-family: 'Arial', sans-serif; /* Fuente limpia */
             margin: 0;
             padding: 0;
-            background-color: #050505; /* Negro puro de fondo */
+            background-color: #1a1a2e;
             color: #e0e0e0;
             line-height: 1.6;
             overflow-x: hidden;
 
-            /* FONDO ESTRELLADO LIMPIO (Sin manchas de color) */
+            /* FONDO ESTRELLADO (Estático y limpio) */
             background-image: 
                 radial-gradient(white, rgba(255,255,255,.2) 2px, transparent 3px),
                 radial-gradient(white, rgba(255,255,255,.15) 1px, transparent 2px),
-                radial-gradient(white, rgba(255,255,255,.1) 2px, transparent 3px);
-            background-size: 550px 550px, 350px 350px, 250px 250px;
-            background-position: 0 0, 40px 60px, 130px 270px;
+                radial-gradient(white, rgba(255,255,255,.1) 2px, transparent 3px),
+                linear-gradient(45deg, #050508, #1a0526, #050508);
+            background-size: 550px 550px, 350px 350px, 250px 250px, cover;
+            background-position: 0 0, 40px 60px, 130px 270px, center;
         }
 
-        /* --- EL MARCO TECNOLÓGICO --- */
+        /* --- CONTENEDOR PRINCIPAL CON MARCO DE CIRCUITO --- */
         .container {
             max-width: 900px;
             margin: 80px auto;
@@ -38,30 +39,35 @@
             position: relative;
             z-index: 10;
             
-            /* 1. Fondo sólido oscuro para que se lea el texto (tapa las estrellas de atrás) */
+            /* Fondo sólido para el texto (Tapa las estrellas de atrás) */
             background-color: #0a0a12; 
             
-            /* 2. Definimos el espacio para el borde ancho */
-            border: 25px solid transparent;
+            /* Espacio para el marco */
+            border: 20px solid transparent;
 
-            /* 3. LA MAGIA: SVG de Circuito aplicado como borde */
-            /* Este SVG dibuja líneas y círculos como tu referencia */
-            border-image-source: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cg fill='none' stroke='%23bb86fc' stroke-width='2'%3E%3Cpath d='M10,10 L30,10 L30,5 M40,5 L40,10 L90,10 M10,10 L10,40 L5,40 M5,60 L10,60 L10,90 M10,90 L40,90 L40,95 M60,95 L60,90 L90,90 M90,90 L90,60 L95,60 M95,40 L90,40 L90,10' /%3E%3Ccircle cx='10' cy='10' r='3' fill='%23050505' stroke='%2300ffff'/%3E%3Ccircle cx='90' cy='10' r='3' fill='%23050505' stroke='%2300ffff'/%3E%3Ccircle cx='90' cy='90' r='3' fill='%23050505' stroke='%2300ffff'/%3E%3Ccircle cx='10' cy='90' r='3' fill='%23050505' stroke='%2300ffff'/%3E%3Ccircle cx='30' cy='5' r='2' fill='%23bb86fc' stroke='none'/%3E%3Ccircle cx='40' cy='95' r='2' fill='%23bb86fc' stroke='none'/%3E%3Ccircle cx='5' cy='60' r='2' fill='%23bb86fc' stroke='none'/%3E%3Ccircle cx='95' cy='40' r='2' fill='%23bb86fc' stroke='none'/%3E%3C/g%3E%3C/svg%3E");
+            /* --- LA MAGIA DEL MARCO DE CIRCUITO --- */
+            /* SVG generado para imitar tu imagen de referencia */
+            border-image-source: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='150' height='150' viewBox='0 0 150 150'%3E%3Cdefs%3E%3Cstyle%3E.line%7Bfill:none;stroke:%23bb86fc;stroke-width:3;stroke-linecap:round;%7D .node%7Bfill:%2300ffff;stroke:none;%7D%3C/style%3E%3C/defs%3E%3C!-- Líneas del Circuito (Morado) --%3E%3Cpath class='line' d='M20,20 L50,20 L55,15 L95,15 L100,20 L130,20' /%3E%3Cpath class='line' d='M20,130 L50,130 L55,135 L95,135 L100,130 L130,130' /%3E%3Cpath class='line' d='M20,20 L20,50 L15,55 L15,95 L20,100 L20,130' /%3E%3Cpath class='line' d='M130,20 L130,50 L135,55 L135,95 L130,100 L130,130' /%3E%3Cpath class='line' d='M10,10 L20,20' /%3E%3Cpath class='line' d='M140,10 L130,20' /%3E%3Cpath class='line' d='M10,140 L20,130' /%3E%3Cpath class='line' d='M140,140 L130,130' /%3E%3C!-- Nodos (Turquesa) --%3E%3Ccircle class='node' cx='20' cy='20' r='4'/%3E%3Ccircle class='node' cx='130' cy='20' r='4'/%3E%3Ccircle class='node' cx='20' cy='130' r='4'/%3E%3Ccircle class='node' cx='130' cy='130' r='4'/%3E%3Ccircle class='node' cx='75' cy='15' r='3'/%3E%3Ccircle class='node' cx='75' cy='135' r='3'/%3E%3Ccircle class='node' cx='15' cy='75' r='3'/%3E%3Ccircle class='node' cx='135' cy='75' r='3'/%3E%3C/svg%3E");
             
-            /* 4. Configuración para que el borde se estire correctamente */
-            border-image-slice: 30; 
-            border-image-repeat: round;
-            
-            /* Sombra externa sutil (solo brillo, no mancha) */
-            box-shadow: 0 0 20px rgba(0,0,0,0.9); 
+            /* Configuración para estirar el marco correctamente */
+            border-image-slice: 50; 
+            border-image-repeat: stretch;
+
+            /* Sombra de Neón Externa (Morada y Turquesa) */
+            /* filter: drop-shadow hace que el SVG brille */
+            filter: drop-shadow(0 0 5px #bb86fc) drop-shadow(0 0 10px rgba(187, 134, 252, 0.5));
         }
 
+        /* Ajuste para el título */
         h1 {
             color: #bb86fc;
             text-align: center;
             text-transform: uppercase;
             letter-spacing: 3px;
-            text-shadow: 0 0 5px #bb86fc; /* Brillo suave en texto */
+            /* Sombra de texto sutil */
+            text-shadow: 0 0 10px rgba(187, 134, 252, 0.7);
+            font-size: 2.5em;
+            margin-bottom: 10px;
         }
 
         p { color: #d0d0d0; }
@@ -82,7 +88,8 @@
             object-fit: cover;
             border: 3px solid #bb86fc;
             margin-bottom: 20px;
-            box-shadow: 0 0 10px rgba(187, 134, 252, 0.5);
+            /* Brillo morado alrededor del logo */
+            box-shadow: 0 0 15px rgba(187, 134, 252, 0.6);
         }
 
         /* Botones */
@@ -100,17 +107,18 @@
             background-color: transparent;
             color: #bb86fc;
             text-decoration: none;
-            border: 1px solid #bb86fc;
-            border-radius: 4px;
+            border: 2px solid #bb86fc;
+            border-radius: 5px;
             font-weight: bold;
             cursor: pointer;
             transition: all 0.3s ease;
+            box-shadow: 0 0 5px rgba(187, 134, 252, 0.2);
         }
 
         .button:hover {
             background-color: #bb86fc;
-            color: #000;
-            box-shadow: 0 0 15px #bb86fc;
+            color: #0f0f1c;
+            box-shadow: 0 0 20px #bb86fc, 0 0 5px #00ffff; /* Toque turquesa en el brillo */
         }
     
         /* Iconos Sociales */
@@ -120,7 +128,7 @@
         }
 
         .social-icons a {
-            color: #888;
+            color: #e0e0e0;
             font-size: 2em;
             margin: 0 15px;
             text-decoration: none;
@@ -128,8 +136,8 @@
         }
 
         .social-icons a:hover {
-            color: #00ffff; /* Toque turquesa en hover */
-            text-shadow: 0 0 8px #00ffff;
+            color: #00ffff; /* Hover Turquesa */
+            text-shadow: 0 0 10px #00ffff;
             transform: scale(1.1);
         }
         
@@ -137,16 +145,18 @@
         hr {
             border: 0;
             height: 1px;
-            background: #bb86fc;
+            background: linear-gradient(90deg, transparent, #bb86fc, transparent);
             margin: 50px 0;
-            opacity: 0.3;
+            opacity: 0.5;
         }
 
         h2 {
             color: #bb86fc;
             text-align: center;
             margin-bottom: 30px;
+            text-shadow: 0 0 8px rgba(187, 134, 252, 0.5);
             text-transform: uppercase;
+            letter-spacing: 2px;
         }
 
         .publications-grid {
@@ -156,16 +166,17 @@
         }
 
         .card {
-            background-color: #111;
-            border: 1px solid #333;
-            border-radius: 4px;
+            background-color: rgba(20, 20, 35, 0.9);
+            border: 1px solid #3a3a5a;
+            border-radius: 8px;
             padding: 20px;
             transition: all 0.3s ease;
         }
 
         .card:hover {
-            border-color: #00ffff; /* Borde turquesa al pasar mouse */
-            box-shadow: 0 0 10px rgba(0, 255, 255, 0.2);
+            transform: translateY(-5px);
+            border-color: #bb86fc;
+            box-shadow: 0 0 15px rgba(187, 134, 252, 0.3);
         }
 
         .card h3 {
@@ -176,12 +187,12 @@
 
         .card p {
             font-size: 0.9em;
-            color: #aaa;
+            color: #b0b0b0;
             margin-bottom: 20px;
         }
 
         .card-link {
-            color: #00ffff;
+            color: #00ffff; /* Enlace turquesa */
             text-decoration: none;
             font-weight: bold;
             font-size: 0.9em;
@@ -215,6 +226,7 @@
             transform: scale(1.2); 
             transform-origin: top left;
             z-index: 15;
+            filter: drop-shadow(0 0 5px rgba(187, 134, 252, 0.5));
         }
         
         @media (max-width: 1200px) {
@@ -232,7 +244,7 @@
             height: 100%;
             pointer-events: none;
             overflow: hidden;
-            z-index: 5; /* Detrás del contenido */
+            z-index: 5;
         }
 
         .crow {
@@ -241,7 +253,7 @@
             height: auto;
             opacity: 0;
             transition: opacity 0.5s ease-in-out;
-            /* Estela de neón limpia */
+            /* Estela de neón Morado para el cuervo */
             filter: drop-shadow(0 0 5px #bb86fc);
             animation: none linear infinite;
         }
@@ -320,17 +332,12 @@
             
             <div class="publications-grid">
 
-                 <div class="card">
+                <div class="card">
                     <h3>Investigación Forense: Análisis de Registro y Correos en HireMe Lab (CyberDefenders)</h3>
                     <p>Resolución técnica del reto HireMe Lab: análisis forense de Registro, correos y artefactos de Windows.</p>
-                    <a href="https://medium.com/@fernandaycesarmauricioymariel/ransomed-lab-cyberdefenders-6def412b157f" class="card-link" target="_blank">Leer más &rarr;</a>
-                </div>
-
-                <div class="card">
-                    <h3>Ciberamenaza Silenciosa: Desmantelando el Malware Evasivo que Usa Process Hollowing</h3>
-                    <p>Análisis de malware avanzado que utiliza Stack Strings y Process Hollowing para la evasión. El informe concluye con la necesidad de implementar EDR/XDR y reforzar las protecciones de memoria (DEP/ASLR) para una defensa efectiva.</p>
-                    <a href="https://medium.com/@fernandaycesarmauricioymariel/ransomed-lab-cyberdefenders-6def412b157f" class="card-link" target="_blank">Leer más &rarr;</a>
-                </div>
+                    <a href="https://medium.com/@fernandaycesarmauricioymariel/hireme-lab-cyberdefenders-b955e367fcb3" class="card-link" target="_blank">Leer más &rarr;</a>
+                </div>
+            
                 
                 <div class="card">
                     <h3>Web Investigation Lab</h3>
