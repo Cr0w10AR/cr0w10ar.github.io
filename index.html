@@ -6,79 +6,111 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <title>Portafolio - CROW</title>
     <style>
-        /* --- ESTILO PARA EL SCROLL SUAVE --- */
+        /* --- CONFIGURACIÓN BÁSICA --- */
         html {
             scroll-behavior: smooth;
         }
 
-        /* --- ESTILOS CSS GENERALES --- */
         body {
-            font-family: 'Arial', sans-serif; /* Fuente limpia */
             margin: 0;
             padding: 0;
-            background-color: #1a1a2e;
+            background-color: #050505; /* Negro puro */
             color: #e0e0e0;
+            font-family: 'Courier New', Courier, monospace; /* Fuente Tech */
             line-height: 1.6;
             overflow-x: hidden;
 
-            /* FONDO ESTRELLADO (Estático y limpio) */
+            /* Tu fondo estrellado original */
             background-image: 
                 radial-gradient(white, rgba(255,255,255,.2) 2px, transparent 3px),
                 radial-gradient(white, rgba(255,255,255,.15) 1px, transparent 2px),
-                radial-gradient(white, rgba(255,255,255,.1) 2px, transparent 3px),
-                linear-gradient(45deg, #050508, #1a0526, #050508);
-            background-size: 550px 550px, 350px 350px, 250px 250px, cover;
-            background-position: 0 0, 40px 60px, 130px 270px, center;
+                radial-gradient(white, rgba(255,255,255,.1) 2px, transparent 3px);
+            background-size: 550px 550px, 350px 350px, 250px 250px;
+            background-position: 0 0, 40px 60px, 130px 270px;
         }
 
-        /* --- CONTENEDOR PRINCIPAL CON MARCO DE CIRCUITO --- */
-        .container {
-            max-width: 900px;
-            margin: 80px auto;
-            padding: 40px;
+        /* --- CONTENEDOR CYBERPUNK (El Marco Principal) --- */
+        .cyber-container {
             position: relative;
-            z-index: 10;
+            width: 95%; /* Un poco más ancho para móviles */
+            max-width: 1000px; /* Ancho máximo del portafolio */
+            margin: 60px auto; /* Centrado vertical */
+            min-height: 80vh; /* Altura mínima */
+            display: flex;
+            justify-content: center;
+            align-items: flex-start; /* Alineado arriba para contenido largo */
+            box-sizing: border-box;
             
-            /* Fondo sólido para el texto (Tapa las estrellas de atrás) */
-            background-color: #0a0a12; 
-            
-            /* Espacio para el marco */
-            border: 20px solid transparent;
-
-            /* --- LA MAGIA DEL MARCO DE CIRCUITO --- */
-            /* SVG generado para imitar tu imagen de referencia */
-            border-image-source: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='150' height='150' viewBox='0 0 150 150'%3E%3Cdefs%3E%3Cstyle%3E.line%7Bfill:none;stroke:%23bb86fc;stroke-width:3;stroke-linecap:round;%7D .node%7Bfill:%2300ffff;stroke:none;%7D%3C/style%3E%3C/defs%3E%3C!-- Líneas del Circuito (Morado) --%3E%3Cpath class='line' d='M20,20 L50,20 L55,15 L95,15 L100,20 L130,20' /%3E%3Cpath class='line' d='M20,130 L50,130 L55,135 L95,135 L100,130 L130,130' /%3E%3Cpath class='line' d='M20,20 L20,50 L15,55 L15,95 L20,100 L20,130' /%3E%3Cpath class='line' d='M130,20 L130,50 L135,55 L135,95 L130,100 L130,130' /%3E%3Cpath class='line' d='M10,10 L20,20' /%3E%3Cpath class='line' d='M140,10 L130,20' /%3E%3Cpath class='line' d='M10,140 L20,130' /%3E%3Cpath class='line' d='M140,140 L130,130' /%3E%3C!-- Nodos (Turquesa) --%3E%3Ccircle class='node' cx='20' cy='20' r='4'/%3E%3Ccircle class='node' cx='130' cy='20' r='4'/%3E%3Ccircle class='node' cx='20' cy='130' r='4'/%3E%3Ccircle class='node' cx='130' cy='130' r='4'/%3E%3Ccircle class='node' cx='75' cy='15' r='3'/%3E%3Ccircle class='node' cx='75' cy='135' r='3'/%3E%3Ccircle class='node' cx='15' cy='75' r='3'/%3E%3Ccircle class='node' cx='135' cy='75' r='3'/%3E%3C/svg%3E");
-            
-            /* Configuración para estirar el marco correctamente */
-            border-image-slice: 50; 
-            border-image-repeat: stretch;
-
-            /* Sombra de Neón Externa (Morada y Turquesa) */
-            /* filter: drop-shadow hace que el SVG brille */
-            filter: drop-shadow(0 0 5px #bb86fc) drop-shadow(0 0 10px rgba(187, 134, 252, 0.5));
+            /* Fondo del contenedor (Oscuro para leer texto) */
+            background: radial-gradient(circle, rgba(26,5,41,0.9) 0%, rgba(0,0,0,0.95) 100%);
+            box-shadow: 0 0 50px rgba(187, 134, 252, 0.1); /* Sombra morada sutil */
+            border-radius: 20px; /* Borde suave */
+            padding: 20px; /* Espacio interno para que el SVG no toque el borde */
         }
 
-        /* Ajuste para el título */
+        /* --- CAPA DEL CIRCUITO (SVG) --- */
+        /* Esta capa se estira sobre el contenedor */
+        .circuit-layer {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none; /* Permite seleccionar texto debajo */
+            z-index: 1;
+        }
+
+        /* Estilo de Líneas del Circuito */
+        .trace {
+            fill: none;
+            stroke: #bb86fc; /* TU COLOR: Morado Neón */
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            vector-effect: non-scaling-stroke; /* Mantiene el grosor al estirar */
+            filter: drop-shadow(0 0 3px #bb86fc);
+            opacity: 0.7;
+        }
+
+        /* Estilo de Nodos (Puntos) */
+        .node {
+            fill: #00ffff; /* TU COLOR: Turquesa Neón */
+            filter: drop-shadow(0 0 3px #00ffff);
+        }
+
+        /* Animación de Parpadeo */
+        .pulse-slow { animation: flicker 4s infinite alternate; }
+        .pulse-fast { animation: flicker 0.5s infinite alternate; opacity: 0.8; }
+
+        @keyframes flicker {
+            0% { opacity: 0.3; }
+            100% { opacity: 1; }
+        }
+
+        /* --- CAJA DE CONTENIDO (Tu info) --- */
+        .content-box {
+            position: relative;
+            z-index: 2; /* Encima del circuito */
+            width: 100%;
+            padding: 20px; /* Espacio interno del contenido */
+        }
+
+        /* --- ESTILOS DE TUS ELEMENTOS --- */
+        
         h1 {
             color: #bb86fc;
             text-align: center;
             text-transform: uppercase;
             letter-spacing: 3px;
-            /* Sombra de texto sutil */
-            text-shadow: 0 0 10px rgba(187, 134, 252, 0.7);
-            font-size: 2.5em;
-            margin-bottom: 10px;
+            text-shadow: 0 0 10px rgba(187, 134, 252, 0.8);
+            font-size: 3em;
+            margin-top: 10px;
         }
 
-        p { color: #d0d0d0; }
-        
-        img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 8px;
-            display: block;
-            margin: 20px auto;
-        }  
+        p { 
+            color: #d0d0d0; 
+            text-align: justify; /* Texto justificado para orden */
+        }
         
         /* Logo Circular */
         .circular-logo {
@@ -87,44 +119,15 @@
             border-radius: 50%;
             object-fit: cover;
             border: 3px solid #bb86fc;
-            margin-bottom: 20px;
-            /* Brillo morado alrededor del logo */
-            box-shadow: 0 0 15px rgba(187, 134, 252, 0.6);
+            display: block;
+            margin: 0 auto 20px auto;
+            box-shadow: 0 0 20px rgba(187, 134, 252, 0.5);
         }
 
-        /* Botones */
-        .button-container {
-            text-align: center;
-            margin-top: 30px;
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-        } 
-
-        .button {
-            display: inline-block;
-            padding: 12px 30px;
-            background-color: transparent;
-            color: #bb86fc;
-            text-decoration: none;
-            border: 2px solid #bb86fc;
-            border-radius: 5px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 0 5px rgba(187, 134, 252, 0.2);
-        }
-
-        .button:hover {
-            background-color: #bb86fc;
-            color: #0f0f1c;
-            box-shadow: 0 0 20px #bb86fc, 0 0 5px #00ffff; /* Toque turquesa en el brillo */
-        }
-    
         /* Iconos Sociales */
         .social-icons {
             text-align: center;
-            margin: 25px 0;
+            margin: 20px 0;
         }
 
         .social-icons a {
@@ -136,17 +139,47 @@
         }
 
         .social-icons a:hover {
-            color: #00ffff; /* Hover Turquesa */
+            color: #00ffff;
             text-shadow: 0 0 10px #00ffff;
             transform: scale(1.1);
         }
-        
-        /* Secciones */
+
+        /* Botones Estilo Glitch (Adaptados a Morado) */
+        .button-container {
+            text-align: center;
+            margin: 40px 0;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap; /* Para móviles */
+        }
+
+        .btn-glitch {
+            display: inline-block;
+            padding: 12px 30px;
+            border: 1px solid #bb86fc;
+            color: #bb86fc;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-weight: bold;
+            transition: 0.3s;
+            background: rgba(187, 134, 252, 0.05);
+            box-shadow: 0 0 10px rgba(187, 134, 252, 0.2);
+            cursor: pointer;
+        }
+
+        .btn-glitch:hover {
+            background: #bb86fc;
+            color: #000;
+            box-shadow: 0 0 20px #bb86fc, 0 0 40px #bb86fc;
+        }
+
+        /* Secciones y Tarjetas */
         hr {
             border: 0;
             height: 1px;
             background: linear-gradient(90deg, transparent, #bb86fc, transparent);
-            margin: 50px 0;
+            margin: 40px 0;
             opacity: 0.5;
         }
 
@@ -154,140 +187,127 @@
             color: #bb86fc;
             text-align: center;
             margin-bottom: 30px;
-            text-shadow: 0 0 8px rgba(187, 134, 252, 0.5);
+            text-shadow: 0 0 5px rgba(187, 134, 252, 0.5);
             text-transform: uppercase;
             letter-spacing: 2px;
         }
 
         .publications-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
         }
 
         .card {
-            background-color: rgba(20, 20, 35, 0.9);
-            border: 1px solid #3a3a5a;
-            border-radius: 8px;
+            background-color: rgba(10, 10, 15, 0.8);
+            border: 1px solid #333;
+            border-radius: 4px;
             padding: 20px;
             transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Pequeño detalle de borde en tarjeta */
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 2px; height: 100%;
+            background: #bb86fc;
+            opacity: 0;
+            transition: opacity 0.3s ease;
         }
 
         .card:hover {
-            transform: translateY(-5px);
             border-color: #bb86fc;
-            box-shadow: 0 0 15px rgba(187, 134, 252, 0.3);
+            box-shadow: 0 0 15px rgba(187, 134, 252, 0.2);
+            transform: translateY(-3px);
+        }
+        
+        .card:hover::before {
+            opacity: 1;
         }
 
         .card h3 {
             color: #bb86fc;
             margin-top: 0;
-            margin-bottom: 10px;
+            font-size: 1.1em;
         }
 
         .card p {
             font-size: 0.9em;
-            color: #b0b0b0;
+            color: #aaa;
             margin-bottom: 20px;
         }
 
         .card-link {
-            color: #00ffff; /* Enlace turquesa */
+            color: #00ffff;
             text-decoration: none;
             font-weight: bold;
-            font-size: 0.9em;
+            font-size: 0.85em;
+            text-transform: uppercase;
             transition: all 0.3s ease;
+            display: inline-block;
         }
 
         .card-link:hover {
-            text-decoration: underline;
             text-shadow: 0 0 5px #00ffff;
+            letter-spacing: 1px;
         }
 
-        /* Transiciones */
+        /* Transiciones de Pestañas */
         .content-section {
-            opacity: 0;
-            max-height: 0;
-            overflow: hidden;
-            transition: opacity 0.4s ease, max-height 0.6s ease;
-        }
-
-        .content-section.active {
-            opacity: 1;
-            max-height: 5000px;
-            padding-top: 10px;
+            display: none; /* Oculto por defecto con display para evitar problemas de altura */
+            animation: fadeIn 0.5s ease;
         }
         
-        /* Badge CyberDefenders */
+        .content-section.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Badge Externo */
         .badge-container {
             position: absolute;
-            top: 40px;
-            left: 40px;
-            transform: scale(1.2); 
-            transform-origin: top left;
-            z-index: 15;
-            filter: drop-shadow(0 0 5px rgba(187, 134, 252, 0.5));
+            top: 20px;
+            left: 20px;
+            transform: scale(1);
+            z-index: 20;
         }
-        
+
         @media (max-width: 1200px) {
-            .badge-container {
-                display: none;
-            }
+            .badge-container { display: none; }
         }
 
         /* Cuervos */
         .crows-container {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            top: 0; left: 0; width: 100%; height: 100%;
             pointer-events: none;
-            overflow: hidden;
-            z-index: 5;
+            z-index: 0;
         }
-
+        
         .crow {
             position: absolute;
-            width: 80px; 
-            height: auto;
+            width: 80px; height: auto;
             opacity: 0;
             transition: opacity 0.5s ease-in-out;
-            /* Estela de neón Morado para el cuervo */
-            filter: drop-shadow(0 0 5px #bb86fc);
+            filter: drop-shadow(0 0 5px #bb86fc); /* Estela Morada */
             animation: none linear infinite;
         }
+        
+        /* Animaciones de Cuervos (Optimizadas) */
+        @keyframes fly-diag-up { 0% { transform: translate(-100vw, 100vh); opacity:0; } 10% { opacity:1; } 100% { transform: translate(100vw, -100vh); opacity:0; } }
+        @keyframes fly-diag-down { 0% { transform: translate(-100vw, -100vh); opacity:0; } 10% { opacity:1; } 100% { transform: translate(100vw, 100vh); opacity:0; } }
+        @keyframes fly-diag-up-rev { 0% { transform: translate(100vw, 100vh) scaleX(-1); opacity:0; } 10% { opacity:1; } 100% { transform: translate(-100vw, -100vh) scaleX(-1); opacity:0; } }
+        @keyframes fly-diag-down-rev { 0% { transform: translate(100vw, -100vh) scaleX(-1); opacity:0; } 10% { opacity:1; } 100% { transform: translate(-100vw, 100vh) scaleX(-1); opacity:0; } }
 
-        /* Animaciones de vuelo */
-        @keyframes fly-diagonal-up {
-            0%   { transform: translate(calc(-100% - 100vw), calc(100% + 100vh)); opacity: 0; }
-            10%  { opacity: 1; }
-            90%  { opacity: 1; }
-            100% { transform: translate(calc(100vw + 100%), calc(-100% - 100vh)); opacity: 0; }
-        }
-
-        @keyframes fly-diagonal-down {
-            0%   { transform: translate(calc(-100% - 100vw), calc(-100% - 100vh)); opacity: 0; }
-            10%  { opacity: 1; }
-            90%  { opacity: 1; }
-            100% { transform: translate(calc(100vw + 100%), calc(100% + 100vh)); opacity: 0; }
-        }
-
-        @keyframes fly-diagonal-up-reverse {
-            0%   { transform: translate(calc(100vw + 100%), calc(100% + 100vh)); opacity: 0; }
-            10%  { opacity: 1; }
-            90%  { opacity: 1; }
-            100% { transform: translate(calc(-100% - 100vw), calc(-100% - 100vh)); opacity: 0; }
-        }
-
-        @keyframes fly-diagonal-down-reverse {
-            0%   { transform: translate(calc(100vw + 100%), calc(-100% - 100vh)); opacity: 0; }
-            10%  { opacity: 1; }
-            90%  { opacity: 1; }
-            100% { transform: translate(calc(-100% - 100vw), calc(100% + 100vh)); opacity: 0; }
-        }
-    </style> 
-</head> 
+    </style>
+</head>
 <body>
 
     <div class="crows-container"></div>
@@ -296,115 +316,146 @@
         <script src="https://cyberdefenders.org/p/cr0w_10/badge"></script>
     </div>
 
-    <div class="container">
+    <div class="cyber-container">
         
-        <img src="Logo Cuervo.png" alt="Logo de Cuervo" class="circular-logo">
+        <svg class="circuit-layer" viewBox="0 0 800 600" preserveAspectRatio="none">
+            <defs>
+                <circle id="n" r="4" class="node" />
+            </defs>
 
-        <h1>CR0W</h1>
-        
-        <div class="social-icons">
-            <a href="https://linkedin.com/in/tomas-romero-soc" target="_blank" title="LinkedIn">
-                <i class="fab fa-linkedin"></i>
-            </a>
-            <a href="mailto:tomasmromero0@gmail.com" title="Enviar Email">
-                <i class="fas fa-envelope"></i>
-            </a>
-        </div>
-        
-        <p>
-            Soy Técnico Superior en Ciberseguridad, especializado en la intersección de la <strong>Inteligencia Artificial</strong> y la <strong>seguridad digital</strong>. Mi enfoque principal abarca la <strong>informática forense</strong>, el <strong>OSINT</strong> (Inteligencia de Fuentes Abiertas) y el <strong>pentesting</strong>.
-        </p>
-        <p>
-            Como entusiasta de la cultura <em>Capture The Flag</em> (CTF) y un ávido usuario de <strong>Linux</strong> y <strong>PowerShell</strong>, me apasiona analizar sistemas, desentrañar amenazas y automatizar la defensa.
-        </p>
-        <p>
-            En este espacio comparto análisis técnicos, guías y herramientas avanzadas sobre ciberseguridad, <em>forensics</em>, IA aplicada y estrategias de <em>pentesting</em>.
-        </p>
-        
-        <div class="button-container">
-            <a href="#" class="button" data-target="writeups">WriteUps</a>
-            <a href="#" class="button" data-target="proyectos">Proyectos Personales</a>
-        </div>
+            <path class="trace" d="M 20,150 L 20,50 L 50,20 L 200,20" />
+            <use href="#n" x="20" y="150" />
+            <use href="#n" x="200" y="20" />
 
-        <div id="writeups" class="content-section">
-            <hr> 
-            <h2 id="publicaciones">Últimas Publicaciones</h2>
+            <path class="trace pulse-slow" d="M 300,30 L 320,30 L 340,50 L 400,50" />
+            <use href="#n" x="300" y="30" />
+            <use href="#n" x="400" y="50" />
+
+            <path class="trace" d="M 600,20 L 750,20 L 780,50 L 780,150" />
+            <use href="#n" x="600" y="20" />
+            <use href="#n" x="780" y="150" />
+
+            <path class="trace" d="M 20,250 L 40,270 L 40,350 L 20,370 L 20,450" />
+            <use href="#n" x="20" y="250" />
+            <use href="#n" x="20" y="450" />
+
+            <path class="trace pulse-fast" d="M 780,250 L 780,300 M 780,350 L 780,450" />
+
+            <path class="trace" d="M 20,500 L 20,550 L 50,580 L 250,580" />
+            <use href="#n" x="20" y="500" />
+            <use href="#n" x="250" y="580" />
+
+            <path class="trace" d="M 780,500 L 780,550 L 750,580 L 550,580" />
+            <use href="#n" x="780" y="500" />
+            <use href="#n" x="550" y="580" />
+
+            <circle cx="100" cy="80" r="2" class="node pulse-fast" fill="white" />
+            <circle cx="700" cy="530" r="2" class="node pulse-fast" fill="white" />
+        </svg>
+
+        <div class="content-box">
             
-            <div class="publications-grid">
+            <img src="Logo Cuervo.png" alt="Logo de Cuervo" class="circular-logo">
 
-                <div class="card">
-                    <h3>Investigación Forense: Análisis de Registro y Correos en HireMe Lab (CyberDefenders)</h3>
-                    <p>Resolución técnica del reto HireMe Lab: análisis forense de Registro, correos y artefactos de Windows.</p>
-                    <a href="https://medium.com/@fernandaycesarmauricioymariel/hireme-lab-cyberdefenders-b955e367fcb3" class="card-link" target="_blank">Leer más &rarr;</a>
-                </div>
-
-                <div class="card">
-                    <h3>Ciberamenaza Silenciosa: Desmantelando el Malware Evasivo que Usa Process Hollowing</h3>
-                    <p>Análisis de malware avanzado que utiliza Stack Strings y Process Hollowing para la evasión. El informe concluye con la necesidad de implementar EDR/XDR y reforzar las protecciones de memoria (DEP/ASLR) para una defensa efectiva.</p>
-                    <a href="https://medium.com/@fernandaycesarmauricioymariel/ransomed-lab-cyberdefenders-6def412b157f" class="card-link" target="_blank">Leer más &rarr;</a>
-                </div>
+            <h1>CR0W</h1>
             
-                
-                <div class="card">
-                    <h3>Web Investigation Lab</h3>
-                    <p>Este informe documenta los hallazgos de la investigación de seguridad iniciada en respuesta a una alerta crítica.</p>
-                    <a href="https://medium.com/@fernandaycesarmauricioymariel/web-investigation-lab-b1bf4b145321" class="card-link" target="_blank">Leer más &rarr;</a>
-                </div>
-            
-                <div class="card">
-                    <h3>Análisis de un Ataque Web</h3>
-                    <p>Desglosamos la cadena de ataque que explotó una simple SQL Injection para tomar control total de un servidor</p>
-                    <a href="https://medium.com/@fernandaycesarmauricioymariel/evidencias-the-hacker-labs-ff0261dce9f2" class="card-link" target="_blank">Leer más &rarr;</a>
-                </div>
-
-                <div class="card">
-                    <h3>Intento de Intrusion (La Corporacion - The Hackers Lab)</h3>
-                    <p>Este reto fue un ejercicio práctico de respuesta a incidentes...</p>
-                    <a href="https://medium.com/@fernandaycesarmauricioymariel/la-corporaci%C3%B3n-the-hacker-labs-5a5aaa0e7959" class="card-link" target="_blank">Leer más &rarr;</a>
-                </div>
-
-                <div class="card">
-                    <h3>Desmantelando un Ataque Sofisticado de Exploit Kit</h3>
-                    <p>Analisis Forense de un archivo ".pcap" de un ataque orquestado por un Exploit Kit (EK)</p>
-                    <a href="https://medium.com/@fernandaycesarmauricioymariel/nukethebrowser-cyberdefenders-9fcd85e1dcf1" class="card-link" target="_blank">Leer más &rarr;</a>
-                </div>
-                
+            <div class="social-icons">
+                <a href="https://linkedin.com/in/tomas-romero-soc" target="_blank" title="LinkedIn">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+                <a href="mailto:tomasmromero0@gmail.com" title="Enviar Email">
+                    <i class="fas fa-envelope"></i>
+                </a>
             </div>
-        </div> 
-        <div id="proyectos" class="content-section">
-            <hr>
-            <h2 id="proyectos-titulo">Proyectos Personales</h2> 
             
-            <div class="publications-grid">
-                
-                <div class="card">
-                    <h3>[Nombre del Proyecto 1]</h3>
-                    <p>[Descripción corta de tu proyecto personal, qué tecnologías usaste, etc.]</p>
-                    <a href="[ENLACE A GITHUB O DEMO]" target="_blank" class="card-link">Ver en GitHub &rarr;</a>
-                </div>
-
-                <div class="card">
-                    <h3>[Nombre del Proyecto 2]</h3>
-                    <p>[Descripción corta de tu proyecto personal, qué tecnologías usaste, etc.]</p>
-                    <a href="[ENLACE A GITHUB O DEMO]" target="_blank" class="card-link">Ver en GitHub &rarr;</a>
-                </div>
-                
+            <p>
+                Soy Técnico Superior en Ciberseguridad, especializado en la intersección de la <strong>Inteligencia Artificial</strong> y la <strong>seguridad digital</strong>. Mi enfoque principal abarca la <strong>informática forense</strong>, el <strong>OSINT</strong> (Inteligencia de Fuentes Abiertas) y el <strong>pentesting</strong>.
+            </p>
+            <p>
+                Como entusiasta de la cultura <em>Capture The Flag</em> (CTF) y un ávido usuario de <strong>Linux</strong> y <strong>PowerShell</strong>, me apasiona analizar sistemas, desentrañar amenazas y automatizar la defensa.
+            </p>
+            
+            <div class="button-container">
+                <a href="#" class="btn-glitch" data-target="writeups">WriteUps</a>
+                <a href="#" class="btn-glitch" data-target="proyectos">Proyectos Personales</a>
             </div>
-        </div> 
-    </div> 
 
-    <script>
-        const buttons = document.querySelectorAll('.button-container .button');
+            <div id="writeups" class="content-section active"> <hr> 
+                <h2 id="publicaciones">Últimas Publicaciones</h2>
+                
+                <div class="publications-grid">
+                    <div class="card">
+                        <h3>Investigación Forense: HireMe Lab</h3>
+                        <p>Resolución técnica del reto HireMe Lab: análisis forense de Registro y correos.</p>
+                        <a href="https://medium.com/@fernandaycesarmauricioymariel/hireme-lab-cyberdefenders-b955e367fcb3" class="card-link" target="_blank">Leer más &rarr;</a>
+                    </div>
+
+                    <div class="card">
+                        <h3>Ciberamenaza Silenciosa: Malware Evasivo</h3>
+                        <p>Análisis de malware avanzado que utiliza Stack Strings y Process Hollowing.</p>
+                        <a href="https://medium.com/@fernandaycesarmauricioymariel/ransomed-lab-cyberdefenders-6def412b157f" class="card-link" target="_blank">Leer más &rarr;</a>
+                    </div>
+                    
+                    <div class="card">
+                        <h3>Web Investigation Lab</h3>
+                        <p>Informe de hallazgos de investigación de seguridad ante una alerta crítica.</p>
+                        <a href="https://medium.com/@fernandaycesarmauricioymariel/web-investigation-lab-b1bf4b145321" class="card-link" target="_blank">Leer más &rarr;</a>
+                    </div>
+                
+                    <div class="card">
+                        <h3>Análisis de un Ataque Web</h3>
+                        <p>Desglose de cadena de ataque explotando SQL Injection.</p>
+                        <a href="https://medium.com/@fernandaycesarmauricioymariel/evidencias-the-hacker-labs-ff0261dce9f2" class="card-link" target="_blank">Leer más &rarr;</a>
+                    </div>
+
+                    <div class="card">
+                        <h3>Intento de Intrusion (La Corporacion)</h3>
+                        <p>Ejercicio práctico de respuesta a incidentes.</p>
+                        <a href="https://medium.com/@fernandaycesarmauricioymariel/la-corporaci%C3%B3n-the-hacker-labs-5a5aaa0e7959" class="card-link" target="_blank">Leer más &rarr;</a>
+                    </div>
+
+                    <div class="card">
+                        <h3>Desmantelando Ataque Exploit Kit</h3>
+                        <p>Analisis Forense de un archivo .pcap de ataque por Exploit Kit.</p>
+                        <a href="https://medium.com/@fernandaycesarmauricioymariel/nukethebrowser-cyberdefenders-9fcd85e1dcf1" class="card-link" target="_blank">Leer más &rarr;</a>
+                    </div>
+                </div>
+            </div> 
+
+            <div id="proyectos" class="content-section">
+                <hr>
+                <h2 id="proyectos-titulo">Proyectos Personales</h2> 
+                
+                <div class="publications-grid">
+                    <div class="card">
+                        <h3>[Nombre del Proyecto 1]</h3>
+                        <p>[Descripción corta de tu proyecto personal...]</p>
+                        <a href="#" class="card-link" target="_blank">Ver en GitHub &rarr;</a>
+                    </div>
+                    <div class="card">
+                        <h3>[Nombre del Proyecto 2]</h3>
+                        <p>[Descripción corta de tu proyecto personal...]</p>
+                        <a href="#" class="card-link" target="_blank">Ver en GitHub &rarr;</a>
+                    </div>
+                </div>
+            </div>
+
+        </div> </div> <script>
+        // PESTAÑAS
+        const buttons = document.querySelectorAll('.btn-glitch');
         const sections = document.querySelectorAll('.content-section');
 
         function showSection(targetId) {
             sections.forEach(section => {
                 section.classList.remove('active');
+                section.style.display = 'none'; // Asegura ocultamiento
             });
             
             const targetSection = document.getElementById(targetId);
             if (targetSection) {
-                targetSection.classList.add('active');
+                targetSection.style.display = 'block';
+                // Pequeño delay para permitir la animación CSS
+                setTimeout(() => targetSection.classList.add('active'), 10);
             }
         }
 
@@ -415,75 +466,46 @@
                 showSection(targetId);
             });
         });
-
+        
+        // Inicialización correcta
         showSection('writeups'); 
     </script>
 
     <script>
+        // CUERVOS ANIMADOS
         const crowsContainer = document.querySelector('.crows-container');
-        const numberOfCrows = 15; 
-
-        const animationNames = [
-            'fly-diagonal-up',
-            'fly-diagonal-down',
-            'fly-diagonal-up-reverse',
-            'fly-diagonal-down-reverse'
-        ];
+        const numberOfCrows = 15;
+        const anims = ['fly-diag-up', 'fly-diag-down', 'fly-diag-up-rev', 'fly-diag-down-rev'];
 
         function createCrow() {
             const crow = document.createElement('img');
-            crow.src = 'cuervo_morado.png'; 
-            crow.alt = 'Cuervo volando';
+            crow.src = 'cuervo_morado.png'; // Tu archivo
+            crow.alt = 'Cuervo';
             crow.classList.add('crow');
 
-            let startX, startY;
-            const entryEdge = Math.random();
-
-            if (entryEdge < 0.25) {
-                startX = Math.random() * window.innerWidth;
-                startY = -150; 
-            } else if (entryEdge < 0.5) {
-                startX = Math.random() * window.innerWidth;
-                startY = window.innerHeight + 150;
-            } else if (entryEdge < 0.75) {
-                startX = -150;
-                startY = Math.random() * window.innerHeight;
-            } else {
-                startX = window.innerWidth + 150;
-                startY = Math.random() * window.innerHeight;
-            }
+            // Posición y Animación Aleatoria
+            const anim = anims[Math.floor(Math.random() * anims.length)];
+            crow.style.animationName = anim;
             
-            crow.style.left = `${startX}px`;
-            crow.style.top = `${startY}px`;
-
-            const randomScale = 0.5 + Math.random() * 0.7;
-            const randomDuration = 18 + Math.random() * 12;
+            // Duración y Tamaño
+            crow.style.animationDuration = (15 + Math.random() * 15) + 's';
+            crow.style.width = (50 + Math.random() * 60) + 'px'; // Tamaño variable
             
-            crow.style.animationDuration = `${randomDuration}s`;
-            
-            const randomAnimationIndex = Math.floor(Math.random() * animationNames.length);
-            let animationName = animationNames[randomAnimationIndex];
-            
-            crow.style.animationName = animationName;
-
-            let transformString = `scale(${randomScale})`;
-            if (animationName.includes('reverse')) {
-                transformString += ' scaleX(-1)'; 
-            }
-            crow.style.transform = transformString;
+            // Posición inicial basada en la animación (simplificada al centro para que CSS maneje el vuelo desde fuera)
+            crow.style.left = '50%'; 
+            crow.style.top = '50%';
 
             crowsContainer.appendChild(crow);
 
-            setTimeout(() => crow.style.opacity = 1, 50);
-
             crow.addEventListener('animationend', () => {
                 crow.remove();
-                setTimeout(createCrow, Math.random() * 2000);
+                setTimeout(createCrow, Math.random() * 3000);
             });
         }
 
-        for (let i = 0; i < numberOfCrows; i++) {
-            setTimeout(createCrow, Math.random() * 7000);
+        // Iniciar bandada
+        for(let i=0; i<numberOfCrows; i++) {
+            setTimeout(createCrow, Math.random() * 10000);
         }
     </script>
 
