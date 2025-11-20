@@ -60,25 +60,28 @@
             z-index: 1;
         }
 
-        /* Estilo de Líneas del Circuito */
+       /* --- Estilo de Líneas del Circuito (MÁS GRUESO) --- */
         .trace {
             fill: none;
-            stroke: #bb86fc; /* TU COLOR: Morado Neón */
-            stroke-width: 2;
+            stroke: #bb86fc; /* Color intacto */
+            
+            stroke-width: 4; /* AUMENTADO: De 2 a 4 para más presencia */
+            
             stroke-linecap: round;
             stroke-linejoin: round;
-            vector-effect: non-scaling-stroke; /* Mantiene el grosor al estirar */
-            filter: drop-shadow(0 0 3px #bb86fc);
-            opacity: 0.7;
+            vector-effect: non-scaling-stroke; 
+            filter: drop-shadow(0 0 4px #bb86fc); /* Sombra ajustada al nuevo grosor */
+            opacity: 0.8;
         }
 
-        /* Estilo de Nodos (Puntos) */
-     /* --- Estilo de Nodos (Puntos) - VERSIÓN ANILLO --- */
+        /* --- Estilo de Nodos (Anillos) - Equilibrado --- */
         .node {
-            fill: #050505;      /* Fondo oscuro para simular "vacío" y tapar uniones */
-            stroke: #00ffff;    /* Borde Turquesa Neón */
-            stroke-width: 1.5px;/* Grosor del anillo */
-            filter: drop-shadow(0 0 3px #00ffff); /* Brillo exterior */
+            fill: #050505;      /* Fondo oscuro (hueco) */
+            stroke: #00ffff;    /* Color intacto */
+            
+            stroke-width: 2.5px; /* AUMENTADO: De 1.5px a 2.5px para combinar con las líneas */
+            
+            filter: drop-shadow(0 0 3px #00ffff);
         }
 
         /* Animación de Parpadeo */
