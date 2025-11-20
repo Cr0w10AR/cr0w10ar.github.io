@@ -400,36 +400,70 @@
         <svg class="circuit-layer" viewBox="0 0 800 600" preserveAspectRatio="none">
             <defs>
                 <circle id="n" r="4" class="node" />
+                <circle id="n-sm" r="2" class="node" />
             </defs>
 
-            <path class="trace" d="M 20,150 L 20,50 L 50,20 L 200,20" />
-            <use href="#n" x="20" y="150" />
-            <use href="#n" x="200" y="20" />
+            <path class="trace" d="M 10,250 L 10,100 L 30,80 L 30,40 L 60,10 L 250,10 L 260,25 L 300,25" />
+            <use href="#n" x="10" y="250" />
+            <use href="#n" x="300" y="25" />
 
-            <path class="trace pulse-slow" d="M 300,30 L 320,30 L 340,50 L 400,50" />
-            <use href="#n" x="300" y="30" />
-            <use href="#n" x="400" y="50" />
+            <path class="trace" d="M 30,80 L 80,80 L 90,90 L 90,120 M 60,10 L 60,30 L 80,50" />
+            <use href="#n" x="90" y="120" />
+            <use href="#n" x="80" y="50" />
 
-            <path class="trace" d="M 600,20 L 750,20 L 780,50 L 780,150" />
-            <use href="#n" x="600" y="20" />
-            <use href="#n" x="780" y="150" />
+            <path class="trace pulse-slow" d="M 15,150 L 40,150 L 50,160 M 120,20 L 120,50 L 140,50" />
+            <use href="#n-sm" x="50" y="160" />
+            <use href="#n-sm" x="140" y="50" />
 
-            <path class="trace" d="M 20,250 L 40,270 L 40,350 L 20,370 L 20,450" />
-            <use href="#n" x="20" y="250" />
-            <use href="#n" x="20" y="450" />
+            <path class="trace" d="M 450,10 L 650,10 L 680,40 L 780,40 L 790,50 L 790,200" />
+            <use href="#n" x="450" y="10" />
+            <use href="#n" x="790" y="200" />
 
-            <path class="trace pulse-fast" d="M 780,250 L 780,300 M 780,350 L 780,450" />
+            <path class="trace" d="M 700,10 L 700,25 L 730,25 L 750,45 L 750,100" />
+            <use href="#n" x="750" y="100" />
 
-            <path class="trace" d="M 20,500 L 20,550 L 50,580 L 250,580" />
-            <use href="#n" x="20" y="500" />
-            <use href="#n" x="250" y="580" />
+            <path class="trace pulse-fast" d="M 600,60 L 620,60 L 640,80 L 720,80" />
+            <use href="#n" x="600" y="60" />
+            <use href="#n" x="720" y="80" />
 
-            <path class="trace" d="M 780,500 L 780,550 L 750,580 L 550,580" />
-            <use href="#n" x="780" y="500" />
-            <use href="#n" x="550" y="580" />
+            <path class="trace" d="M 15,300 L 15,450 L 35,470 L 35,500" />
+            <use href="#n" x="15" y="300" />
+            <use href="#n" x="35" y="500" />
 
-            <circle cx="100" cy="80" r="2" class="node pulse-fast" fill="white" />
-            <circle cx="700" cy="530" r="2" class="node pulse-fast" fill="white" />
+            <path class="trace" d="M 35,320 L 50,335 L 50,380 L 35,395" />
+            <use href="#n" x="35" y="320" />
+            <use href="#n" x="35" y="395" />
+
+            <path class="trace" d="M 790,250 L 790,350 L 760,380 L 760,420 L 790,450 L 790,520" />
+            <use href="#n" x="790" y="250" />
+            <use href="#n" x="790" y="520" />
+
+            <path class="trace" d="M 770,280 L 750,300 L 750,340 M 775,480 L 755,480" />
+            <use href="#n-sm" x="750" y="340" />
+            <use href="#n-sm" x="755" y="480" />
+
+            <path class="trace" d="M 10,500 L 10,580 L 30,590 L 150,590 L 170,570 L 220,570" />
+            <use href="#n" x="10" y="500" />
+            <use href="#n" x="220" y="570" />
+
+            <path class="trace" d="M 50,590 L 50,560 L 70,540 L 110,540" />
+            <use href="#n" x="110" y="540" />
+
+            <path class="trace" d="M 790,550 L 790,590 L 600,590 L 580,570 L 450,570" />
+            <use href="#n" x="790" y="550" />
+            <use href="#n" x="450" y="570" />
+
+            <path class="trace pulse-slow" d="M 700,590 L 700,560 L 680,540 L 640,540" />
+            <use href="#n" x="640" y="540" />
+
+            <circle cx="50" cy="200" r="2" class="node pulse-fast" fill="white" />
+            <circle cx="760" cy="150" r="2" class="node" fill="white" />
+            <circle cx="200" cy="30" r="2" class="node pulse-slow" fill="white" />
+            <circle cx="600" cy="560" r="2" class="node" fill="white" />
+            <circle cx="100" cy="570" r="2" class="node pulse-fast" fill="white" />
+            
+            <path class="trace" d="M 350,15 L 370,15 M 410,15 L 430,15" opacity="0.3" />
+
         </svg>
 
         <div class="content-box">
