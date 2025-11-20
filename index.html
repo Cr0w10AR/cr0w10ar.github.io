@@ -107,11 +107,35 @@
             margin-top: 10px;
         }
 
+     /* --- MEJORA DE LEGIBILIDAD Y SUBTÍTULO --- */
+
         p { 
             color: #d0d0d0; 
-            text-align: justify; /* Texto justificado para orden */
+            text-align: center; /* Mejor que justify para bios cortas */
+            line-height: 1.8;   /* Aumentado para que la fuente 'respire' */
+            max-width: 650px;   /* Evita líneas eternas difíciles de seguir */
+            margin: 0 auto 20px auto; /* Centra el bloque de texto */
+            font-size: 1.05rem; /* Un toque más grande para claridad */
         }
-        
+
+        /* Nuevo estilo para tu cargo profesional */
+        .subtitle-role {
+            color: #00ffff; /* Turquesa Neón para contraste con el morado */
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 1.1rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-top: -10px;
+            margin-bottom: 30px;
+            text-shadow: 0 0 8px rgba(0, 255, 255, 0.6);
+            animation: pulse-text 3s infinite alternate;
+        }
+
+        @keyframes pulse-text {
+            0% { text-shadow: 0 0 8px rgba(0, 255, 255, 0.6); }
+            100% { text-shadow: 0 0 15px rgba(0, 255, 255, 0.9), 0 0 5px white; }
+        }
         /* Logo Circular */
         .circular-logo {
             width: 150px;
@@ -416,7 +440,9 @@
                     <i class="fas fa-envelope"></i>
                 </a>
             </div>
-            
+            <div class="subtitle-role">
+                Técnico Superior en Ciberseguridad | IA & Forensics
+            </div>
             <p>
                 Soy Técnico Superior en Ciberseguridad, especializado en la intersección de la <strong>Inteligencia Artificial</strong> y la <strong>seguridad digital</strong>. Mi enfoque principal abarca la <strong>informática forense</strong>, el <strong>OSINT</strong> (Inteligencia de Fuentes Abiertas) y el <strong>pentesting</strong>.
             </p>
