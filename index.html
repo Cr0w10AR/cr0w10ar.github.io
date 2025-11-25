@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
     <title>Portafolio - CROW</title>
     <link rel="icon" type="image/png" href="icono-cuervo.png">
     <style>
@@ -17,7 +18,8 @@
             padding: 0;
             background-color: #050505; /* Negro puro */
             color: #e0e0e0;
-            font-family: 'Courier New', Courier, monospace; /* Fuente Tech */
+            font-family: 'Share Tech Mono', monospace; /* Fuente Tech */
+            font-size: 18px;
             line-height: 1.6;
             overflow-x: hidden;
 
@@ -392,6 +394,42 @@
                 opacity: 0; 
             } 
         }
+        /* --- ARSENAL DE SKILLS (Estilo Neón) --- */
+.skills-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+    margin: 30px auto 40px auto; /* Centrado y con aire */
+    max-width: 700px;
+}
+
+.skill-tag {
+    background: rgba(0, 255, 255, 0.05); /* Fondo muy sutil */
+    border: 1px solid #00ffff; /* Borde Turquesa */
+    color: #00ffff;
+    padding: 6px 16px;
+    border-radius: 4px;
+    font-size: 0.85em;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+    cursor: default;
+    box-shadow: 0 0 5px rgba(0, 255, 255, 0.2);
+}
+
+.skill-tag:hover {
+    background: #00ffff;
+    color: #050505; /* Texto oscuro al pasar el mouse */
+    box-shadow: 0 0 15px #00ffff;
+    transform: translateY(-2px);
+}
+        /* Estilo para el botón cuando está presionado/activo */
+.btn-glitch.active-btn {
+    background-color: #bb86fc;
+    color: #050505;
+    box-shadow: 0 0 20px #bb86fc;
+    border-color: #bb86fc;
+}
     </style>
 </head>
 <body>
@@ -496,7 +534,18 @@
             <p>
                 Me especializo en la convergencia entre la <strong>Informática Forense</strong> y la <strong>Inteligencia Artificial</strong>, mientras amplío mis capacidades en <strong>Threat Intelligence</strong>. Como investigador apasionado, documento mis hallazgos y metodologías en <strong>Medium</strong>, aportando valor técnico a la comunidad.
             </p>
-            
+            <div class="skills-container">
+    <span class="skill-tag">SIEM / Wazuh</span>
+    <span class="skill-tag">Threat Intel</span>
+    <span class="skill-tag">Python</span>
+    <span class="skill-tag">Bash</span>
+    <span class="skill-tag">PowerShell</span>
+    <span class="skill-tag">Wireshark</span>
+    <span class="skill-tag">OSINT</span>
+    <span class="skill-tag">Linux Hardening</span>
+    <span class="skill-tag">Burp Suite</span>
+    <span class="skill-tag">Forensics</span>
+</div>
             <div class="button-container">
     <a href="#" class="btn-glitch" data-target="writeups">WriteUps</a>
     <a href="#" class="btn-glitch" data-target="proyectos">Proyectos Personales</a>
@@ -632,32 +681,49 @@ y   vectores   de   ataque.</p>
                 
 </div>
 
-        </div> </div> <script>
+      </div> </div> <footer style="margin-top: 60px; text-align: center; opacity: 0.6; font-size: 0.8em; border-top: 1px solid #333; padding-top: 20px;">
+        <p style="margin: 0; color: #bb86fc;">SYSTEM.ROOT // CR0W SECURITY © 2025</p>
+        <p style="margin: 5px 0 0 0;">Designed for Blue Team Operations</p>
+    </footer>
+    </div> <script>
         // PESTAÑAS
-        const buttons = document.querySelectorAll('.btn-glitch');
-        const sections = document.querySelectorAll('.content-section');
+       // PESTAÑAS (Con indicador visual de activo)
+const buttons = document.querySelectorAll('.btn-glitch');
+const sections = document.querySelectorAll('.content-section');
 
-        function showSection(targetId) {
-            sections.forEach(section => {
-                section.classList.remove('active');
-                section.style.display = 'none'; // Asegura ocultamiento
-            });
-            
-            const targetSection = document.getElementById(targetId);
-            if (targetSection) {
-                targetSection.style.display = 'block';
-                // Pequeño delay para permitir la animación CSS
-                setTimeout(() => targetSection.classList.add('active'), 10);
-            }
-        }
+function showSection(targetId) {
+    // 1. Ocultar todas las secciones
+    sections.forEach(section => {
+        section.classList.remove('active');
+        section.style.display = 'none';
+    });
 
-        buttons.forEach(button => {
-            button.addEventListener('click', (event) => {
-                event.preventDefault();
-                const targetId = button.getAttribute('data-target');
-                showSection(targetId);
-            });
-        });
+    // 2. Mostrar la sección deseada
+    const targetSection = document.getElementById(targetId);
+    if (targetSection) {
+        targetSection.style.display = 'block';
+        setTimeout(() => targetSection.classList.add('active'), 10);
+    }
+}
+
+buttons.forEach(button => {
+    button.addEventListener('click', (event) => {
+        event.preventDefault();
+
+        // 3. LOGICA VISUAL DE BOTONES
+        // Quitar clase 'active-btn' a todos
+        buttons.forEach(btn => btn.classList.remove('active-btn'));
+        // Ponérsela al que se hizo click
+        button.classList.add('active-btn');
+
+        const targetId = button.getAttribute('data-target');
+        showSection(targetId);
+    });
+});
+
+// Inicialización: Marca el primer botón como activo por defecto
+showSection('writeups');
+document.querySelector('.btn-glitch[data-target="writeups"]').classList.add('active-btn');
         
         // Inicialización correcta
         showSection('writeups'); 
