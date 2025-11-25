@@ -734,125 +734,92 @@ y   vectores   de   ataque.</p>
      </div> 
         </div> 
            </div>   
-    </div> 
-    <footer style="width: 100%; margin-top: 50px; margin-bottom: 50px; text-align: center; opacity: 0.6; font-size: 0.8em;">
-    
+        </div>
+   <footer style="width: 100%; margin-top: 50px; margin-bottom: 50px; text-align: center; opacity: 0.6; font-size: 0.8em;">
     <hr style="width: 200px; border: 0; border-top: 1px solid #bb86fc; margin: 0 auto 20px auto; opacity: 0.5;">
-    
     <p style="margin: 0; color: #bb86fc; letter-spacing: 2px;">SYSTEM.ROOT // CR0W © 2025</p>
     <p style="margin: 5px 0 0 0; color: #555;">Designed for Blue Team Operations</p>
-
-</footer>
 </footer>
 
-    <script>
-        // PESTAÑAS
-       // PESTAÑAS (Con indicador visual de activo)
-const buttons = document.querySelectorAll('.btn-glitch');
-const sections = document.querySelectorAll('.content-section');
+<script>
+    const buttons = document.querySelectorAll('.btn-glitch');
+    const sections = document.querySelectorAll('.content-section');
 
-function showSection(targetId) {
-    // 1. Ocultar todas las secciones
-    sections.forEach(section => {
-        section.classList.remove('active');
-        section.style.display = 'none';
-    });
-
-    // 2. Mostrar la sección deseada
-    const targetSection = document.getElementById(targetId);
-    if (targetSection) {
-        targetSection.style.display = 'block';
-        setTimeout(() => targetSection.classList.add('active'), 10);
+    function showSection(targetId) {
+        sections.forEach(section => {
+            section.classList.remove('active');
+            section.style.display = 'none';
+        });
+        const targetSection = document.getElementById(targetId);
+        if (targetSection) {
+            targetSection.style.display = 'block';
+            setTimeout(() => targetSection.classList.add('active'), 10);
+        }
     }
-}
 
-buttons.forEach(button => {
-    button.addEventListener('click', (event) => {
-        event.preventDefault();
-
-        // 3. LOGICA VISUAL DE BOTONES
-        // Quitar clase 'active-btn' a todos
-        buttons.forEach(btn => btn.classList.remove('active-btn'));
-        // Ponérsela al que se hizo click
-        button.classList.add('active-btn');
-
-        const targetId = button.getAttribute('data-target');
-        showSection(targetId);
+    buttons.forEach(button => {
+        button.addEventListener('click', (event) => {
+            event.preventDefault();
+            buttons.forEach(btn => btn.classList.remove('active-btn'));
+            button.classList.add('active-btn');
+            const targetId = button.getAttribute('data-target');
+            showSection(targetId);
+        });
     });
-});
 
-// Inicialización: Marca el primer botón como activo por defecto
-showSection('writeups');
-document.querySelector('.btn-glitch[data-target="writeups"]').classList.add('active-btn');
+    // Inicialización
+    showSection('writeups');
+    document.querySelector('.btn-glitch[data-target="writeups"]').classList.add('active-btn');
+</script>
+
+<script>
+    const crowsContainer = document.querySelector('.crows-container');
+    const numberOfCrows = 15;
+    const anims = ['fly-diag-up', 'fly-diag-down', 'fly-diag-up-rev', 'fly-diag-down-rev'];
+
+    function createCrow() {
+        // 1. Crear el Contenedor
+        const container = document.createElement('div');
+        container.classList.add('crow-container');
+
+        // 2. Crear la Imagen (Aleteo)
+        const img = document.createElement('img');
+        img.src = 'cuervo_morado.png'; 
+        img.alt = 'Cuervo';
+        img.classList.add('crow-body'); 
+
+        // 3. Unir
+        container.appendChild(img);
+
+        // 4. Configurar movimiento
+        const anim = anims[Math.floor(Math.random() * anims.length)];
+        container.style.animationName = anim;
         
-        // Inicialización correcta
-        showSection('writeups'); 
-    </script>
+        const duration = 10 + Math.random() * 10; 
+        container.style.animationDuration = duration + 's';
+        
+        const size = 50 + Math.random() * 60; 
+        container.style.width = size + 'px';
+        
+        // Aleteo aleatorio
+        img.style.animationDuration = (0.15 + Math.random() * 0.2) + 's';
 
-    <script>
-        // CUERVOS ANIMADOS
-        <script>
-        // CUERVOS ANIMADOS (CON ALETEO)
-        const crowsContainer = document.querySelector('.crows-container');
-        const numberOfCrows = 15;
-        const anims = ['fly-diag-up', 'fly-diag-down', 'fly-diag-up-rev', 'fly-diag-down-rev'];
+        container.style.left = '50%'; 
+        container.style.top = '50%';
 
-        function createCrow() {
-            // 1. Crear el Contenedor (Maneja la trayectoria)
-            const container = document.createElement('div');
-            container.classList.add('crow-container');
+        crowsContainer.appendChild(container);
 
-            // 2. Crear la Imagen (Maneja el aleteo)
-            const img = document.createElement('img');
-            img.src = 'cuervo_morado.png'; // Tu archivo
-            img.alt = 'Cuervo';
-            img.classList.add('crow-body'); // Clase para aletear
+        container.addEventListener('animationend', () => {
+            container.remove();
+            setTimeout(createCrow, Math.random() * 3000);
+        });
+    }
 
-            // 3. Meter la imagen dentro del contenedor
-            container.appendChild(img);
-
-            // 4. Configurar la trayectoria aleatoria al contenedor
-            const anim = anims[Math.floor(Math.random() * anims.length)];
-            container.style.animationName = anim;
-            
-            // Duración y Tamaño aleatorios
-            const duration = 10 + Math.random() * 10; // Entre 10 y 20 segundos
-            container.style.animationDuration = duration + 's';
-            
-            const size = 50 + Math.random() * 60; // Tamaño variable
-            container.style.width = size + 'px';
-            
-            // Sincronizar velocidad de aleteo con velocidad de vuelo (Opcional, detalle pro)
-            // Si vuela rápido (menor duración), aletea más rápido
-            img.style.animationDuration = (0.15 + Math.random() * 0.2) + 's';
-
-            // Posición inicial (el CSS se encarga de moverlo desde fuera, esto solo centra el punto de origen)
-            container.style.left = '50%'; 
-            container.style.top = '50%';
-
-            // 5. Agregar al DOM
-            crowsContainer.appendChild(container);
-
-            // Limpieza: eliminar cuando termine de volar
-            container.addEventListener('animationend', () => {
-                container.remove();
-                // Crear uno nuevo poco después para mantener la bandada infinita
-                setTimeout(createCrow, Math.random() * 3000);
-            });
-        }
-
-        // Iniciar la bandada
-        for(let i=0; i<numberOfCrows; i++) {
-            // Retraso inicial aleatorio para que no salgan todos juntos al cargar la página
-            setTimeout(createCrow, Math.random() * 10000);
-        }
-    </script>
-        // Iniciar bandada
-        for(let i=0; i<numberOfCrows; i++) {
-            setTimeout(createCrow, Math.random() * 10000);
-        }
-    </script>
+    // Iniciar la bandada correctamente
+    for(let i=0; i<numberOfCrows; i++) {
+        setTimeout(createCrow, Math.random() * 10000);
+    }
+</script>
 
 </body>
 </html>
-
