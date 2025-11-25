@@ -776,48 +776,16 @@ y   vectores   de   ataque.</p>
 </footer>
 
 <script>
-    const buttons = document.querySelectorAll('.btn-glitch');
-    const sections = document.querySelectorAll('.content-section');
-
-    function showSection(targetId) {
-        sections.forEach(section => {
-            section.classList.remove('active');
-            section.style.display = 'none';
-        });
-        const targetSection = document.getElementById(targetId);
-        if (targetSection) {
-            targetSection.style.display = 'block';
-            setTimeout(() => targetSection.classList.add('active'), 10);
-        }
-    }
-
-    buttons.forEach(button => {
-        button.addEventListener('click', (event) => {
-            event.preventDefault();
-            buttons.forEach(btn => btn.classList.remove('active-btn'));
-            button.classList.add('active-btn');
-            const targetId = button.getAttribute('data-target');
-            showSection(targetId);
-        });
-    });
-
-    // Inicialización
-    showSection('writeups');
-    document.querySelector('.btn-glitch[data-target="writeups"]').classList.add('active-btn');
-</script>
-
-<script>
     const crowsContainer = document.querySelector('.crows-container');
-    const numberOfCrows = 12; // Cantidad de cuervos
+    const numberOfCrows = 12; 
     const anims = ['fly-diag-up', 'fly-diag-down', 'fly-diag-up-rev', 'fly-diag-down-rev'];
 
     function createCrow() {
-        // 1. Crear el contenedor principal (trayectoria)
+        // 1. Crear el contenedor
         const container = document.createElement('div');
         container.classList.add('bird-container');
 
-        // 2. Crear la estructura del pájaro CSS
-        // Estructura: <div class="bird"><div class="wing-left"></div><div class="wing-right"></div></div>
+        // 2. Crear el pájaro
         const bird = document.createElement('div');
         bird.classList.add('bird');
 
@@ -827,34 +795,31 @@ y   vectores   de   ataque.</p>
         const wingRight = document.createElement('div');
         wingRight.classList.add('wing', 'wing-right');
 
-        // Ensamblar el pájaro
         bird.appendChild(wingLeft);
         bird.appendChild(wingRight);
         container.appendChild(bird);
 
-        // 3. Configurar movimiento aleatorio
+        // 3. Movimiento
         const anim = anims[Math.floor(Math.random() * anims.length)];
         container.style.animationName = anim;
         
-        // Duración aleatoria (velocidad de vuelo)
-        const duration = 12 + Math.random() * 15; 
+        // --- CAMBIO 1: VELOCIDAD (MÁS LENTO) ---
+        // Antes era 12s. Ahora entre 25 y 45 segundos.
+        const duration = 25 + Math.random() * 20; 
         container.style.animationDuration = duration + 's';
         
-        // Tamaño aleatorio (Perspectiva)
-        // Usamos 'zoom' o 'scale' en el CSS, aquí variamos ligeramente el tamaño base
-        const scale = 0.5 + Math.random() * 0.8;
+        // --- CAMBIO 2: TAMAÑO (MÁS GRANDE) ---
+        // Antes era 0.5. Ahora entre 1.5 y 2.5 veces su tamaño original.
+        const scale = 1.5 + Math.random() * 1.0;
         bird.style.transform = `scale(${scale})`;
         
-        // Velocidad de aleteo aleatoria (Sincronización natural)
-        // Cuervos más pequeños aletean más rápido
-        const flapSpeed = 0.2 + Math.random() * 0.2;
+        // Aleteo un poco más lento para coincidir con el tamaño grande
+        const flapSpeed = 0.3 + Math.random() * 0.3;
         wingLeft.style.animationDuration = flapSpeed + 's';
         wingRight.style.animationDuration = flapSpeed + 's';
 
-        // Agregar al escenario
         crowsContainer.appendChild(container);
 
-        // Limpieza: eliminar cuando termine de volar
         container.addEventListener('animationend', () => {
             container.remove();
             setTimeout(createCrow, Math.random() * 2000);
