@@ -430,6 +430,57 @@
     box-shadow: 0 0 20px #bb86fc;
     border-color: #bb86fc;
 }
+        /* --- NUEVO CSS PARA LOS CUERVOS CON ALETEO --- */
+
+        /* 1. EL CONTENEDOR (Se encarga de viajar por la pantalla) */
+        .crow-container {
+            position: absolute;
+            width: 80px; 
+            height: auto;
+            opacity: 0;
+            pointer-events: none;
+            z-index: 0;
+            /* La animación de vuelo se asigna en el JS */
+        }
+
+        /* 2. LA IMAGEN INTERNA (Se encarga de aletear) */
+        .crow-body {
+            width: 100%;
+            height: 100%;
+            display: block;
+            /* Animación de aleteo constante */
+            animation: flap 0.2s infinite ease-in-out alternate;
+            filter: drop-shadow(0 0 5px #bb86fc);
+        }
+
+        /* 3. LA ANIMACIÓN DE ALETEO (Simulación) */
+        /* Comprime la imagen en el eje Y para simular el golpe de ala */
+        @keyframes flap {
+            0% { transform: scaleY(1); }
+            100% { transform: scaleY(0.6); } 
+        }
+
+        /* TUS ANIMACIONES DE VUELO (Se mantienen igual que antes) */
+        @keyframes fly-diag-up { 
+            0% { transform: translate(-100vw, 100vh) rotate(-45deg); opacity: 0; } 
+            10% { opacity: 1; } 
+            100% { transform: translate(100vw, -100vh) rotate(-45deg); opacity: 0; } 
+        }
+        @keyframes fly-diag-down { 
+            0% { transform: translate(-100vw, -100vh) rotate(45deg); opacity: 0; } 
+            10% { opacity: 1; } 
+            100% { transform: translate(100vw, 100vh) rotate(45deg); opacity: 0; } 
+        }
+        @keyframes fly-diag-up-rev { 
+            0% { transform: translate(100vw, 100vh) scaleX(-1) rotate(45deg); opacity: 0; } 
+            10% { opacity: 1; } 
+            100% { transform: translate(-100vw, -100vh) scaleX(-1) rotate(45deg); opacity: 0; } 
+        }
+        @keyframes fly-diag-down-rev { 
+            0% { transform: translate(100vw, -100vh) scaleX(-1) rotate(-45deg); opacity: 0; } 
+            10% { opacity: 1; } 
+            100% { transform: translate(-100vw, 100vh) scaleX(-1) rotate(-45deg); opacity: 0; } 
+        }
     </style>
 </head>
 <body>
@@ -740,36 +791,62 @@ document.querySelector('.btn-glitch[data-target="writeups"]').classList.add('act
 
     <script>
         // CUERVOS ANIMADOS
+        <script>
+        // CUERVOS ANIMADOS (CON ALETEO)
         const crowsContainer = document.querySelector('.crows-container');
         const numberOfCrows = 15;
         const anims = ['fly-diag-up', 'fly-diag-down', 'fly-diag-up-rev', 'fly-diag-down-rev'];
 
         function createCrow() {
-            const crow = document.createElement('img');
-            crow.src = 'cuervo_morado.png'; // Tu archivo
-            crow.alt = 'Cuervo';
-            crow.classList.add('crow');
+            // 1. Crear el Contenedor (Maneja la trayectoria)
+            const container = document.createElement('div');
+            container.classList.add('crow-container');
 
-            // Posición y Animación Aleatoria
+            // 2. Crear la Imagen (Maneja el aleteo)
+            const img = document.createElement('img');
+            img.src = 'cuervo_morado.png'; // Tu archivo
+            img.alt = 'Cuervo';
+            img.classList.add('crow-body'); // Clase para aletear
+
+            // 3. Meter la imagen dentro del contenedor
+            container.appendChild(img);
+
+            // 4. Configurar la trayectoria aleatoria al contenedor
             const anim = anims[Math.floor(Math.random() * anims.length)];
-            crow.style.animationName = anim;
+            container.style.animationName = anim;
             
-            // Duración y Tamaño
-            crow.style.animationDuration = (15 + Math.random() * 15) + 's';
-            crow.style.width = (50 + Math.random() * 60) + 'px'; // Tamaño variable
+            // Duración y Tamaño aleatorios
+            const duration = 10 + Math.random() * 10; // Entre 10 y 20 segundos
+            container.style.animationDuration = duration + 's';
             
-            // Posición inicial basada en la animación (simplificada al centro para que CSS maneje el vuelo desde fuera)
-            crow.style.left = '50%'; 
-            crow.style.top = '50%';
+            const size = 50 + Math.random() * 60; // Tamaño variable
+            container.style.width = size + 'px';
+            
+            // Sincronizar velocidad de aleteo con velocidad de vuelo (Opcional, detalle pro)
+            // Si vuela rápido (menor duración), aletea más rápido
+            img.style.animationDuration = (0.15 + Math.random() * 0.2) + 's';
 
-            crowsContainer.appendChild(crow);
+            // Posición inicial (el CSS se encarga de moverlo desde fuera, esto solo centra el punto de origen)
+            container.style.left = '50%'; 
+            container.style.top = '50%';
 
-            crow.addEventListener('animationend', () => {
-                crow.remove();
+            // 5. Agregar al DOM
+            crowsContainer.appendChild(container);
+
+            // Limpieza: eliminar cuando termine de volar
+            container.addEventListener('animationend', () => {
+                container.remove();
+                // Crear uno nuevo poco después para mantener la bandada infinita
                 setTimeout(createCrow, Math.random() * 3000);
             });
         }
 
+        // Iniciar la bandada
+        for(let i=0; i<numberOfCrows; i++) {
+            // Retraso inicial aleatorio para que no salgan todos juntos al cargar la página
+            setTimeout(createCrow, Math.random() * 10000);
+        }
+    </script>
         // Iniciar bandada
         for(let i=0; i<numberOfCrows; i++) {
             setTimeout(createCrow, Math.random() * 10000);
