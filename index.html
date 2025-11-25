@@ -430,7 +430,7 @@
     box-shadow: 0 0 20px #bb86fc;
     border-color: #bb86fc;
 }
-        /* --- CYBER-CUERVOS v2 (Silueta Vectorial Realista) --- */
+        /* --- CYBER-CUERVOS v3 (Anatomía Completa) --- */
         
         /* Contenedor de trayectoria */
         .bird-container {
@@ -442,127 +442,172 @@
             pointer-events: none;
         }
 
-        /* El esqueleto del pájaro */
+        /* El esqueleto del pájaro (Rotación 3D) */
         .bird {
             position: relative;
-            width: 60px; /* Tamaño base ajustable */
+            width: 60px; 
             height: 60px;
-            /* La rotación 3D es clave para el realismo */
             transform-style: preserve-3d; 
         }
 
-        /* --- CUERPO (Visto desde abajo) --- */
+        /* --- CUERPO (Tronco) --- */
         .bird-body {
             position: absolute;
-            top: 20%;
+            top: 30%;
+            left: 50%;
+            width: 16px;
+            height: 35px;
+            background: #090909; 
+            border-radius: 40% 40% 50% 50%; /* Torso redondeado */
+            transform: translateX(-50%);
+            z-index: 2;
+            box-shadow: inset 0 0 5px #2a0a40; /* Volumen 3D sutil */
+        }
+
+        /* --- CABEZA --- */
+        .bird-head {
+            position: absolute;
+            top: 12%; /* Delante del cuerpo */
             left: 50%;
             width: 14px;
-            height: 40px;
-            background: #050505; /* Cuerpo oscuro */
-            border-radius: 50% 50% 20% 20%; /* Forma ovalada */
+            height: 18px;
+            background: #090909;
+            border-radius: 50%;
             transform: translateX(-50%);
-            box-shadow: 0 0 10px #bb86fc; /* Brillo interno del "motor" */
+            z-index: 3; /* Encima del cuerpo */
+        }
+
+        /* --- PICO --- */
+        .bird-beak {
+            position: absolute;
+            top: 0%; /* Punta delantera */
+            left: 50%;
+            width: 6px;
+            height: 12px;
+            background: #111;
+            /* Triángulo afilado */
+            clip-path: polygon(50% 0, 0% 100%, 100% 100%); 
+            transform: translateX(-50%);
             z-index: 2;
         }
 
-        /* --- COLA (Abanico) --- */
+        /* --- PATAS (Garras retraídas) --- */
+        .bird-leg {
+            position: absolute;
+            top: 60%; /* Parte baja del vientre */
+            width: 4px;
+            height: 8px;
+            background: #000;
+            border-radius: 2px;
+            z-index: 4; /* Lo más cercano al espectador */
+            filter: drop-shadow(0 0 1px #bb86fc);
+        }
+        
+        .bird-leg-left { left: 40%; transform: rotate(15deg); }
+        .bird-leg-right { right: 40%; transform: rotate(-15deg); }
+
+        /* --- COLA (Timón) --- */
         .bird-tail {
             position: absolute;
-            bottom: 0;
+            bottom: -10%;
             left: 50%;
-            width: 24px;
-            height: 20px;
-            background: #000;
+            width: 26px;
+            height: 25px;
+            background: #050505;
             transform: translateX(-50%);
-            /* Recorte en forma de abanico */
-            clip-path: polygon(20% 0%, 80% 0%, 100% 100%, 0% 100%);
+            /* Abanico con plumas dentadas */
+            clip-path: polygon(
+                20% 0%, 80% 0%, 
+                100% 100%, 
+                70% 90%, 
+                50% 100%, 
+                30% 90%, 
+                0% 100%
+            );
             transform-origin: top center;
-            /* Pequeña animación de estabilización */
-            animation: tail-stabilize 3s infinite ease-in-out;
-            filter: drop-shadow(0 0 2px #bb86fc);
+            animation: tail-steering 4s infinite ease-in-out;
         }
 
-        /* --- ALAS (La parte compleja) --- */
+        /* --- ALAS (Plumaje detallado) --- */
         .wing {
             position: absolute;
-            top: 25%;
-            width: 80px; /* Alas largas */
-            height: 35px;
-            background: #000;
-            transform-origin: center right; /* Pivote en el hombro */
-            filter: drop-shadow(0 0 3px #bb86fc);
-            /* Aquí está la magia: Dibujamos las plumas con polígonos */
-            /* Esto crea 4 "dedos" o plumas primarias al final del ala */
+            top: 35%;
+            width: 90px; 
+            height: 45px;
+            background: #050505;
+            transform-origin: center right; 
+            filter: drop-shadow(0 0 4px rgba(187, 134, 252, 0.4));
+            
+            /* Recorte complejo de plumas primarias y secundarias */
             clip-path: polygon(
-                100% 0, 0 0, 
-                0 60%,     /* Punta superior */
-                10% 80%,   /* Pluma 1 */
-                20% 70%,   /* Hueco */
-                30% 90%,   /* Pluma 2 */
-                40% 75%,   /* Hueco */
-                50% 100%,  /* Pluma 3 */
-                100% 40%   /* Conexión al cuerpo */
+                100% 0, 0 5%, 
+                5% 25%,   /* Pluma 1 */
+                15% 20%,  /* Hueco */
+                15% 45%,  /* Pluma 2 */
+                25% 40%,  /* Hueco */
+                30% 65%,  /* Pluma 3 */
+                40% 60%,  /* Hueco */
+                50% 85%,  /* Pluma 4 */
+                100% 50%  /* Axila */
             );
         }
 
         .wing-left {
-            right: 50%; /* Pegada al lado izquierdo del cuerpo */
-            transform-origin: right center; /* Pivota desde el cuerpo */
-            animation: wing-flap-left 0.8s infinite ease-in-out;
+            right: 50%; 
+            transform-origin: right center; 
+            animation: wing-flap-left 1s infinite ease-in-out;
         }
 
         .wing-right {
-            left: 50%; /* Pegada al lado derecho */
+            left: 50%; 
             transform-origin: left center;
-            /* Invertimos el dibujo para el ala derecha */
             transform: scaleX(-1); 
-            animation: wing-flap-right 0.8s infinite ease-in-out;
+            animation: wing-flap-right 1s infinite ease-in-out;
         }
 
-        /* --- ANIMACIONES DE ALETEO FLUIDO --- */
-        /* Simulamos el ciclo de vuelo: Fuerza hacia abajo, recuperación suave hacia arriba */
+        /* --- ANIMACIONES DE BIOMECÁNICA --- */
         
         @keyframes wing-flap-left {
-            0% { transform: rotateY(0deg) rotateZ(0deg); } /* Ala extendida */
-            50% { transform: rotateY(-60deg) rotateZ(-10deg); } /* Ala abajo (golpe) */
+            0% { transform: rotateY(0deg) rotateZ(0deg); }
+            50% { transform: rotateY(-50deg) rotateZ(-5deg); } /* Golpe abajo */
             100% { transform: rotateY(0deg) rotateZ(0deg); }
         }
 
         @keyframes wing-flap-right {
             0% { transform: scaleX(-1) rotateY(0deg) rotateZ(0deg); }
-            50% { transform: scaleX(-1) rotateY(-60deg) rotateZ(-10deg); }
+            50% { transform: scaleX(-1) rotateY(-50deg) rotateZ(-5deg); }
             100% { transform: scaleX(-1) rotateY(0deg) rotateZ(0deg); }
         }
 
-        @keyframes tail-stabilize {
-            0%, 100% { transform: translateX(-50%) rotateX(0deg); }
-            50% { transform: translateX(-50%) rotateX(20deg); width: 28px; } /* Se abre un poco */
+        @keyframes tail-steering {
+            0%, 100% { transform: translateX(-50%) rotateZ(0deg); }
+            33% { transform: translateX(-50%) rotateZ(5deg); } /* Gira la cola para "navegar" */
+            66% { transform: translateX(-50%) rotateZ(-5deg); }
         }
 
-        /* --- TRAYECTORIAS (Vuelo Lento y Majestuoso) --- */
-        /* Ajustadas para que entren y salgan completamente de la pantalla */
+        /* --- TRAYECTORIAS MAJESTUOSAS --- */
         @keyframes fly-diag-up { 
             0% { transform: translate(-120vw, 120vh) rotate(-45deg) scale(1); opacity: 0; } 
-            10% { opacity: 1; } 
-            90% { opacity: 1; }
+            15% { opacity: 1; } 
+            85% { opacity: 1; }
             100% { transform: translate(120vw, -120vh) rotate(-45deg) scale(1); opacity: 0; } 
         }
         @keyframes fly-diag-down { 
             0% { transform: translate(-120vw, -120vh) rotate(45deg) scale(1); opacity: 0; } 
-            10% { opacity: 1; } 
-            90% { opacity: 1; }
+            15% { opacity: 1; } 
+            85% { opacity: 1; }
             100% { transform: translate(120vw, 120vh) rotate(45deg) scale(1); opacity: 0; } 
         }
         @keyframes fly-diag-up-rev { 
             0% { transform: translate(120vw, 120vh) scaleX(-1) rotate(45deg) scale(1); opacity: 0; } 
-            10% { opacity: 1; } 
-            90% { opacity: 1; }
+            15% { opacity: 1; } 
+            85% { opacity: 1; }
             100% { transform: translate(-120vw, -120vh) scaleX(-1) rotate(45deg) scale(1); opacity: 0; } 
         }
         @keyframes fly-diag-down-rev { 
             0% { transform: translate(120vw, -120vh) scaleX(-1) rotate(-45deg) scale(1); opacity: 0; } 
-            10% { opacity: 1; } 
-            90% { opacity: 1; }
+            15% { opacity: 1; } 
+            85% { opacity: 1; }
             100% { transform: translate(-120vw, 120vh) scaleX(-1) rotate(-45deg) scale(1); opacity: 0; } 
         }
     </style>
@@ -827,7 +872,7 @@ y   vectores   de   ataque.</p>
 
 <script>
     const crowsContainer = document.querySelector('.crows-container');
-    const numberOfCrows = 10; // Cantidad justa para no saturar
+    const numberOfCrows = 8; // Menos cantidad, más calidad
     const anims = ['fly-diag-up', 'fly-diag-down', 'fly-diag-up-rev', 'fly-diag-down-rev'];
 
     function createCrow() {
@@ -835,11 +880,17 @@ y   vectores   de   ataque.</p>
         const container = document.createElement('div');
         container.classList.add('bird-container');
 
-        // 2. Construcción del Cuervo (Esqueleto HTML)
+        // 2. Esqueleto Principal
         const bird = document.createElement('div');
         bird.classList.add('bird');
 
-        // Partes del cuerpo
+        // 3. Crear Anatomía Detallada
+        const head = document.createElement('div');
+        head.classList.add('bird-head');
+
+        const beak = document.createElement('div');
+        beak.classList.add('bird-beak');
+
         const body = document.createElement('div');
         body.classList.add('bird-body');
 
@@ -852,48 +903,56 @@ y   vectores   de   ataque.</p>
         const wingRight = document.createElement('div');
         wingRight.classList.add('wing', 'wing-right');
 
-        // Ensamblaje
-        bird.appendChild(tail); // Cola va detrás
+        // Patas
+        const legLeft = document.createElement('div');
+        legLeft.classList.add('bird-leg', 'bird-leg-left');
+
+        const legRight = document.createElement('div');
+        legRight.classList.add('bird-leg', 'bird-leg-right');
+
+        // 4. Ensamblaje en orden de capas (Z-Index visual)
+        // El orden aquí no afecta tanto por el CSS absolute, pero ayuda a la lógica
+        bird.appendChild(tail);
         bird.appendChild(wingLeft);
         bird.appendChild(wingRight);
-        bird.appendChild(body); // Cuerpo va encima para tapar uniones
+        bird.appendChild(body);
+        bird.appendChild(head);
+        bird.appendChild(beak); // Pico sale de la cabeza (visualmente delante)
+        bird.appendChild(legLeft);
+        bird.appendChild(legRight);
         
         container.appendChild(bird);
 
-        // 3. Configuración de Vuelo
+        // 5. Física de Vuelo
         const anim = anims[Math.floor(Math.random() * anims.length)];
         container.style.animationName = anim;
         
-        // Velocidad: Muy lento y calmado (entre 30s y 50s)
-        const duration = 30 + Math.random() * 20; 
+        // Vuelo lento y majestuoso
+        const duration = 25 + Math.random() * 25; 
         container.style.animationDuration = duration + 's';
         
-        // Escala: Variación de tamaño para dar profundidad (unos lejos, otros cerca)
-        // 0.6 (lejos) a 1.2 (cerca)
-        const scale = 0.6 + Math.random() * 0.6;
+        // Escala imponente
+        const scale = 0.8 + Math.random() * 0.8;
         bird.style.transform = `scale(${scale})`;
         
-        // Ritmo de aleteo:
-        // Los pájaros más grandes (más cerca) aletean más lento visualmente
-        // Los más pequeños (más lejos) aletean un poco más rápido
-        const flapSpeed = 0.6 + (Math.random() * 0.4); 
+        // Sincronización de aleteo
+        const flapSpeed = 0.8 + (Math.random() * 0.4); 
         wingLeft.style.animationDuration = flapSpeed + 's';
         wingRight.style.animationDuration = flapSpeed + 's';
 
-        // Añadir al DOM
+        // Inyectar al mundo
         crowsContainer.appendChild(container);
 
         // Ciclo de vida
         container.addEventListener('animationend', () => {
             container.remove();
-            // Reaparecer con un retraso aleatorio
             setTimeout(createCrow, Math.random() * 5000);
         });
     }
 
-    // Inicialización escalonada para que no salgan todos de golpe
+    // Despliegue inicial escalonado
     for(let i=0; i<numberOfCrows; i++) {
-        setTimeout(createCrow, Math.random() * 15000);
+        setTimeout(createCrow, Math.random() * 12000);
     }
 </script>
 
