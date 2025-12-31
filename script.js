@@ -1,6 +1,5 @@
-<script>
-        const buttons = document.querySelectorAll('.btn-glitch');
-        const sections = document.querySelectorAll('.content-section');
+const buttons = document.querySelectorAll('.btn-glitch');
+const sections = document.querySelectorAll('.content-section');
 
         function showSection(targetId) {
             // 1. Ocultar todo
@@ -40,7 +39,6 @@
             const defaultBtn = document.querySelector('.btn-glitch[data-target="writeups"]');
             if(defaultBtn) defaultBtn.classList.add('active-btn');
         });
-    </script>
 
 
 
