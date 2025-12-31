@@ -586,3 +586,22 @@ h2 {
     33% { transform: translateX(-50%) rotateZ(5deg); } /* Gira la cola para "navegar" */
     66% { transform: translateX(-50%) rotateZ(-5deg); }
 }
+/* --- EFECTO SCANLINE (Monitor CRT) --- */
+body::after {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: repeating-linear-gradient(
+        0deg,
+        rgba(0, 0, 0, 0.15),
+        rgba(0, 0, 0, 0.15) 1px,
+        transparent 1px,
+        transparent 2px
+    );
+    pointer-events: none; /* Permite hacer clic a través de las líneas */
+    z-index: 9999; /* Siempre encima de todo */
+    opacity: 0.7;
+}
