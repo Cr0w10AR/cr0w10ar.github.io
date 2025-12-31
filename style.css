@@ -1,8 +1,11 @@
-        /* --- CONFIGURACIÓN BÁSICA --- */
-        html {
-            scroll-behavior: smooth;
-        }
+      html, body {
+    cursor: crosshair; /* Cambia el cursor a una cruz (+) */
+}
 
+/* Cambiar cursor al pasar por enlaces o botones para feedback visual */
+a, .btn-glitch, .card {
+    cursor: cell; /* O puedes usar 'alias' o 'pointer' */
+}
         body {
             margin: 0;
             padding: 0;
