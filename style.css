@@ -1,20 +1,39 @@
-      html, body {
-    cursor: crosshair; /* Cambia el cursor a una cruz (+) */
+     /* --- CONFIGURACIÓN BÁSICA --- */
+html {
+    scroll-behavior: smooth;
+    cursor: crosshair; /* AQUI AGREGAMOS LA MIRA AL HTML TAMBIÉN */
 }
 
-/* Cambiar cursor al pasar por enlaces o botones para feedback visual */
+body {
+    /* TUS ESTILOS EXISTENTES */
+    margin: 0;
+    padding: 0;
+    background-color: #050505; 
+    color: #e0e0e0;
+    font-family: 'Share Tech Mono', monospace; 
+    font-size: 18px;
+    line-height: 1.6;
+    overflow-x: hidden;
+    
+    /* FONDO ESTRELLADO */
+    background-image: 
+        radial-gradient(white, rgba(255,255,255,.2) 2px, transparent 3px),
+        radial-gradient(white, rgba(255,255,255,.15) 1px, transparent 2px),
+        radial-gradient(white, rgba(255,255,255,.1) 2px, transparent 3px);
+    background-size: 550px 550px, 350px 350px, 250px 250px;
+    background-position: 0 0, 40px 60px, 130px 270px;
+
+    /* AQUI AGREGAMOS LA MIRA AL BODY */
+    cursor: crosshair; 
+}
+
+/* --- CURSORES DE INTERACCIÓN --- */
+/* Esto va justo debajo del bloque body */
 a, .btn-glitch, .card {
     cursor: cell; /* O puedes usar 'alias' o 'pointer' */
 }
-        body {
-            margin: 0;
-            padding: 0;
-            background-color: #050505; /* Negro puro */
-            color: #e0e0e0;
-            font-family: 'Share Tech Mono', monospace; /* Fuente Tech */
-            font-size: 18px;
-            line-height: 1.6;
-            overflow-x: hidden;
+
+/* --- RESTO DEL CSS... --- */
 
             /* Tu fondo estrellado original */
             background-image: 
