@@ -1,10 +1,9 @@
-    /* --- CONFIGURACIÓN BÁSICA --- */
+/* --- CONFIGURACIÓN BÁSICA --- */
 html {
     scroll-behavior: smooth;
     
-    /* CURSOR NORMAL: Mira de francotirador Turquesa (#00ffff) */
-    /* El código largo dentro de url() es el dibujo de la cruz turquesa */
-    cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"><line x1="16" y1="4" x2="16" y2="28" stroke="%2300ffff" stroke-width="2"/><line x1="4" y1="16" x2="28" y2="16" stroke="%2300ffff" stroke-width="2"/><circle cx="16" cy="16" r="2" fill="%2300ffff"/></svg>') 16 16, crosshair;
+    /* CURSOR NEÓN TURQUESA (Cruz de precisión) */
+    cursor: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMiIgaGVpZ2h0PSIzMiIgdmlld0JveD0iMCAwIDMyIDMyIj48bGluZSB4MT0iMTYiIHkxPSI1IiB4Mj0iMTYiIHkyPSIyNyIHN0cm9rZT0iIzAwZmZmZiIHN0cm9rZS13aWR0aD0iMiIvPjxsaW5lIHgxPSI1IiB5MT0iMTYiIHgyPSIyNyIgeTI9IjE2IiBzdHJva2U9IiMwMGZmZmYiIHN0cm9rZS13aWR0aD0iMiIvPjxjaXJjbGUgY3g9IjE2IiBjeT0iMTYiIHI9IjIiIGZpbGw9IiMwMGZmZmYiLz48L3N2Zz4=') 16 16, crosshair;
 }
 
 body {
@@ -17,394 +16,387 @@ body {
     line-height: 1.6;
     overflow-x: hidden;
 
-    /* Tu fondo estrellado original */
+    /* Tu fondo estrellado */
     background-image: 
         radial-gradient(white, rgba(255,255,255,.2) 2px, transparent 3px),
         radial-gradient(white, rgba(255,255,255,.15) 1px, transparent 2px),
         radial-gradient(white, rgba(255,255,255,.1) 2px, transparent 3px);
     background-size: 550px 550px, 350px 350px, 250px 250px;
     background-position: 0 0, 40px 60px, 130px 270px;
+    
+    /* Repetimos el cursor aquí por seguridad en herencia */
+    cursor: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMiIgaGVpZ2h0PSIzMiIgdmlld0JveD0iMCAwIDMyIDMyIj48bGluZSB4MT0iMTYiIHkxPSI1IiB4Mj0iMTYiIHkyPSIyNyIHN0cm9rZT0iIzAwZmZmZiIHN0cm9rZS13aWR0aD0iMiIvPjxsaW5lIHgxPSI1IiB5MT0iMTYiIHgyPSIyNyIgeTI9IjE2IiBzdHJva2U9IiMwMGZmZmYiIHN0cm9rZS13aWR0aD0iMiIvPjxjaXJjbGUgY3g9IjE2IiBjeT0iMTYiIHI9IjIiIGZpbGw9IiMwMGZmZmYiLz48L3N2Zz4=') 16 16, crosshair;
 }
 
-/* --- CURSORES DE INTERACCIÓN (LINKS) --- */
-/* Cuando pasas el mouse por encima de un botón o tarjeta */
+/* --- CURSORES DE INTERACCIÓN (Para Links y Botones) --- */
 a, .btn-glitch, .card {
-    /* CURSOR ACTIVO: Cuadrado de objetivo Turquesa */
-    cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"><rect x="6" y="6" width="20" height="20" fill="none" stroke="%2300ffff" stroke-width="2"/><circle cx="16" cy="16" r="4" fill="%2300ffff"/></svg>') 16 16, pointer;
+    /* CURSOR DE MIRA CUADRADA NEÓN TURQUESA */
+    cursor: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMiIgaGVpZ2h0PSIzMiIgdmlld0JveD0iMCAwIDMyIDMyIj48cmVjdCB4PSI2IiB5PSI2IiB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzAwZmZmZiIHN0cm9rZS13aWR0aD0iMiIvPjxjaXJjbGUgY3g9IjE2IiBjeT0iMTYiIHI9IjQiIGZpbGw9IiMwMGZmZmYiLz48L3N2Zz4=') 16 16, pointer;
 }
 
-            /* Tu fondo estrellado original */
-            background-image: 
-                radial-gradient(white, rgba(255,255,255,.2) 2px, transparent 3px),
-                radial-gradient(white, rgba(255,255,255,.15) 1px, transparent 2px),
-                radial-gradient(white, rgba(255,255,255,.1) 2px, transparent 3px);
-            background-size: 550px 550px, 350px 350px, 250px 250px;
-            background-position: 0 0, 40px 60px, 130px 270px;
-        }
+/* --- CONTENEDOR CYBERPUNK (El Marco Principal) --- */
+.cyber-container {
+    position: relative;
+    width: 95%; /* Un poco más ancho para móviles */
+    max-width: 1000px; /* Ancho máximo del portafolio */
+    margin: 60px auto; /* Centrado vertical */
+    min-height: 80vh; /* Altura mínima */
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Alineado arriba para contenido largo */
+    box-sizing: border-box;
+    
+    /* Fondo del contenedor (Oscuro para leer texto) */
+    background: radial-gradient(circle, rgba(26,5,41,0.9) 0%, rgba(0,0,0,0.95) 100%);
+    box-shadow: 0 0 50px rgba(187, 134, 252, 0.1); /* Sombra morada sutil */
+    border-radius: 20px; /* Borde suave */
+    padding: 20px; /* Espacio interno para que el SVG no toque el borde */
+}
 
-        /* --- CONTENEDOR CYBERPUNK (El Marco Principal) --- */
-        .cyber-container {
-            position: relative;
-            width: 95%; /* Un poco más ancho para móviles */
-            max-width: 1000px; /* Ancho máximo del portafolio */
-            margin: 60px auto; /* Centrado vertical */
-            min-height: 80vh; /* Altura mínima */
-            display: flex;
-            justify-content: center;
-            align-items: flex-start; /* Alineado arriba para contenido largo */
-            box-sizing: border-box;
-            
-            /* Fondo del contenedor (Oscuro para leer texto) */
-            background: radial-gradient(circle, rgba(26,5,41,0.9) 0%, rgba(0,0,0,0.95) 100%);
-            box-shadow: 0 0 50px rgba(187, 134, 252, 0.1); /* Sombra morada sutil */
-            border-radius: 20px; /* Borde suave */
-            padding: 20px; /* Espacio interno para que el SVG no toque el borde */
-        }
+/* --- CAPA DEL CIRCUITO (SVG) --- */
+/* Esta capa se estira sobre el contenedor */
+.circuit-layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; /* Permite seleccionar texto debajo */
+    z-index: 1;
+}
 
-        /* --- CAPA DEL CIRCUITO (SVG) --- */
-        /* Esta capa se estira sobre el contenedor */
-        .circuit-layer {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none; /* Permite seleccionar texto debajo */
-            z-index: 1;
-        }
+/* --- Estilo de Líneas del Circuito (MÁS GRUESO) --- */
+.trace {
+    fill: none;
+    stroke: #bb86fc; /* Color intacto */
+    
+    stroke-width: 4; /* AUMENTADO: De 2 a 4 para más presencia */
+    
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    vector-effect: non-scaling-stroke; 
+    filter: drop-shadow(0 0 4px #bb86fc); /* Sombra ajustada al nuevo grosor */
+    opacity: 0.8;
+}
 
-       /* --- Estilo de Líneas del Circuito (MÁS GRUESO) --- */
-        .trace {
-            fill: none;
-            stroke: #bb86fc; /* Color intacto */
-            
-            stroke-width: 4; /* AUMENTADO: De 2 a 4 para más presencia */
-            
-            stroke-linecap: round;
-            stroke-linejoin: round;
-            vector-effect: non-scaling-stroke; 
-            filter: drop-shadow(0 0 4px #bb86fc); /* Sombra ajustada al nuevo grosor */
-            opacity: 0.8;
-        }
+/* --- Estilo de Nodos (Anillos) - Equilibrado --- */
+.node {
+    fill: #050505;      /* Fondo oscuro (hueco) */
+    stroke: #00ffff;    /* Color intacto */
+    
+    stroke-width: 2.5px; /* AUMENTADO: De 1.5px a 2.5px para combinar con las líneas */
+    
+    filter: drop-shadow(0 0 3px #00ffff);
+}
 
-        /* --- Estilo de Nodos (Anillos) - Equilibrado --- */
-        .node {
-            fill: #050505;      /* Fondo oscuro (hueco) */
-            stroke: #00ffff;    /* Color intacto */
-            
-            stroke-width: 2.5px; /* AUMENTADO: De 1.5px a 2.5px para combinar con las líneas */
-            
-            filter: drop-shadow(0 0 3px #00ffff);
-        }
+/* Animación de Parpadeo */
+.pulse-slow { animation: flicker 4s infinite alternate; }
+.pulse-fast { animation: flicker 0.5s infinite alternate; opacity: 0.8; }
 
-        /* Animación de Parpadeo */
-        .pulse-slow { animation: flicker 4s infinite alternate; }
-        .pulse-fast { animation: flicker 0.5s infinite alternate; opacity: 0.8; }
+@keyframes flicker {
+    0% { opacity: 0.3; }
+    100% { opacity: 1; }
+}
 
-        @keyframes flicker {
-            0% { opacity: 0.3; }
-            100% { opacity: 1; }
-        }
+/* --- CAJA DE CONTENIDO (Tu info) --- */
+.content-box {
+    position: relative;
+    z-index: 2; /* Encima del circuito */
+    width: 100%;
+    padding: 20px; /* Espacio interno del contenido */
+}
 
-        /* --- CAJA DE CONTENIDO (Tu info) --- */
-        .content-box {
-            position: relative;
-            z-index: 2; /* Encima del circuito */
-            width: 100%;
-            padding: 20px; /* Espacio interno del contenido */
-        }
+/* --- ESTILOS DE TUS ELEMENTOS --- */
 
-        /* --- ESTILOS DE TUS ELEMENTOS --- */
-        
-        h1 {
-            color: #bb86fc;
-            text-align: center;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            text-shadow: 0 0 10px rgba(187, 134, 252, 0.8);
-            font-size: 3em;
-            margin-top: 10px;
-        }
+h1 {
+    color: #bb86fc;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    text-shadow: 0 0 10px rgba(187, 134, 252, 0.8);
+    font-size: 3em;
+    margin-top: 10px;
+}
 
-     /* --- MEJORA DE LEGIBILIDAD Y SUBTÍTULO --- */
+/* --- MEJORA DE LEGIBILIDAD Y SUBTÍTULO --- */
 
-        p { 
-            color: #d0d0d0; 
-            text-align: center; /* Mejor que justify para bios cortas */
-            line-height: 1.8;   /* Aumentado para que la fuente 'respire' */
-            max-width: 650px;   /* Evita líneas eternas difíciles de seguir */
-            margin: 0 auto 20px auto; /* Centra el bloque de texto */
-            font-size: 1.05rem; /* Un toque más grande para claridad */
-        }
+p { 
+    color: #d0d0d0; 
+    text-align: center; /* Mejor que justify para bios cortas */
+    line-height: 1.8;   /* Aumentado para que la fuente 'respire' */
+    max-width: 650px;   /* Evita líneas eternas difíciles de seguir */
+    margin: 0 auto 20px auto; /* Centra el bloque de texto */
+    font-size: 1.05rem; /* Un toque más grande para claridad */
+}
 
-      /* --- ESTILO DEL SUBTÍTULO CORREGIDO --- */
-        .subtitle-role {
-            color: #00ffff;
-            font-family: 'Courier New', Courier, monospace;
-            font-size: 1.1rem;
-            font-weight: bold;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            
-            /* PROPIEDADES DE CENTRADO CLAVE */
-            text-align: center; 
-            width: 100%;
-            display: block;
-            
-            margin-top: 5px;   /* Un poco de espacio debajo de CR0W */
-            margin-bottom: 15px; /* Espacio antes de los iconos */
-            
-            text-shadow: 0 0 8px rgba(0, 255, 255, 0.6);
-            animation: pulse-text 3s infinite alternate;
-        }
-        @keyframes pulse-text {
-            0% { text-shadow: 0 0 8px rgba(0, 255, 255, 0.6); }
-            100% { text-shadow: 0 0 15px rgba(0, 255, 255, 0.9), 0 0 5px white; }
-        }
-        /* Logo Circular */
-        .circular-logo {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 3px solid #bb86fc;
-            display: block;
-            margin: 0 auto 20px auto;
-            box-shadow: 0 0 20px rgba(187, 134, 252, 0.5);
-        }
+/* --- ESTILO DEL SUBTÍTULO CORREGIDO --- */
+.subtitle-role {
+    color: #00ffff;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1.1rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    
+    /* PROPIEDADES DE CENTRADO CLAVE */
+    text-align: center; 
+    width: 100%;
+    display: block;
+    
+    margin-top: 5px;   /* Un poco de espacio debajo de CR0W */
+    margin-bottom: 15px; /* Espacio antes de los iconos */
+    
+    text-shadow: 0 0 8px rgba(0, 255, 255, 0.6);
+    animation: pulse-text 3s infinite alternate;
+}
+@keyframes pulse-text {
+    0% { text-shadow: 0 0 8px rgba(0, 255, 255, 0.6); }
+    100% { text-shadow: 0 0 15px rgba(0, 255, 255, 0.9), 0 0 5px white; }
+}
+/* Logo Circular */
+.circular-logo {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #bb86fc;
+    display: block;
+    margin: 0 auto 20px auto;
+    box-shadow: 0 0 20px rgba(187, 134, 252, 0.5);
+}
 
-        /* Iconos Sociales */
-        .social-icons {
-            text-align: center;
-            margin: 20px 0;
-        }
+/* Iconos Sociales */
+.social-icons {
+    text-align: center;
+    margin: 20px 0;
+}
 
-        .social-icons a {
-            color: #e0e0e0;
-            font-size: 2em;
-            margin: 0 15px;
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
+.social-icons a {
+    color: #e0e0e0;
+    font-size: 2em;
+    margin: 0 15px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
 
-        .social-icons a:hover {
-            color: #00ffff;
-            text-shadow: 0 0 10px #00ffff;
-            transform: scale(1.1);
-        }
+.social-icons a:hover {
+    color: #00ffff;
+    text-shadow: 0 0 10px #00ffff;
+    transform: scale(1.1);
+}
 
-        /* Botones Estilo Glitch (Adaptados a Morado) */
-        .button-container {
-            text-align: center;
-            margin: 40px 0;
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            flex-wrap: wrap; /* Para móviles */
-        }
+/* Botones Estilo Glitch (Adaptados a Morado) */
+.button-container {
+    text-align: center;
+    margin: 40px 0;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap; /* Para móviles */
+}
 
-        .btn-glitch {
-            display: inline-block;
-            padding: 12px 30px;
-            border: 1px solid #bb86fc;
-            color: #bb86fc;
-            text-decoration: none;
-            text-transform: uppercase;
-            font-weight: bold;
-            transition: 0.3s;
-            background: rgba(187, 134, 252, 0.05);
-            box-shadow: 0 0 10px rgba(187, 134, 252, 0.2);
-            cursor: pointer;
-        }
+.btn-glitch {
+    display: inline-block;
+    padding: 12px 30px;
+    border: 1px solid #bb86fc;
+    color: #bb86fc;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: bold;
+    transition: 0.3s;
+    background: rgba(187, 134, 252, 0.05);
+    box-shadow: 0 0 10px rgba(187, 134, 252, 0.2);
+    cursor: pointer;
+}
 
-        .btn-glitch:hover {
-            background: #bb86fc;
-            color: #000;
-            box-shadow: 0 0 20px #bb86fc, 0 0 40px #bb86fc;
-        }
+.btn-glitch:hover {
+    background: #bb86fc;
+    color: #000;
+    box-shadow: 0 0 20px #bb86fc, 0 0 40px #bb86fc;
+}
 
-        /* Secciones y Tarjetas */
-        hr {
-            border: 0;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, #bb86fc, transparent);
-            margin: 40px 0;
-            opacity: 0.5;
-        }
+/* Secciones y Tarjetas */
+hr {
+    border: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #bb86fc, transparent);
+    margin: 40px 0;
+    opacity: 0.5;
+}
 
-        h2 {
-            color: #bb86fc;
-            text-align: center;
-            margin-bottom: 30px;
-            text-shadow: 0 0 5px rgba(187, 134, 252, 0.5);
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
+h2 {
+    color: #bb86fc;
+    text-align: center;
+    margin-bottom: 30px;
+    text-shadow: 0 0 5px rgba(187, 134, 252, 0.5);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
 
-        .publications-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
-        }
+.publications-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+}
 
-        .card {
-            background-color: rgba(10, 10, 15, 0.8);
-            border: 1px solid #333;
-            border-radius: 4px;
-            padding: 20px;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
+.card {
+    background-color: rgba(10, 10, 15, 0.8);
+    border: 1px solid #333;
+    border-radius: 4px;
+    padding: 20px;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
 
-        /* Pequeño detalle de borde en tarjeta */
-        .card::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; width: 2px; height: 100%;
-            background: #bb86fc;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
+/* Pequeño detalle de borde en tarjeta */
+.card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; width: 2px; height: 100%;
+    background: #bb86fc;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
 
-        .card:hover {
-            border-color: #bb86fc;
-            box-shadow: 0 0 15px rgba(187, 134, 252, 0.2);
-            transform: translateY(-3px);
-        }
-        
-        .card:hover::before {
-            opacity: 1;
-        }
+.card:hover {
+    border-color: #bb86fc;
+    box-shadow: 0 0 15px rgba(187, 134, 252, 0.2);
+    transform: translateY(-3px);
+}
 
-        .card h3 {
-            color: #bb86fc;
-            margin-top: 0;
-            font-size: 1.1em;
-        }
+.card:hover::before {
+    opacity: 1;
+}
 
-        .card p {
-            font-size: 0.9em;
-            color: #aaa;
-            margin-bottom: 20px;
-        }
+.card h3 {
+    color: #bb86fc;
+    margin-top: 0;
+    font-size: 1.1em;
+}
 
-        .card-link {
-            color: #00ffff;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 0.85em;
-            text-transform: uppercase;
-            transition: all 0.3s ease;
-            display: inline-block;
-        }
+.card p {
+    font-size: 0.9em;
+    color: #aaa;
+    margin-bottom: 20px;
+}
 
-        .card-link:hover {
-            text-shadow: 0 0 5px #00ffff;
-            letter-spacing: 1px;
-        }
+.card-link {
+    color: #00ffff;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 0.85em;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+    display: inline-block;
+}
 
-        /* Transiciones de Pestañas */
-        .content-section {
-            display: none; /* Oculto por defecto con display para evitar problemas de altura */
-            animation: fadeIn 0.5s ease;
-        }
-        
-        .content-section.active {
-            display: block;
-        }
+.card-link:hover {
+    text-shadow: 0 0 5px #00ffff;
+    letter-spacing: 1px;
+}
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
+/* Transiciones de Pestañas */
+.content-section {
+    display: none; /* Oculto por defecto con display para evitar problemas de altura */
+    animation: fadeIn 0.5s ease;
+}
 
-        /* Badge Externo */
-        .badge-container {
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            transform: scale(1);
-            z-index: 20;
-        }
+.content-section.active {
+    display: block;
+}
 
-        @media (max-width: 1200px) {
-            .badge-container { display: none; }
-        }
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
 
-        /* Cuervos */
-        .crows-container {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            pointer-events: none;
-            z-index: 0;
-        }
-        
-        .crow {
-            position: absolute;
-            width: 80px; height: auto;
-            opacity: 0;
-            transition: opacity 0.5s ease-in-out;
-            filter: drop-shadow(0 0 5px #bb86fc); /* Estela Morada */
-            animation: none linear infinite;
-        }
-        
-       /* --- ANIMACIONES DE VUELO CORREGIDAS --- */
-        /* Ahora los cuervos rotan hacia donde vuelan */
+/* Badge Externo */
+.badge-container {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    transform: scale(1);
+    z-index: 20;
+}
 
-        /* Vuelo: Abajo-Izquierda --> Arriba-Derecha */
-        @keyframes fly-diag-up { 
-            0% { 
-                transform: translate(-100vw, 100vh) rotate(-45deg); 
-                opacity: 0; 
-            } 
-            10% { opacity: 1; } 
-            100% { 
-                transform: translate(100vw, -100vh) rotate(-45deg); 
-                opacity: 0; 
-            } 
-        }
+@media (max-width: 1200px) {
+    .badge-container { display: none; }
+}
 
-        /* Vuelo: Arriba-Izquierda --> Abajo-Derecha */
-        @keyframes fly-diag-down { 
-            0% { 
-                transform: translate(-100vw, -100vh) rotate(45deg); 
-                opacity: 0; 
-            } 
-            10% { opacity: 1; } 
-            100% { 
-                transform: translate(100vw, 100vh) rotate(45deg); 
-                opacity: 0; 
-            } 
-        }
+/* Cuervos */
+.crows-container {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    pointer-events: none;
+    z-index: 0;
+}
 
-        /* Vuelo: Abajo-Derecha --> Arriba-Izquierda (Espejado) */
-        /* Nota: Al usar scaleX(-1), la rotación de 45deg apunta hacia arriba-izquierda */
-        @keyframes fly-diag-up-rev { 
-            0% { 
-                transform: translate(100vw, 100vh) scaleX(-1) rotate(45deg); 
-                opacity: 0; 
-            } 
-            10% { opacity: 1; } 
-            100% { 
-                transform: translate(-100vw, -100vh) scaleX(-1) rotate(45deg); 
-                opacity: 0; 
-            } 
-        }
+.crow {
+    position: absolute;
+    width: 80px; height: auto;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+    filter: drop-shadow(0 0 5px #bb86fc); /* Estela Morada */
+    animation: none linear infinite;
+}
 
-        /* Vuelo: Arriba-Derecha --> Abajo-Izquierda (Espejado) */
-        @keyframes fly-diag-down-rev { 
-            0% { 
-                transform: translate(100vw, -100vh) scaleX(-1) rotate(-45deg); 
-                opacity: 0; 
-            } 
-            10% { opacity: 1; } 
-            100% { 
-                transform: translate(-100vw, 100vh) scaleX(-1) rotate(-45deg); 
-                opacity: 0; 
-            } 
-        }
-        /* --- ARSENAL DE SKILLS (Estilo Neón) --- */
+/* --- ANIMACIONES DE VUELO CORREGIDAS --- */
+/* Ahora los cuervos rotan hacia donde vuelan */
+
+/* Vuelo: Abajo-Izquierda --> Arriba-Derecha */
+@keyframes fly-diag-up { 
+    0% { 
+        transform: translate(-100vw, 100vh) rotate(-45deg); 
+        opacity: 0; 
+    } 
+    10% { opacity: 1; } 
+    100% { 
+        transform: translate(100vw, -100vh) rotate(-45deg); 
+        opacity: 0; 
+    } 
+}
+
+/* Vuelo: Arriba-Izquierda --> Abajo-Derecha */
+@keyframes fly-diag-down { 
+    0% { 
+        transform: translate(-100vw, -100vh) rotate(45deg); 
+        opacity: 0; 
+    } 
+    10% { opacity: 1; } 
+    100% { 
+        transform: translate(100vw, 100vh) rotate(45deg); 
+        opacity: 0; 
+    } 
+}
+
+/* Vuelo: Abajo-Derecha --> Arriba-Izquierda (Espejado) */
+/* Nota: Al usar scaleX(-1), la rotación de 45deg apunta hacia arriba-izquierda */
+@keyframes fly-diag-up-rev { 
+    0% { 
+        transform: translate(100vw, 100vh) scaleX(-1) rotate(45deg); 
+        opacity: 0; 
+    } 
+    10% { opacity: 1; } 
+    100% { 
+        transform: translate(-100vw, -100vh) scaleX(-1) rotate(45deg); 
+        opacity: 0; 
+    } 
+}
+
+/* Vuelo: Arriba-Derecha --> Abajo-Izquierda (Espejado) */
+@keyframes fly-diag-down-rev { 
+    0% { 
+        transform: translate(100vw, -100vh) scaleX(-1) rotate(-45deg); 
+        opacity: 0; 
+    } 
+    10% { opacity: 1; } 
+    100% { 
+        transform: translate(-100vw, 100vh) scaleX(-1) rotate(-45deg); 
+        opacity: 0; 
+    } 
+}
+/* --- ARSENAL DE SKILLS (Estilo Neón) --- */
 .skills-container {
     display: flex;
     flex-wrap: wrap;
@@ -433,190 +425,164 @@ a, .btn-glitch, .card {
     box-shadow: 0 0 15px #00ffff;
     transform: translateY(-2px);
 }
-        /* Estilo para el botón cuando está presionado/activo */
+/* Estilo para el botón cuando está presionado/activo */
 .btn-glitch.active-btn {
     background-color: #bb86fc;
     color: #050505;
     box-shadow: 0 0 20px #bb86fc;
     border-color: #bb86fc;
 }
-        /* --- CYBER-CUERVOS v3 (Anatomía Completa) --- */
-        
-        /* Contenedor de trayectoria */
-        .bird-container {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            will-change: transform;
-            z-index: 0; 
-            pointer-events: none;
-        }
+/* --- CYBER-CUERVOS v3 (Anatomía Completa) --- */
 
-        /* El esqueleto del pájaro (Rotación 3D) */
-        .bird {
-            position: relative;
-            width: 60px; 
-            height: 60px;
-            transform-style: preserve-3d; 
-        }
+/* Contenedor de trayectoria */
+.bird-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    will-change: transform;
+    z-index: 0; 
+    pointer-events: none;
+}
 
-        /* --- CUERPO (Tronco) --- */
-        .bird-body {
-            position: absolute;
-            top: 30%;
-            left: 50%;
-            width: 16px;
-            height: 35px;
-            background: #090909; 
-            border-radius: 40% 40% 50% 50%; /* Torso redondeado */
-            transform: translateX(-50%);
-            z-index: 2;
-            box-shadow: inset 0 0 5px #2a0a40; /* Volumen 3D sutil */
-        }
+/* El esqueleto del pájaro (Rotación 3D) */
+.bird {
+    position: relative;
+    width: 60px; 
+    height: 60px;
+    transform-style: preserve-3d; 
+}
 
-        /* --- CABEZA --- */
-        .bird-head {
-            position: absolute;
-            top: 12%; /* Delante del cuerpo */
-            left: 50%;
-            width: 14px;
-            height: 18px;
-            background: #090909;
-            border-radius: 50%;
-            transform: translateX(-50%);
-            z-index: 3; /* Encima del cuerpo */
-        }
+/* --- CUERPO (Tronco) --- */
+.bird-body {
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    width: 16px;
+    height: 35px;
+    background: #090909; 
+    border-radius: 40% 40% 50% 50%; /* Torso redondeado */
+    transform: translateX(-50%);
+    z-index: 2;
+    box-shadow: inset 0 0 5px #2a0a40; /* Volumen 3D sutil */
+}
 
-        /* --- PICO --- */
-        .bird-beak {
-            position: absolute;
-            top: 0%; /* Punta delantera */
-            left: 50%;
-            width: 6px;
-            height: 12px;
-            background: #111;
-            /* Triángulo afilado */
-            clip-path: polygon(50% 0, 0% 100%, 100% 100%); 
-            transform: translateX(-50%);
-            z-index: 2;
-        }
+/* --- CABEZA --- */
+.bird-head {
+    position: absolute;
+    top: 12%; /* Delante del cuerpo */
+    left: 50%;
+    width: 14px;
+    height: 18px;
+    background: #090909;
+    border-radius: 50%;
+    transform: translateX(-50%);
+    z-index: 3; /* Encima del cuerpo */
+}
 
-        /* --- PATAS (Garras retraídas) --- */
-        .bird-leg {
-            position: absolute;
-            top: 60%; /* Parte baja del vientre */
-            width: 4px;
-            height: 8px;
-            background: #000;
-            border-radius: 2px;
-            z-index: 4; /* Lo más cercano al espectador */
-            filter: drop-shadow(0 0 1px #bb86fc);
-        }
-        
-        .bird-leg-left { left: 40%; transform: rotate(15deg); }
-        .bird-leg-right { right: 40%; transform: rotate(-15deg); }
+/* --- PICO --- */
+.bird-beak {
+    position: absolute;
+    top: 0%; /* Punta delantera */
+    left: 50%;
+    width: 6px;
+    height: 12px;
+    background: #111;
+    /* Triángulo afilado */
+    clip-path: polygon(50% 0, 0% 100%, 100% 100%); 
+    transform: translateX(-50%);
+    z-index: 2;
+}
 
-        /* --- COLA (Timón) --- */
-        .bird-tail {
-            position: absolute;
-            bottom: -10%;
-            left: 50%;
-            width: 26px;
-            height: 25px;
-            background: #050505;
-            transform: translateX(-50%);
-            /* Abanico con plumas dentadas */
-            clip-path: polygon(
-                20% 0%, 80% 0%, 
-                100% 100%, 
-                70% 90%, 
-                50% 100%, 
-                30% 90%, 
-                0% 100%
-            );
-            transform-origin: top center;
-            animation: tail-steering 4s infinite ease-in-out;
-        }
+/* --- PATAS (Garras retraídas) --- */
+.bird-leg {
+    position: absolute;
+    top: 60%; /* Parte baja del vientre */
+    width: 4px;
+    height: 8px;
+    background: #000;
+    border-radius: 2px;
+    z-index: 4; /* Lo más cercano al espectador */
+    filter: drop-shadow(0 0 1px #bb86fc);
+}
 
-        /* --- ALAS (Plumaje detallado) --- */
-        .wing {
-            position: absolute;
-            top: 35%;
-            width: 90px; 
-            height: 45px;
-            background: #050505;
-            transform-origin: center right; 
-            filter: drop-shadow(0 0 4px rgba(187, 134, 252, 0.4));
-            
-            /* Recorte complejo de plumas primarias y secundarias */
-            clip-path: polygon(
-                100% 0, 0 5%, 
-                5% 25%,   /* Pluma 1 */
-                15% 20%,  /* Hueco */
-                15% 45%,  /* Pluma 2 */
-                25% 40%,  /* Hueco */
-                30% 65%,  /* Pluma 3 */
-                40% 60%,  /* Hueco */
-                50% 85%,  /* Pluma 4 */
-                100% 50%  /* Axila */
-            );
-        }
+.bird-leg-left { left: 40%; transform: rotate(15deg); }
+.bird-leg-right { right: 40%; transform: rotate(-15deg); }
 
-        .wing-left {
-            right: 50%; 
-            transform-origin: right center; 
-            animation: wing-flap-left 1s infinite ease-in-out;
-        }
+/* --- COLA (Timón) --- */
+.bird-tail {
+    position: absolute;
+    bottom: -10%;
+    left: 50%;
+    width: 26px;
+    height: 25px;
+    background: #050505;
+    transform: translateX(-50%);
+    /* Abanico con plumas dentadas */
+    clip-path: polygon(
+        20% 0%, 80% 0%, 
+        100% 100%, 
+        70% 90%, 
+        50% 100%, 
+        30% 90%, 
+        0% 100%
+    );
+    transform-origin: top center;
+    animation: tail-steering 4s infinite ease-in-out;
+}
 
-        .wing-right {
-            left: 50%; 
-            transform-origin: left center;
-            transform: scaleX(-1); 
-            animation: wing-flap-right 1s infinite ease-in-out;
-        }
+/* --- ALAS (Plumaje detallado) --- */
+.wing {
+    position: absolute;
+    top: 35%;
+    width: 90px; 
+    height: 45px;
+    background: #050505;
+    transform-origin: center right; 
+    filter: drop-shadow(0 0 4px rgba(187, 134, 252, 0.4));
+    
+    /* Recorte complejo de plumas primarias y secundarias */
+    clip-path: polygon(
+        100% 0, 0 5%, 
+        5% 25%,   /* Pluma 1 */
+        15% 20%,  /* Hueco */
+        15% 45%,  /* Pluma 2 */
+        25% 40%,  /* Hueco */
+        30% 65%,  /* Pluma 3 */
+        40% 60%,  /* Hueco */
+        50% 85%,  /* Pluma 4 */
+        100% 50%  /* Axila */
+    );
+}
 
-        /* --- ANIMACIONES DE BIOMECÁNICA --- */
-        
-        @keyframes wing-flap-left {
-            0% { transform: rotateY(0deg) rotateZ(0deg); }
-            50% { transform: rotateY(-50deg) rotateZ(-5deg); } /* Golpe abajo */
-            100% { transform: rotateY(0deg) rotateZ(0deg); }
-        }
+.wing-left {
+    right: 50%; 
+    transform-origin: right center; 
+    animation: wing-flap-left 1s infinite ease-in-out;
+}
 
-        @keyframes wing-flap-right {
-            0% { transform: scaleX(-1) rotateY(0deg) rotateZ(0deg); }
-            50% { transform: scaleX(-1) rotateY(-50deg) rotateZ(-5deg); }
-            100% { transform: scaleX(-1) rotateY(0deg) rotateZ(0deg); }
-        }
+.wing-right {
+    left: 50%; 
+    transform-origin: left center;
+    transform: scaleX(-1); 
+    animation: wing-flap-right 1s infinite ease-in-out;
+}
 
-        @keyframes tail-steering {
-            0%, 100% { transform: translateX(-50%) rotateZ(0deg); }
-            33% { transform: translateX(-50%) rotateZ(5deg); } /* Gira la cola para "navegar" */
-            66% { transform: translateX(-50%) rotateZ(-5deg); }
-        }
+/* --- ANIMACIONES DE BIOMECÁNICA --- */
 
-        /* --- TRAYECTORIAS MAJESTUOSAS --- */
-        @keyframes fly-diag-up { 
-            0% { transform: translate(-120vw, 120vh) rotate(-45deg) scale(1); opacity: 0; } 
-            15% { opacity: 1; } 
-            85% { opacity: 1; }
-            100% { transform: translate(120vw, -120vh) rotate(-45deg) scale(1); opacity: 0; } 
-        }
-        @keyframes fly-diag-down { 
-            0% { transform: translate(-120vw, -120vh) rotate(45deg) scale(1); opacity: 0; } 
-            15% { opacity: 1; } 
-            85% { opacity: 1; }
-            100% { transform: translate(120vw, 120vh) rotate(45deg) scale(1); opacity: 0; } 
-        }
-        @keyframes fly-diag-up-rev { 
-            0% { transform: translate(120vw, 120vh) scaleX(-1) rotate(45deg) scale(1); opacity: 0; } 
-            15% { opacity: 1; } 
-            85% { opacity: 1; }
-            100% { transform: translate(-120vw, -120vh) scaleX(-1) rotate(45deg) scale(1); opacity: 0; } 
-        }
-        @keyframes fly-diag-down-rev { 
-            0% { transform: translate(120vw, -120vh) scaleX(-1) rotate(-45deg) scale(1); opacity: 0; } 
-            15% { opacity: 1; } 
-            85% { opacity: 1; }
-            100% { transform: translate(-120vw, 120vh) scaleX(-1) rotate(-45deg) scale(1); opacity: 0; } 
-        }
+@keyframes wing-flap-left {
+    0% { transform: rotateY(0deg) rotateZ(0deg); }
+    50% { transform: rotateY(-50deg) rotateZ(-5deg); } /* Golpe abajo */
+    100% { transform: rotateY(0deg) rotateZ(0deg); }
+}
+
+@keyframes wing-flap-right {
+    0% { transform: scaleX(-1) rotateY(0deg) rotateZ(0deg); }
+    50% { transform: scaleX(-1) rotateY(-50deg) rotateZ(-5deg); }
+    100% { transform: scaleX(-1) rotateY(0deg) rotateZ(0deg); }
+}
+
+@keyframes tail-steering {
+    0%, 100% { transform: translateX(-50%) rotateZ(0deg); }
+    33% { transform: translateX(-50%) rotateZ(5deg); } /* Gira la cola para "navegar" */
+    66% { transform: translateX(-50%) rotateZ(-5deg); }
+}
