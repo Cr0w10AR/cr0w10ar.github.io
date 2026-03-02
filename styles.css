@@ -348,22 +348,22 @@ section {
   justify-content: center;
 }
 
-.about-visual .cuervo-logo {
-  /* 1. Límites: El anillo más pequeño es de 140px, así que la imagen debe ser menor a eso para respirar */
-  width: 110px;
-  height: 110px;
-  
-  /* 2. Contención y forma: Mantiene la proporción y hace la imagen circular si es necesario */
-  object-fit: contain;
-  border-radius: 50%;
-  
-  /* 3. Capas (Z-Index): La empuja hacia adelante para que los anillos giren "detrás" de ella */
-  position: relative;
-  z-index: 5;
-  
-  /* Opcional: Un pequeño resplandor propio para que combine con el tema neón */
-  filter: drop-shadow(0 0 10px var(--neon-purple-glow));
-}
+  .about-visual .cuervo-logo {
+     /* 1. Límites: El anillo más pequeño es de 140px, así que la imagen debe ser menor a eso para respirar */
+     width: 110px;
+     height: 120px;
+     
+     /* 2. Contenciópn y forma: Mantiene la proporción y hace la imagen circular si es necesario */
+     object-fit: contain;
+     border-radius: 100%;
+     
+     /* 3. Capas (Z-Index): La empuja hacia adelante para que los anillos giren "detrás" de ella */
+     position: relative;
+     z-index: 5;
+     
+     /* Opcional: Un pequeño resplandor propio para que combine con el tema neón */
+     filter: drop-shadow(0 0 50px var(--neon-purple-glow));
+   }
 
 .about-visual::before {
   content: '';
