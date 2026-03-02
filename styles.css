@@ -403,7 +403,43 @@ section {
   z-index: 1;
 }
 
+
 /* ========== Proyectos ========== */
+
+   .Proyectos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 1.5rem;
+  }
+   
+  .Proyectos-card {
+    background: var(--bg-card);
+    border: 1px solid rgba(176, 38, 255, 0.2);
+    border-radius: 12px;
+    padding: 1.5rem;
+    transition: all 0.3s ease;
+    overflow: hidden;
+  }
+
+/* ========== Proyectos ========== */
+
+   .Proyectos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 1.5rem;
+  }
+   
+  .Proyectos-card {
+    background: var(--bg-card);
+    border: 1px solid rgba(176, 38, 255, 0.2);
+    border-radius: 12px;
+    padding: 1.5rem;
+    transition: all 0.3s ease;
+    overflow: hidden;
+  }
+
+/* ========== Writeups ========== */
+
 .WriteUps-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
