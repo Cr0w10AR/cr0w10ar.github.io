@@ -1,371 +1,316 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portafolio - CROW</title>
-    
-    <link rel="stylesheet" href="style.css">
-    
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
-    <link rel="icon" type="image/png" href="icono-cuervo.png">
-
-    <meta name="description" content="Portafolio de CR0W - Técnico Superior en Ciberseguridad, Analista SOC y Especialista en Informática Forense e IA.">
-    <meta name="keywords" content="Ciberseguridad, SOC, Forensics, Malware Analysis, Portfolio, CR0W">
-    <meta name="author" content="Tomás Romero">
-
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://cr0w10ar.github.io/">
-    <meta property="og:title" content="CR0W | Cybersecurity Portfolio">
-    <meta property="og:description" content="Analista SOC & Forense. Revisa mis Writeups, Proyectos y Certificaciones.">
-    <meta property="og:image" content="https://cr0w10ar.github.io/cuervo_morado.png"> 
-    
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:title" content="CR0W | Cybersecurity Portfolio">
-    <meta property="twitter:description" content="Analista SOC & Forense. Revisa mis Writeups, Proyectos y Certificaciones.">
-    <meta property="twitter:image" content="https://cr0w10ar.github.io/cuervo_morado.png">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mi Portafolio </title>
+  <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
+  <nav class="nav">
+    <span class="nav-logo">Portafolio</span>
+    <ul class="nav-links">
+      <li><a href="#inicio">Inicio</a></li>
+      <li><a href="#sobre-mi">Sobre mí</a></li>
+      <li><a href="#proyectos">Proyectos</a></li>
+      <li><a href="#habilidades">Habilidades</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+    </ul>
+  </nav>
 
-    <div class="crows-container"></div>
 
-    <div class="badge-container">
-        <script src="https://cyberdefenders.org/p/cr0w_10/badge"></script>
+  <!--seccion de inicio princpial de la pagina-->
+
+  <header id="inicio" class="hero">
+    <span class="hero-badge">Tecnico Superior en Ciberseguridad</span>
+    <h1>Hola, soy Cr0w</h1>
+    <p class="hero-subtitle">
+      Técnico Superior en Ciberseguridad | Analista SOC N°1 | Forense Digital | Estudiante de Lic. Cs. de la Computación
+    </p>
+    <div class="hero-cta">
+      <a href="#proyectos" class="btn btn-primary">Ver proyectos</a>
+      <a href="#contacto" class="btn btn-secondary">Contactar</a>
     </div>
+  </header>
 
-    <div class="cyber-container">
-        
-        <svg class="circuit-layer" viewBox="0 0 800 600" preserveAspectRatio="none">
-            <defs>
-                <circle id="n" r="4" class="node" />
-                <circle id="n-sm" r="2" class="node" />
-            </defs>
+    <!--seccion de "sobre mi"-->
+  
+  <section id="sobre-mi">
+    <h2 class="section-title">Sobre mí</h2>
+    <div class="about-content">
+      <div class="about-text">
+        <p>
+          Soy un apasionado de la ciberseguridad, OSINT, forensia digital, Threat Hunting, Intelligence. Me sumerjo en los logs para entender el comportamiento del adversario.
+        </p>
+        <p>
+          Trabajo con tecnologías modernas y busco siempre aprender algo nuevo, algo que me ayude a mejorar mi perfil profesional y sobre todo, para asegurar la seguridad de la información.
+        </p>
+      </div>
+      <div class="about-visual">
+        <span>&lt;/&gt;</span>
+      </div>
+    </div>
+  </section>
 
-            <path class="trace" d="M 10,250 L 10,100 L 30,80 L 30,40 L 60,10 L 250,10 L 260,25 L 300,25" />
-            <use href="#n" x="10" y="250" />
-            <use href="#n" x="300" y="25" />
+  <!-- seccion de habilidades -->
 
-            <path class="trace" d="M 30,80 L 80,80 L 90,90 L 90,120 M 60,10 L 60,30 L 80,50" />
-            <use href="#n" x="90" y="120" />
-            <use href="#n" x="80" y="50" />
+  <section id="habilidades">
+    <h2 class="section-title">Habilidades</h2>
+    <div class="skills-wrap">
+      <span class="skill-tag">SIEM</span>
+      <span class="skill-tag">Threat Hunting</span>
+      <span class="skill-tag">Threat Intelligence</span>
+      <span class="skill-tag">Bash / PowerShell</span>
+      <span class="skill-tag">OSINT</span>
+      <span class="skill-tag">Forensics</span>
+      <span class="skill-tag">Responsive</span>
+      <span class="skill-tag">Network Analysis</span>
+      <span class="skill-tag">Malware Analysis</span>
+      <span class="skill-tag">Binary Analysis</span>
+      <span class="skill-tag">Reverse Engineering</span>
+    </div>
+  </section>
 
-            <path class="trace pulse-slow" d="M 15,150 L 40,150 L 50,160 M 120,20 L 120,50 L 140,50" />
-            <use href="#n-sm" x="50" y="160" />
-            <use href="#n-sm" x="140" y="50" />
+  <!-- seccion de conocimientos -->
 
-            <path class="trace" d="M 450,10 L 650,10 L 680,40 L 780,40 L 790,50 L 790,200" />
-            <use href="#n" x="450" y="10" />
-            <use href="#n" x="790" y="200" />
+  <section id="Conocimientos">
+    <h2 class="section-title">Conocimientos</h2>
+      
+    <!-- filtros -->
+    
+  <div class="conocimientos-filters">
+    <button class="filter-btn" data-filter="all">Todos</button>
+    <button class="filter-btn" data-filter="Forensics">Forensia</button>
+    <button class="filter-btn" data-filter="malware">Malware</button>
+    <button class="filter-btn" data-filter="threat-intel">Threat Intel</button>
+    <button class="filter-btn" data-filter="osint">OSINT</button>
+  </div>
 
-            <path class="trace" d="M 700,10 L 700,25 L 730,25 L 750,45 L 750,100" />
-            <use href="#n" x="750" y="100" />
+    <div class="skills-wrap">
+      <span class="skill-tag Forensics">Wireshark</span>
+      <span class="skill-tag malware">dnSpy</span>
+      <span class="skill-tag Forensics">Volatility 3</span>
+      <span class="skill-tag Forensics">Autopsy</span>
+      <span class="skill-tag Forensics">FTKImager</span>
+      <span class="skill-tag Forensics">KAPE</span>
+      <span class="skill-tag Forensics">Velociraptor</span>
+      <span class="skill-tag osint">Exiftool</span>
+      <span class="skill-tag osint">GHunt</span>
+      <span class="skill-tag Forensics">SansSIFT Workstation</span>
+      <span class="skill-tag Forensics">EnCase</span>
+      <span class="skill-tag threat-intel">VirusTotal</span>
+      <span class="skill-tag malware">x32dbg/x64dbg</span>
+      <span class="skill-tag malware">Ghidra</span>
+      <span class="skill-tag malwre">IDA Pro</span>
+      <span class="skill-tag malware">Binary Ninja</span>
+      <span class="skill-tag malware">PE Tools</span>
+      <span class="skill-tag Forensics">Zimmerman Tools (EZ Tools)</span>
+      <span class="skill-tag osint">Shodan</span>
+      <span class="skill-tag osint">Maltego</span>
+      <span class="skill-tag osint">SpiderFoot</span>
+      <span class="skill-tag osint">Sherlock</span>
+      <span class="skill-tag threat-intel">Wazuh</span>
+      <span class="skill-tag threat-intel">Splunk</span>
+    </div>
+  </section>
 
-            <path class="trace pulse-fast" d="M 600,60 L 620,60 L 640,80 L 720,80" />
-            <use href="#n" x="600" y="60" />
-            <use href="#n" x="720" y="80" />
+  <!-- seccion de writeups -->
 
-            <path class="trace" d="M 15,300 L 15,450 L 35,470 L 35,500" />
-            <use href="#n" x="15" y="300" />
-            <use href="#n" x="35" y="500" />
+  <section id="WriteUps">
+    <h2 class="section-title">Análisis Técnicos & WriteUps</h2>
+    <div class="WriteUps-grid">
+      <article class="WriteUps-card">
+        <h3>Manipulación de JWT y Control de Integridad </h3>
+        <p>Análisis del Reto “Secrets” (BTLO).</p>
+        <a href="https://medium.com/@IgnoranzaSolare/manipulaci%C3%B3n-de-jwt-y-control-de-integridad-8c201b4a0af8" target="_blank" rel="noopener">Ver en medium →</a>
+      </article>
+      <article class="WriteUps-card">
+        <h3>Meta: El arte del engaño en los metadatos</h3>
+        <p>Cómo detectar técnicas de Anti-Forensics y evitar los ‘Red Herrings’ mediante la validación cruzada de evidencia.</p>
+        <a href="https://medium.com/@IgnoranzaSolare/meta-el-arte-del-enga%C3%B1o-en-los-metadatos-3e188767a6b7" target="_blank" rel="noopener">Ver en medium →</a>
+      </article>
+      <article class="WriteUps-card">
+        <h3>TheReport (BTLO)</h3>
+        <p>Un análisis profundo sobre Log4j, Ransomware y TTPs: Resolviendo el escenario de Threat Intel de BTLO paso a paso.</p>
+        <a href="https://medium.com/@IgnoranzaSolare/thereport-blueteamlabs-c1921f265495" target="_blank" rel="noopener">Ver en medium →</a>
+    </article>
+    <article class="WriteUps-card">
+      <h3>Follina (BlueTeamLabs)</h3>
+      <p>Anatomía de un ataque ‘Zero-Click’: Desglosando el abuso de protocolo ms-msdt y la evasión por padding</p>
+      <a href="https://medium.com/@IgnoranzaSolare/thereport-blueteamlabs-c1921f265495" target="_blank" rel="noopener">Ver en medium →</a>
+    </article>
+    <article class="WriteUps-card">
+      <h3>Amenaza Híbrida: Ransomware y RAT</h3>
+      <p>Análisis de malware modular con capacidades de ransomware y DDoS. Extracción de configuración y vectores de propagación USB.</p>
+      <a href="https://medium.com/@IgnoranzaSolare/thereport-blueteamlabs-c1921f265495" target="_blank" rel="noopener">Ver en medium →</a>
+    </article>
+    <article class="WriteUps-card">
+      <h3>Datos Comprometidos: Analizando RedLine</h3>
+      <p>Desglosando la ejecución de malware furtivo. Extracción de configuración del C2 y detección de inyección de código.</p>
+      <a href="https://www.linkedin.com/posts/tomas-romero-soc_red-stealer-lab-activity-7358008612134215680-m_7F/" target="_blank" rel="noopener">Ver Mas →</a>
+    </article>
+    <article class="WriteUps-card">
+      <h3>Cadena de Suministro: El Incidente de 3CX</h3>
+      <p>Análisis forense de aplicaciones troyanizadas legítimas. Investigación de DLL Side-loading y tráfico C2 oculto.</p>
+      <a href="https://www.linkedin.com/posts/tomas-romero-soc_technical-analysis-report-3cx-supply-chain-activity-7360068552420167680-45Yt/" target="_blank" rel="noopener">Ver Mas →</a>
+    </article>
+    <article class="WriteUps-card">
+      <h3>Cadena de Suministro: El Incidente de 3CX</h3>
+      <p>Análisis forense de aplicaciones troyanizadas legítimas. Investigación de DLL Side-loading y tráfico C2 oculto.</p>
+      <a href="https://www.linkedin.com/posts/tomas-romero-soc_technical-analysis-report-3cx-supply-chain-activity-7360068552420167680-45Yt/" target="_blank" rel="noopener">Ver Mas →</a>
+    </article>
+    <article class="WriteUps-card">
+      <h3>Investigación Forense: HireMe Lab</h3>
+      <p>Resolución técnica del reto HireMe Lab: análisis forense de Registro y correos.</p>
+      <a href="https://medium.com/@IgnoranzaSolare/hireme-lab-cyberdefenders-b955e367fcb3" target="_blank" rel="noopener">Ver Mas →</a>
+    </article>
+    <article class="WriteUps-card">
+      <h3>Desmontando DanaBot: Análisis Forense y de Red</h3>
+      <p>Investigación profunda de tráfico C2, extracción de IOCs y análisis de persistencia de este troyano bancario (MaaS).</p>
+      <a href="https://www.linkedin.com/posts/tomas-romero-soc_danabot-activity-7362215425364922369-3O6L/" target="_blank" rel="noopener">Ver Mas →</a>
+    </article>
+    <article class="WriteUps-card">
+      <h3>Ciberamenaza Silenciosa: Malware Evasivo</h3>
+      <p>Análisis de malware avanzado que utiliza Stack Strings y Process Hollowing.</p>
+      <a href="https://medium.com/@IgnoranzaSolare/ransomed-lab-cyberdefenders-6def412b157f" target="_blank" rel="noopener">Ver Mas →</a>
+    </article>
+    <article class="WriteUps-card">
+      <h3>Web Investigation Lab</h3>
+      <p>Informe de hallazgos de investigación de seguridad ante una alerta crítica.</p>
+      <a href="https://medium.com/@IgnoranzaSolare/web-investigation-lab-b1bf4b145321" target="_blank" rel="noopener">Ver Mas →</a>
+    </article>
+    <article class="WriteUps-card">
+      <h3>Análisis de un Ataque Web</h3>
+      <p>Desglose de cadena de ataque explotando SQL Injection.</p>
+      <a href="https://medium.com/@IgnoranzaSolare/evidencias-the-hacker-labs-ff0261dce9f2" target="_blank" rel="noopener">Ver Mas →</a>
+    </article>
+    <article class="WriteUps-card">
+      <h3>Intento de Intrusion (La Corporacion)</h3>
+      <p>Ejercicio práctico de respuesta a incidentes.</p>
+      <a href="https://medium.com/@IgnoranzaSolare/la-corporaci%C3%B3n-the-hacker-labs-5a5aaa0e7959" target="_blank" rel="noopener">Ver Mas →</a>
+    </article>
+    <article class="WriteUps-card">
+      <h3>Desmantelando Ataque Exploit Kit</h3>
+      <p>Analisis Forense de un archivo .pcap de ataque por Exploit Kit.</p>
+      <a href="https://medium.com/@IgnoranzaSolare/nukethebrowser-cyberdefenders-9fcd85e1dcf1" target="_blank" rel="noopener">Ver Mas →</a>
+    </article>
+    <article class="WriteUps-card">
+      <h3>Tomcat Takeover Lab (Cyberdefenders)</h3>
+      <p>Un análisis forense de la captura de tráfico (PCAP) del lab “Tomcat Takeover”, donde se reconstruye paso a paso el ataque a un servidor web.</p>
+      <a href="https://medium.com/@IgnoranzaSolare/tomcat-takeover-lab-cyberdefenders-c35dece8a274" target="_blank" rel="noopener">Ver Mas →</a>
+    </article>
+    </div>
+  </section>
 
-            <path class="trace" d="M 35,320 L 50,335 L 50,380 L 35,395" />
-            <use href="#n" x="35" y="320" />
-            <use href="#n" x="35" y="395" />
+  <!-- seccion de contacto -->
 
-            <path class="trace" d="M 790,250 L 790,350 L 760,380 L 760,420 L 790,450 L 790,520" />
-            <use href="#n" x="790" y="250" />
-            <use href="#n" x="790" y="520" />
+  <section id="contacto">
+    <h2 class="section-title">Contacto</h2>
+    <div class="contact-box">
+      <p>Puedes encontrarme en estas redes.</p>
+      <div class="contact-links">
+        <a href="https://github.com/tu-usuario" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://linkedin.com/in/tomas-romero-soc" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="mailto:tomasmromero0@gmail.com">Email</a>
+      </div>
+    </div>
+  </section>
 
-            <path class="trace" d="M 770,280 L 750,300 L 750,340 M 775,480 L 755,480" />
-            <use href="#n-sm" x="750" y="340" />
-            <use href="#n-sm" x="755" y="480" />
+  <footer class="footer">
+    <p>Hecho con estilo · <a href="https://pages.github.com/" target="_blank" rel="noopener">GitHub Pages</a></p>
+  </footer>
 
-            <path class="trace" d="M 10,500 L 10,580 L 30,590 L 150,590 L 170,570 L 220,570" />
-            <use href="#n" x="10" y="500" />
-            <use href="#n" x="220" y="570" />
+  <script>
+ const filterButtons = document.querySelectorAll('.filter-btn');
+const skills = document.querySelectorAll('.skill-tag');
+let isAnimating = false;        // Controla si hay una animación en curso
+let pendingFilter = null;       // Almacena un filtro solicitado durante la animación
 
-            <path class="trace" d="M 50,590 L 50,560 L 70,540 L 110,540" />
-            <use href="#n" x="110" y="540" />
+// Función que espera a que todas las transiciones de fade-out terminen
+function waitForFadeOut(callback) {
+  let count = 0;
+  const total = skills.length;
 
-            <path class="trace" d="M 790,550 L 790,590 L 600,590 L 580,570 L 450,570" />
-            <use href="#n" x="790" y="550" />
-            <use href="#n" x="450" y="570" />
+  skills.forEach(skill => {
+    // Si el elemento ya estaba oculto, no tiene transición; contamos como terminado
+    if (skill.classList.contains('hidden')) {
+      count++;
+      if (count === total) callback();
+      return;
+    }
 
-            <path class="trace pulse-slow" d="M 700,590 L 700,560 L 680,540 L 640,540" />
-            <use href="#n" x="640" y="540" />
+    // Escuchamos el fin de la transición de opacidad
+    const onEnd = (e) => {
+      if (e.propertyName === 'opacity') {
+        skill.removeEventListener('transitionend', onEnd);
+        count++;
+        if (count === total) callback();
+      }
+    };
+    skill.addEventListener('transitionend', onEnd);
+  });
+}
 
-            <circle cx="50" cy="200" r="2" class="node pulse-fast" fill="white" />
-            <circle cx="760" cy="150" r="2" class="node" fill="white" />
-            <circle cx="200" cy="30" r="2" class="node pulse-slow" fill="white" />
-            <circle cx="600" cy="560" r="2" class="node" fill="white" />
-            <circle cx="100" cy="570" r="2" class="node pulse-fast" fill="white" />
-            
-            <path class="trace" d="M 350,15 L 370,15 M 410,15 L 430,15" opacity="0.3" />
+// Función principal de filtrado con animación
+function filterSkills(categoria) {
+  // Si ya hay una animación, guardamos la petición para ejecutarla después
+  if (isAnimating) {
+    pendingFilter = categoria;
+    return;
+  }
 
-        </svg>
+  isAnimating = true;
 
-        <div class="content-box">
-            
-            <img src="Logo Cuervo.png" alt="Logo de Cuervo" class="circular-logo">
+  // 1. Aplicar fade-out a TODOS los skills (inicia la desaparición)
+  skills.forEach(skill => skill.classList.add('fade-out'));
 
-            <h1>CR0W</h1>
-             <div class="subtitle-role">
-                Técnico Superior en Ciberseguridad | Analista SOC | DFIR | Documentando la Caza.
-            </div>
-            <div class="social-icons">
-                <a href="https://linkedin.com/in/tomas-romero-soc" target="_blank" title="LinkedIn">
-                    <i class="fab fa-linkedin"></i>
-                </a>
-                <a href="mailto:tomasmromero0@gmail.com" title="Enviar Email">
-                    <i class="fas fa-envelope"></i>
-                </a>
-            </div>
+  // 2. Esperar a que terminen de desvanecerse
+  waitForFadeOut(() => {
+    // 3. Aplicar el filtro real (agregar/remover clase 'hidden')
+    skills.forEach(skill => {
+      if (categoria === 'all') {
+        skill.classList.remove('hidden');
+      } else {
+        if (skill.classList.contains(categoria)) {
+          skill.classList.remove('hidden');
+        } else {
+          skill.classList.add('hidden');
+        }
+      }
+    });
 
-            <p>
-                <strong>Técnico Superior en Ciberseguridad</strong> enfocado en la detección y respuesta. No me limito a esperar la alerta; me sumerjo en los logs para entender el comportamiento del adversario.
-            </p>
+    // 4. Quitar fade-out de todos (los que no tienen 'hidden' aparecerán con fade in)
+    skills.forEach(skill => skill.classList.remove('fade-out'));
 
-            <p>
-                Mi día a día ocurre en entornos de laboratorio <strong>(Wazuh, Splunk, Sysmon)</strong> y resolviendo desafíos en plataformas como <strong>CyberDefenders y BTLO</strong> donde analizo TTPs y reconstruyo cadenas de ataque. A través de mi proyecto<strong>"The Crow's Hunt"</strong>, documento el rastreo de actores maliciosos, análisis de TTPs y la neutralización de infraestructura adversaria.
-            </p>
+    // 5. Actualizar botón activo
+    filterButtons.forEach(btn => {
+      const btnFilter = btn.getAttribute('data-filter');
+      btn.classList.toggle('active', btnFilter === categoria);
+    });
 
-            <div class="skills-container">
-                <span class="skill-tag">SIEM / Wazuh</span>
-                <span class="skill-tag">Threat Intelligence</span>
-                <span class="skill-tag">Python</span>
-                <span class="skill-tag">Bash</span>
-                <span class="skill-tag">PowerShell</span>
-                <span class="skill-tag">Wireshark</span>
-                <span class="skill-tag">OSINT</span>
-                <span class="skill-tag">Linux Hardening</span>
-                <span class="skill-tag">Forensics</span>
-                <span class="skill-tag">x32dbg/x64dbg</span>
-                <span class="skill-tag">VirusTotal</span>
-                <span class="skill-tag">Autopsy</span>
-                <span class="skill-tag">Ghidra</span>            
-            </div>
+    // 6. Fin de la animación
+    isAnimating = false;
 
-            <div class="button-container">
-                <a href="#" class="btn-glitch" data-target="writeups">WriteUps</a>
-                <a href="#" class="btn-glitch" data-target="proyectos">Proyectos Personales</a>
-                <a href="#" class="btn-glitch" data-target="hunt">The Crow's Hunt</a>
-                <a href="#" class="btn-glitch" data-target="certificaciones">Certificaciones</a>
-            </div>
+    // Si hay una petición encolada, ejecutarla
+    if (pendingFilter !== null) {
+      const nextFilter = pendingFilter;
+      pendingFilter = null;
+      filterSkills(nextFilter);
+    }
+  });
+}
 
-            <div id="writeups" class="content-section active"> 
-                <hr> 
-                <h2 id="publicaciones">Últimas Publicaciones</h2>
+// Asignar evento click a cada botón
+filterButtons.forEach(btn => {
+  btn.addEventListener('click', (e) => {
+    const categoria = e.currentTarget.getAttribute('data-filter');
+    filterSkills(categoria);
+  });
+});
+  </script>
 
-                 <div class="publications-grid">
-
-                     <div class="card">
-                        <h3>Manipulación de JWT y Control de Integridad</h3>
-                        <p>Análisis del Reto “Secrets” (BTLO).</p>
-                        <a href="https://medium.com/@IgnoranzaSolare/manipulaci%C3%B3n-de-jwt-y-control-de-integridad-8c201b4a0af8" class="card-link" target="_blank">Leer más &rarr;</a>
-                    </div>
-                     
-                       <div class="card">
-                        <h3>Meta: El arte del engaño en los metadatos</h3>
-                        <p>Cómo detectar técnicas de Anti-Forensics y evitar los ‘Red Herrings’ mediante la validación cruzada de evidencia. </p>
-                        <a href="https://medium.com/@IgnoranzaSolare/meta-el-arte-del-enga%C3%B1o-en-los-metadatos-3e188767a6b7" class="card-link" target="_blank">Leer más &rarr;</a>
-                    </div>
-
-                     <div class="card">
-                        <h3>TheReport (BlueTeamLabs)</h3>
-                        <p>Un análisis profundo sobre Log4j, Ransomware y TTPs: Resolviendo el escenario de Threat Intel de BTLO paso a paso.</p>
-                        <a href="https://medium.com/@IgnoranzaSolare/thereport-blueteamlabs-c1921f265495" class="card-link" target="_blank">Leer más &rarr;</a>
-                    </div>
-                     
-                     <div class="card">
-                        <h3>Follina (BlueTeamLabs)</h3>
-                        <p>Anatomía de un ataque ‘Zero-Click’: Desglosando el abuso de protocolo ms-msdt y la evasión por padding.</p>
-                        <a href="https://medium.com/@IgnoranzaSolare/follina-blueteamlabs-76040074e8a0" class="card-link" target="_blank">Leer más &rarr;</a>
-                    </div>
-                     
-                     <div class="card">
-                        <h3>Amenaza Híbrida: Ransomware y RAT</h3>
-                        <p>Análisis de malware modular con capacidades de ransomware y DDoS. Extracción de configuración y vectores de propagación USB.</p>
-                        <a href="https://www.linkedin.com/posts/mauricio-duarte-60977a273_cyber-defenders-write-up-blue-team-ugcPost-7356408090516193281-5EKw" class="card-link" target="_blank">Leer más &rarr;</a>
-                    </div>
-                     
-                     <div class="card">
-                        <h3>Datos Comprometidos: Analizando RedLine</h3>
-                        <p>Desglosando la ejecución de malware furtivo. Extracción de configuración del C2 y detección de inyección de código.</p>
-                        <a href="https://www.linkedin.com/posts/tomas-romero-soc_red-stealer-lab-activity-7358008612134215680-m_7F" class="card-link" target="_blank">Leer más &rarr;</a>
-                    </div>
-                     
-                    <div class="card">
-                        <h3>Cadena de Suministro: El Incidente de 3CX</h3>
-                        <p>Análisis forense de aplicaciones troyanizadas legítimas. Investigación de DLL Side-loading y tráfico C2 oculto.</p>
-                        <a href="https://www.linkedin.com/posts/tomas-romero-soc_technical-analysis-report-3cx-supply-chain-activity-7360068552420167680-45Yt" class="card-link" target="_blank">Leer más &rarr;</a>
-                    </div>
-        
-                    <div class="card">
-                        <h3>Investigación Forense: HireMe Lab</h3>
-                        <p>Resolución técnica del reto HireMe Lab: análisis forense de Registro y correos.</p>
-                        <a href="https://medium.com/@fernandaycesarmauricioymariel/hireme-lab-cyberdefenders-b955e367fcb3" class="card-link" target="_blank">Leer más &rarr;</a>
-                    </div>
-
-                    <div class="card">
-                        <h3>Desmontando DanaBot: Análisis Forense y de Red</h3>
-                        <p>Investigación profunda de tráfico C2, extracción de IOCs y análisis de persistencia de este troyano bancario (MaaS).</p>
-                        <a href="https://www.linkedin.com/posts/tomas-romero-soc_danabot-activity-7362215425364922369-3O6L" class="card-link" target="_blank">Leer más &rarr;</a>
-                    </div>
-                         
-                    <div class="card">
-                        <h3>Ciberamenaza Silenciosa: Malware Evasivo</h3>
-                        <p>Análisis de malware avanzado que utiliza Stack Strings y Process Hollowing.</p>
-                        <a href="https://medium.com/@fernandaycesarmauricioymariel/ransomed-lab-cyberdefenders-6def412b157f" class="card-link" target="_blank">Leer más &rarr;</a>
-                    </div>
-                    
-                    <div class="card">
-                        <h3>Web Investigation Lab</h3>
-                        <p>Informe de hallazgos de investigación de seguridad ante una alerta crítica.</p>
-                        <a href="https://medium.com/@fernandaycesarmauricioymariel/web-investigation-lab-b1bf4b145321" class="card-link" target="_blank">Leer más &rarr;</a>
-                    </div>
-                
-                    <div class="card">
-                        <h3>Análisis de un Ataque Web</h3>
-                        <p>Desglose de cadena de ataque explotando SQL Injection.</p>
-                        <a href="https://medium.com/@fernandaycesarmauricioymariel/evidencias-the-hacker-labs-ff0261dce9f2" class="card-link" target="_blank">Leer más &rarr;</a>
-                    </div>
-
-                    <div class="card">
-                        <h3>Intento de Intrusion (La Corporacion)</h3>
-                        <p>Ejercicio práctico de respuesta a incidentes.</p>
-                        <a href="https://medium.com/@fernandaycesarmauricioymariel/la-corporaci%C3%B3n-the-hacker-labs-5a5aaa0e7959" class="card-link" target="_blank">Leer más &rarr;</a>
-                    </div>
-
-                    <div class="card">
-                        <h3>Desmantelando Ataque Exploit Kit</h3>
-                        <p>Analisis Forense de un archivo .pcap de ataque por Exploit Kit.</p>
-                        <a href="https://medium.com/@fernandaycesarmauricioymariel/nukethebrowser-cyberdefenders-9fcd85e1dcf1" class="card-link" target="_blank">Leer más &rarr;</a>
-                    </div>
-                     
-                     <div class="card">
-                        <h3>Tomcat Takeover Lab (Cyberdefenders)</h3>
-                        <p>Un análisis forense de la captura de tráfico (PCAP) del lab “Tomcat Takeover”, donde se reconstruye paso a paso el ataque a un servidor web.</p>
-                        <a href="https://medium.com/@fernandaycesarmauricioymariel/tomcat-takeover-lab-cyberdefenders-c35dece8a274" class="card-link" target="_blank">Leer más &rarr;</a>
-                    </div>
-                </div>
-            </div> 
-
-            <div id="proyectos" class="content-section">
-                <hr>
-                <h2 id="proyectos-titulo">Proyectos Personales</h2> 
-                
-                <div class="publications-grid">
-                    <div class="card">
-                        <h3>El Ojo que Todo lo Ve: Construyendo mi propio SOC con Wazuh</h3>
-                        <p>Guía paso a paso para desplegar, atacar y detectar amenazas en un entorno de laboratorio seguro.</p>
-                        <a href="https://medium.com/@fernandaycesarmauricioymariel/el-ojo-que-todo-lo-ve-construyendo-mi-propio-soc-con-wazuh-bab146a142cd?postPublishedType=initial" class="card-link" target="_blank">Ver en Medium &rarr;</a>
-                    </div>
-                    <div class="card">
-                        <h3>Anatomía de una Infección</h3>
-                        <p>Cazando Amenazas en la Red con Wireshark</p>
-                        <a href="https://medium.com/@fernandaycesarmauricioymariel/anatom%C3%ADa-de-una-infecci%C3%B3n-a6a68910751c?postPublishedType=initial" class="card-link" target="_blank">Ver en Medium &rarr;</a>
-                    </div>
-
-                    <div class="card">
-                        <h3>De .asar a Bytecode</h3>
-                        <p>Ingeniería Inversa de un Stealer oculto en una App de Haxball</p>
-                        <a href="https://medium.com/@fernandaycesarmauricioymariel/de-asar-a-bytecode-4f62fc52d80a" class="card-link" target="_blank">Ver en Medium &rarr;</a>
-                    </div>
-
-                    <div class="card">
-                        <h3>Threat Hunting Diary: Trazando la infraestructura C2 de AsyncRAT (Campaña Xoilac)</h3>
-                        <p>¿Qué se esconde detrás de un simple hash en MalwareBazaar?</p>
-                        <a href="https://medium.com/@fernandaycesarmauricioymariel/threat-hunting-diary-trazando-la-infraestructura-c2-de-asyncrat-campa%C3%B1a-xoilac-0ee441baedab?postPublishedType=initial" class="card-link" target="_blank">Ver en Medium &rarr;</a>
-                    </div>
-                </div>
-            </div>
-            
-          <div id="hunt" class="content-section">
-                <hr>
-                <h2 id="hunt-title">The Crow's Hunt</h2>
-                
-                <p style="max-width: 800px; margin: 0 auto 40px auto; border-left: 3px solid #00ffff; padding-left: 20px; text-align: left; color: #a0a0a0;">
-                    <strong style="color: #00ffff;">// MISIÓN:</strong> Esta sección es mi laboratorio de operaciones defensivas. Aquí documento ejercicios de Emulación de Adversario basados en el framework MITRE ATT&CK para poner a prueba la visibilidad y respuesta de entornos controlados. <br><br>
-                    En <strong>The Crow's Hunt</strong> encontrarás reportes técnicos enfocados en Ingeniería de Detección (Detection Engineering): desde la ejecución de TTPs y el análisis de logs en crudo (Sysmon/Wazuh), hasta el desarrollo de reglas de alta fidelidad para reducir el tiempo de detección.
-                </p>
-
-                <div class="publications-grid">
-                    
-                    <div class="card">
-                        <h3><i class="fas fa-anchor" style="color: #00ffff;"></i> #01: Persistencia Silenciosa — Cazando Extensiones Maliciosas (T1176)</h3>
-                        
-                        <p>En este primer capitulo, me enfocaré en la técnica T1176, donde un atacante manipula el Registro de Windows o las políticas de grupo para forzar la instalación de una extensión maliciosa sin que el usuario pueda eliminarla.</p>
-                        
-                        <div style="margin-top: 15px; margin-bottom: 15px;">
-                            <span class="skill-tag" style="font-size: 0.7em; border-color: #bb86fc; color: #bb86fc;">Active Tracking</span>
-                        </div>
-
-                        <a href="https://medium.com/@fernandaycesarmauricioymariel/the-crows-hunt-01-persistencia-silenciosa-cazando-extensiones-maliciosas-t1176-1e112dd76001" class="card-link" target="_blank">Ver Capitulo en Medium &rarr;</a>
-                    </div>
-
-                    <div class="card">
-                        <h3><i class="fas fa-bug" style="color: #00ffff;"></i> #2 (Próximamente) </h3>
-                        <p>Espacio reservado para el próximo capitulo de ingeniería de detección.</p>
-                        
-                        <div style="margin-top: 15px; margin-bottom: 15px;">
-                            <span class="skill-tag" style="font-size: 0.7em;">Detection Eng</span>
-                        </div>
-                        
-                        <a href="#" class="card-link" style="opacity: 0.5; cursor: default;">Próximamente...</a>
-                    </div>
-
-                </div> </div>
-
-
-            <div id="certificaciones" class="content-section">
-                <hr>
-                <h2>Certificaciones y Badges</h2>
-                
-                <div class="publications-grid">
-                    
-                    <div class="card">
-                        <h3>Certified Red Team Analyst (CRTA)</h3>
-                        <p>Certificación práctica de operaciones de Red Team y seguridad ofensiva.</p>
-                        <p style="font-size: 0.8em; color: #bb86fc;">Emitido: Agosto 2025</p>
-                        <a href="https://labs.cyberwarfare.live/credential/achievement/689a8d037c217ee6bfbca442" class="card-link" target="_blank">Ver Credencial &rarr;</a>
-                    </div>
-
-                    <div class="card">
-                        <h3>CompTIA Security+ (SY0-601)</h3>
-                        <p>Curso fundamental sobre identificación de amenazas y vectores de ataque.</p>
-                        <p style="font-size: 0.8em; color: #bb86fc;">Emitido: Marzo 2024</p>
-                        <a href="https://www.linkedin.com/posts/tomas-romero-soc_certificate-of-completion-activity-7391917960954540034-G2h5" class="card-link" target="_blank">Ver Credencial &rarr;</a>
-                    </div>
-
-                    <div class="card">
-                        <h3>Curso Avanzado de Redes - Platzi</h3>
-                        <p>Formación avanzada sobre arquitectura y protocolos de redes.</p>
-                        <a href="#" class="card-link">Ver Credencial &rarr;</a>
-                    </div>
-
-                    <div class="card">
-                        <h3>Seguridad Informática en Vivo</h3>
-                        <p>Curso de Pentesting Profesional con certificado internacional.</p>
-                        <a href="https://www.linkedin.com/in/tomas-romero-soc/details/certifications/" class="card-link" target="_blank">Ver Credencial &rarr;</a>
-                    </div>
-                    
-                    <div class="card">
-                        <h3>IA Aplicada a la Justicia</h3>
-                        <p>Recorrido por cómo la IA está remodelando el panorama legal.</p>
-                        <a href="https://www.linkedin.com/posts/tomas-romero-soc_ia-en-la-justicia-activity-7369010753502195712-VQf3" class="card-link" target="_blank">Ver Credencial &rarr;</a>
-                    </div>
-
-                </div> 
-            </div> 
-        </div> 
-    </div> 
-
-    <footer style="width: 100%; margin-top: 50px; margin-bottom: 50px; text-align: center; opacity: 0.6; font-size: 0.8em;">
-        <hr style="width: 200px; border: 0; border-top: 1px solid #bb86fc; margin: 0 auto 20px auto; opacity: 0.5;">
-        <p style="margin: 0; color: #bb86fc; letter-spacing: 2px;">SYSTEM.ROOT // CR0W © 2025</p>
-        <p style="margin: 5px 0 0 0; color: #555;">Designed for Blue Team Operations</p>
-    </footer>
+</body>
+</html>
     
     <script src="script.js"></script>
     <script src="crows.js"></script> </body>
