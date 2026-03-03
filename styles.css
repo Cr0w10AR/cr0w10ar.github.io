@@ -404,23 +404,113 @@ section {
 }
 
 
-/* ========== Proyectos ========== */
+/* ========== (Proyectos) ========== */
+.killchain-timeline {
+  position: relative;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 1rem 0;
+}
 
-   .Proyectos-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-    gap: 1.5rem;
-  }
-   
-  .Proyectos-card {
-    background: var(--bg-card);
-    border: 1px solid rgba(176, 38, 255, 0.2);
-    border-radius: 12px;
-    padding: 1.5rem;
-    transition: all 0.3s ease;
-    overflow: hidden;
-  }
+/* La línea vertical brillante */
+.killchain-timeline::before {
+  content: '';
+  position: absolute;
+  left: 24px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(180deg, var(--neon-purple), var(--turquoise));
+  box-shadow: 0 0 15px var(--neon-purple-glow);
+}
 
+.timeline-item {
+  position: relative;
+  padding-left: 70px;
+  margin-bottom: 3rem;
+}
+
+.timeline-item:last-child {
+  margin-bottom: 0;
+}
+
+/* El nodo circular */
+.timeline-dot {
+  position: absolute;
+  left: 15px;
+  top: 5px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--bg-dark);
+  border: 3px solid var(--turquoise);
+  box-shadow: 0 0 15px var(--turquoise-glow);
+  z-index: 2;
+  transition: all 0.3s ease;
+}
+
+.timeline-item:hover .timeline-dot {
+  background: var(--turquoise);
+  box-shadow: 0 0 25px var(--turquoise);
+  transform: scale(1.2);
+}
+
+/* La tarjeta de contenido */
+.timeline-content {
+  background: var(--bg-card);
+  border: 1px solid rgba(176, 38, 255, 0.2);
+  border-radius: 12px;
+  padding: 1.5rem;
+  transition: all 0.3s ease;
+}
+
+.timeline-content:hover {
+  background: var(--bg-card-hover);
+  border-color: var(--neon-purple);
+  transform: translateX(10px);
+  box-shadow: -10px 10px 30px var(--neon-purple-soft);
+}
+
+.killchain-phase {
+  display: inline-block;
+  font-family: var(--font-display);
+  font-size: 0.8rem;
+  color: var(--turquoise);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 0.75rem;
+  padding: 0.2rem 0.8rem;
+  background: var(--turquoise-soft);
+  border-radius: 4px;
+  border: 1px solid rgba(0, 245, 212, 0.2);
+}
+
+.timeline-content h3 {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+}
+
+.timeline-content p {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  margin-bottom: 1.2rem;
+}
+
+.timeline-content a {
+  color: var(--neon-purple);
+  font-weight: 600;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  transition: color 0.2s ease;
+}
+
+.timeline-content a:hover {
+  color: var(--turquoise);
+}
 /* ========== Writeups ========== */
 
 .WriteUps-grid {
